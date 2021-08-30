@@ -8,13 +8,8 @@ import java.util.stream.Collectors;
 public class ChunkArray {
     public List<List<Integer>> separateListIntoChunks(int[] nums, int chunk) {
         List<List<Integer>> result = new ArrayList<>();
-        int endIdx = chunk;
         for (int i = 0; i < nums.length; i += chunk) {
-            if (i >= nums.length) {
-                break;
-            }
-            // increment
-            endIdx = i + chunk;
+            int endIdx = i + chunk;
             if (endIdx > nums.length) {
                 endIdx = nums.length;
             }
@@ -23,7 +18,6 @@ public class ChunkArray {
                     .boxed()
                     .collect(Collectors.toList());
             result.add(curr);
-
         }
 
         return result;
