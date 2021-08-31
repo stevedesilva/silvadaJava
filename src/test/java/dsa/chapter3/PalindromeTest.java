@@ -1,4 +1,4 @@
-package chapter3;
+package dsa.chapter3;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

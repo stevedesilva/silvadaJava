@@ -1,4 +1,4 @@
-package chapter2.string;
+package dsa.chapter2;
 
 import java.nio.charset.StandardCharsets;
 

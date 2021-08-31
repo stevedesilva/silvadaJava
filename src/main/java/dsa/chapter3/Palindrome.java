@@ -1,4 +1,4 @@
-package chapter3;
+package dsa.chapter3;
 
 public class Palindrome {
 
