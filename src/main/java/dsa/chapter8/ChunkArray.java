@@ -1,4 +1,4 @@
-package chapter8;
+package dsa.chapter8;
 
 import java.util.ArrayList;
 import java.util.Arrays;

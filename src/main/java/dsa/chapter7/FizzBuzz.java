@@ -1,4 +1,4 @@
-package chapter7;
+package dsa.chapter7;
 
 public class FizzBuzz {
 

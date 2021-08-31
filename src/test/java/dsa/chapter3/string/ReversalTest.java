@@ -1,4 +1,4 @@
-package dsa.chapter2;
+package dsa.chapter3.string;
 
 import org.junit.jupiter.api.Test;
 

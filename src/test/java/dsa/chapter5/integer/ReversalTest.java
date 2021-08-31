@@ -1,8 +1,8 @@
-package chapter4.integer;
+package dsa.chapter5.integer;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReversalTest {
 
