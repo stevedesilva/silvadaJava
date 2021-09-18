@@ -15,6 +15,16 @@ class PrintingStepsTest {
     }
 
     @Test
+    public void noStepRecursive(){
+        Assertions.assertArrayEquals(new PrintingSteps().executeRecursive(0),new String[]{});
+        Assertions.assertArrayEquals(new PrintingSteps().executeRecursive(1),new String[]{"#",});
+        Assertions.assertArrayEquals(new PrintingSteps().executeRecursive(2),new String[]{"# ","##"});
+        Assertions.assertArrayEquals(new PrintingSteps().executeRecursive(3),new String[]{"#  ","## ","###"});
+        Assertions.assertArrayEquals(new PrintingSteps().executeRecursive(4),new String[]{"#   ","##  ","### ","####"});
+
+    }
+
+    @Test
     public void oneStep(){
         Assertions.assertArrayEquals(new PrintingSteps().executeWithArray(1),new String[]{"#",});
         Assertions.assertArrayEquals(new PrintingSteps().executeWithArrayNaive(1),new String[]{"#",});
