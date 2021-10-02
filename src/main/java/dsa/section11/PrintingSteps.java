@@ -28,21 +28,21 @@ public class PrintingSteps {
         return result;
     }
 
-    public String[] executeWithArrayNaive(int num) {
-        String[] result = new String[num];
-        for (int row = 0; row < num; row++) {
-            String[] colRes = new String[num];
-            for (int col = 0; col < num; col++) {
-                if (col <= row) {
+    public String[] executeWithArrayNaive(int maxLevel) {
+        String[] pyramid = new String[maxLevel];
+        for (int currentLevel = 0; currentLevel < maxLevel; currentLevel++) {
+            String[] colRes = new String[maxLevel];
+            for (int col = 0; col < maxLevel; col++) {
+                if (col <= currentLevel) {
                     colRes[col] = "#";
                 } else {
                     colRes[col] = " ";
                 }
             }
-            result[row] = String.join("", colRes);
+            pyramid[currentLevel] = String.join("", colRes);
         }
-        printSteps(result);
-        return result;
+        printSteps(pyramid);
+        return pyramid;
     }
 
     private void printSteps(String[] steps) {
@@ -51,24 +51,29 @@ public class PrintingSteps {
         }
     }
 
-    public void executeRecursiveSteps(int num, int row, int col, String[] colRes, String[] result) {
-        if (num == row) {
+    public void executeRecursiveSteps(int maxLevel, int currentLevel, int col, String[] colRes, String[] pyramid) {
+        // last level of pyramid
+        if (maxLevel == currentLevel) {
             return;
         }
-        if (num == col) {
-            result[row] = String.join("", colRes);
-            String[] newColRes = new String[num];
-            executeRecursiveSteps(num, row + 1, 0, newColRes, result);
-            return;
-        }
+        // last column of the level
+        if (maxLevel == col) {
+            // add level to pyramid
+            pyramid[currentLevel] = String.join("", colRes);
 
-        if (col <= row) {
+            // reset for next level
+            String[] newColRes = new String[maxLevel];
+            executeRecursiveSteps(maxLevel, currentLevel + 1, 0, newColRes, pyramid);
+            return;
+        }
+        // add for each column
+        if (col <= currentLevel) {
             colRes[col] = "#";
         } else {
             colRes[col] = " ";
         }
-
-        executeRecursiveSteps(num, row, col + 1, colRes, result);
+        // increment column
+        executeRecursiveSteps(maxLevel, currentLevel, col + 1, colRes, pyramid);
     }
 
     public String[] executeRecursive(int num) {
