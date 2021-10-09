@@ -41,7 +41,7 @@ public class Pyramid {
         if (maxLevel == currentLevel) {
             return;
         }
-
+        // end of column
         if (col == colMax  ) {
             // add level to pyramid
             pyramid.add(String.join("", levelArray));
@@ -50,7 +50,7 @@ public class Pyramid {
             buildRecursiveSteps(maxLevel, currentLevel + 1, 0, newLevelArray, pyramid);
             return;
         }
-
+        // add space or bang
         if (col < colHalf - currentLevel || col > colHalf + currentLevel) {
             levelArray.add(" ");
         } else {
