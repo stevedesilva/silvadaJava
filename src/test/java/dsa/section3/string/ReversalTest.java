@@ -9,10 +9,10 @@ class ReversalTest {
     @Test
     public void shouldReturnEmptyString() {
         Reversal reversal = new Reversal();
-        assertEquals("", reversal.reverseWithCharAt(""));
         assertEquals("", reversal.reverseWithStringBuilder(""));
+        assertEquals("", reversal.reverseWithCharAt(""));
         assertEquals("", reversal.reverseWithBytes(""));
-        assertEquals("", reversal.reverseWithCharAtInline(""));
+        assertEquals("", reversal.reverseWithCharAtUsingCharArray(""));
     }
 
     @Test
@@ -21,7 +21,7 @@ class ReversalTest {
         assertEquals("cba", reversal.reverseWithCharAt("abc"));
         assertEquals("cba", reversal.reverseWithStringBuilder("abc"));
         assertEquals("cba", reversal.reverseWithBytes("abc"));
-        assertEquals("cba", reversal.reverseWithCharAtInline("abc"));
+        assertEquals("cba", reversal.reverseWithCharAtUsingCharArray("abc"));
     }
 
     @Test
@@ -30,7 +30,7 @@ class ReversalTest {
         assertEquals("dcba", reversal.reverseWithCharAt("abcd"));
         assertEquals("dcba", reversal.reverseWithStringBuilder("abcd"));
         assertEquals("dcba", reversal.reverseWithBytes("abcd"));
-        assertEquals("dcba", reversal.reverseWithCharAtInline("abcd"));
+        assertEquals("dcba", reversal.reverseWithCharAtUsingCharArray("abcd"));
     }
 
     @Test
@@ -39,6 +39,6 @@ class ReversalTest {
         assertEquals("edcba", reversal.reverseWithCharAt("abcde"));
         assertEquals("edcba", reversal.reverseWithStringBuilder("abcde"));
         assertEquals("edcba", reversal.reverseWithBytes("abcde"));
-        assertEquals("edcba", reversal.reverseWithCharAtInline("abcde"));
+        assertEquals("edcba", reversal.reverseWithCharAtUsingCharArray("abcde"));
     }
 }

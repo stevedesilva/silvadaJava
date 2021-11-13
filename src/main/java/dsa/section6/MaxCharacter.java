@@ -32,7 +32,7 @@ public class MaxCharacter {
     }
 
     public String getMaxWithCharArray(String input) {
-        // remove string
+        // the regular expression \s matches a single whitespace character, while \s+ will match one or more whitespace characters.
         input = input.replaceAll("\\s+", "");
         int[] inChars = new int[256];
         int max = -1;

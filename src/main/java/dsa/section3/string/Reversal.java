@@ -25,15 +25,14 @@ public class Reversal {
         }
         return new String(inputAsBytes, StandardCharsets.UTF_8);
     }
-    public String reverseWithCharAtInline(String input) {
+
+    public String reverseWithCharAtUsingCharArray(String input) {
         char[] array = new char[input.length()];
-        // move inwards swapping chars
         for (int j = input.length()-1; j >= 0; j--) {
             array[(input.length() -1) - j] = input.charAt(j);
         }
         return new String(array);
 
     }
-
 
 }
