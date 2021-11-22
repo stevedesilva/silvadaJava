@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PrintingSteps {
 
-    public List<String> executeWithList(int num) {
+    public List<String> executeWithListUsingStringFormat(int num) {
         List<String> steps = new ArrayList<>();
         for (int i = 1; i <= num; i++) {
 
@@ -17,7 +17,7 @@ public class PrintingSteps {
         return steps;
     }
 
-    public String[] executeWithArray(int num) {
+    public String[] executeWithArrayUsingStringFormat(int num) {
         String[] result = new String[num];
         for (int i = 0; i < num; i++) {
             int count = i + 1;
@@ -28,7 +28,7 @@ public class PrintingSteps {
         return result;
     }
 
-    public String[] executeWithArrayNaive(int maxLevel) {
+    public String[] executeWithStringArrayUsingNestedForLoops(int maxLevel) {
         String[] pyramid = new String[maxLevel];
         for (int currentLevel = 0; currentLevel < maxLevel; currentLevel++) {
             String[] colRes = new String[maxLevel];
@@ -40,6 +40,23 @@ public class PrintingSteps {
                 }
             }
             pyramid[currentLevel] = String.join("", colRes);
+        }
+        printSteps(pyramid);
+        return pyramid;
+    }
+
+    public String[] executeWithCharArrayUsingNestedForLoops(int maxLevel) {
+        String[] pyramid = new String[maxLevel];
+        for (int currentLevel = 0; currentLevel < maxLevel; currentLevel++) {
+            char[] colRes = new char[maxLevel];
+            for (int col = 0; col < maxLevel; col++) {
+                if (col <= currentLevel) {
+                    colRes[col] = '#';
+                } else {
+                    colRes[col] = ' ';
+                }
+            }
+            pyramid[currentLevel] =  String.valueOf(colRes);
         }
         printSteps(pyramid);
         return pyramid;

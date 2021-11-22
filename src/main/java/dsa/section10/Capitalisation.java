@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Capitalisation {
+
     public String capitaliseFirstWordInSentenceUsingByteArray(String sentence) {
         String[] words = sentence.split(" ");
         List<String> result = new ArrayList<>();
@@ -34,6 +35,7 @@ public class Capitalisation {
         }
         return String.join(" ", result);
     }
+
     public String capitaliseFirstCharInWordUsingSubstring(String sentence) {
         String[] words = sentence.split(" ");
         List<String> result = new ArrayList<>();
@@ -45,4 +47,5 @@ public class Capitalisation {
         }
         return String.join(" ", result);
     }
+
 }

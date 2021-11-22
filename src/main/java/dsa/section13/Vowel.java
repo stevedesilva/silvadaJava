@@ -20,14 +20,12 @@ public class Vowel {
     }
 
     public int CalculateNumberOfVowelsRegex(String input) {
-        System.out.println("Input:" +  input);
         Pattern p = Pattern.compile("(?i)([aeiou])", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(input);
 
         int count=0;
         while (m.find()){
             count = count + m.group(0).length();
-            System.out.println("Group count:" +  m.groupCount());
         }
         return count;
     }
