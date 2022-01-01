@@ -10,10 +10,8 @@ public class Fibonacci {
             if (number < 2) {
                 return number;
             }
-
             return cache.computeIfAbsent(number, (n) -> {
                 System.out.println("Not Found in Cache, Calculate Fibonacci(" + n + ")");
-
                 return fibonacciWithMemoization(n - 1) + fibonacciWithMemoization(n - 2);
             });
     };
