@@ -12,7 +12,7 @@ public class QueueImpl<T> implements Queue<T> {
 
     @Override
     public T remove() {
-        return values.remove(0);
+        return values.isEmpty() ? null : values.remove(0);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class QueueImpl<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        return values.get(0);
+        return values.isEmpty() ? null : values.get(0);
     }
 
 }
