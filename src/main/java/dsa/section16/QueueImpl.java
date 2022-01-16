@@ -25,4 +25,9 @@ public class QueueImpl<T> implements Queue<T> {
         return values.size();
     }
 
+    @Override
+    public T peek() {
+        return values.get(0);
+    }
+
 }

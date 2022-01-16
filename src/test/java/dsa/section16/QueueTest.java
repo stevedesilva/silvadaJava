@@ -42,4 +42,21 @@ class QueueTest {
         Assertions.assertEquals(4, queue.size());
     }
 
+    @Test
+    void shouldPeekFirstElementQueue() {
+        Queue<Integer> queue = new QueueImpl<>();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
+
+        Assertions.assertEquals(1, queue.peek());
+
+        queue.remove();
+        Assertions.assertEquals(2, queue.peek());
+    }
+
+
+
+
 }

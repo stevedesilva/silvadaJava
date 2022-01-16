@@ -6,4 +6,6 @@ public interface Queue<T> {
     void add(T value);
 
     int size();
+
+    T peek();
 }
