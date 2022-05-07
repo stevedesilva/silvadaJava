@@ -98,9 +98,6 @@ class MyExecutorTest {
         // then
         Assertions.assertEquals(4,result2.size());
         Assertions.assertTrue(result2.containsAll(Set.of("Alpha11","Beta2","Gamma3","Test23")));
-
     }
-
-
 
 }

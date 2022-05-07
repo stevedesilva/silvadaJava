@@ -116,7 +116,6 @@ class MyPredicateTest {
             public Data build() {
                 return new Data(this);
             }
-
         }
     }
 

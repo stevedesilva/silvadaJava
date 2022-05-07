@@ -58,13 +58,4 @@ class TextDecoratorsTest {
         Assertions.assertEquals("ZeroOneTwoThree", result);
     }
 
-    @Test
-    public void testDecoratorRunnerOneTwoThree() {
-        final String result = new BaseText()
-                .andThen(TextDecorators::addOne)
-                .andThen(TextDecorators::addTwo)
-                .andThen(TextDecorators::addThree)
-                .apply("Zero");
-        Assertions.assertEquals("ZeroOneTwoThree", result);
-    }
 }
