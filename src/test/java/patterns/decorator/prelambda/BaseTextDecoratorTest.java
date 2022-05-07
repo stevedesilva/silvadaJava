@@ -46,7 +46,6 @@ class BaseTextDecoratorTest {
 
         final String result = decorator.format("this is some random text");
         Assertions.assertEquals("THIS IS SOME RANDOM TEXTthat is some random text", result);
-
     }
 
 }

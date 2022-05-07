@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import patterns.decorator.lambda.base.BaseText;
 
+
 class TextDecoratorsTest {
     @Test
     public void testDecoratorRunnerBaseText() {
@@ -16,7 +17,6 @@ class TextDecoratorsTest {
     public void testDecoratorRunnerAllCaps() {
         final String result = new BaseText()
                 .andThen(TextDecorators::allCaps)
-//                .andThen((s) -> s.toUpperCase())
                 .apply("this is some random text");
         Assertions.assertEquals("THIS IS SOME RANDOM TEXT", result);
     }
@@ -47,5 +47,15 @@ class TextDecoratorsTest {
                 .apply("this is some random text");
         Assertions.assertEquals("THIS IS SOME RANDOM TEXTthat is some random text", result);
 
+    }
+
+    @Test
+    public void testDecoratorRunnerOneTwoThree() {
+        final String result = new BaseText()
+                .andThen(TextDecorators::addOne)
+                .andThen(TextDecorators::addTwo)
+                .andThen(TextDecorators::addThree)
+                .apply("Zero");
+        Assertions.assertEquals("ZeroOneTwoThree", result);
     }
 }

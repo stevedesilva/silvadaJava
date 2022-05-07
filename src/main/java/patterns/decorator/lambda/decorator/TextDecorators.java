@@ -11,4 +11,14 @@ public class TextDecorators {
         return input.replaceAll("this","that");
     }
 
+    public static String addOne(String input) {
+        return input.concat("One");
+    }
+    public static String addTwo(String input) {
+        return input.concat("Two");
+    }
+    public static String addThree(String input) {
+        return input.concat("Three");
+    }
+
 }
