@@ -54,4 +54,25 @@ class LoggersTest {
         assertTrue(result.contains(":TEST MESSAGE"));
     }
 
+    @Test
+    public void testLoggerCombination_uuu(){
+        Logger logger = new SimpleLogger();
+        Function<String,String> id = Function.<String>identity();
+        Function<String,Integer> decorators = (x) -> 1;
+
+        final String steve = id.apply("input");
+        System.out.println(steve);
+
+//        Function<String,String> decorators = Stream.<Function<String,String>>of(Loggers::withTimeStamp,Loggers::upperCase)
+//                .reduce(Function.identity(),Function::andThen);
+//
+//        final String result = logger.log(decorators.apply("Test Message"));
+//        final String dateAsStr = result.split(":TEST")[0];
+//        assertDoesNotThrow(() -> {
+//            LocalDateTime.parse(dateAsStr, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+//        });
+//
+//        assertTrue(result.contains(":TEST MESSAGE"));
+    }
+
 }

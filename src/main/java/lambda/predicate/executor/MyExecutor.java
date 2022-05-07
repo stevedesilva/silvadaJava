@@ -3,7 +3,6 @@ package lambda.predicate.executor;
 import lambda.predicate.builtin.MyPredicateFilters;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -48,6 +47,5 @@ public class MyExecutor<T> implements Executor<T>{
     public void addPredicate(Predicate<T> ...t) {
         predicates.addAll(Arrays.asList(t));
     }
-
 
 }

@@ -46,7 +46,16 @@ class TextDecoratorsTest {
                 .andThen(TextDecorators::thisWithThat)
                 .apply("this is some random text");
         Assertions.assertEquals("THIS IS SOME RANDOM TEXTthat is some random text", result);
+    }
 
+    @Test
+    public void testDecoratorRunnerOneTwoThree() {
+        final String result = new BaseText()
+                .andThen(TextDecorators::addOne)
+                .andThen(TextDecorators::addTwo)
+                .andThen(TextDecorators::addThree)
+                .apply("Zero");
+        Assertions.assertEquals("ZeroOneTwoThree", result);
     }
 
     @Test

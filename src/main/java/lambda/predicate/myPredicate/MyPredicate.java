@@ -31,4 +31,8 @@ public class MyPredicate<T> {
       return filter.test(a,b);
     }
 
+    public <M> M myIdentity(M m) {
+        return m;
+    }
+
 }

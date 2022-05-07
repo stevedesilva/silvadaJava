@@ -31,6 +31,13 @@ class MyPredicateTest {
     }
 
     @Test
+    public void testIdentity() {
+        MyPredicate<String> myPredicate = new MyPredicate<>();
+        final Integer integer = myPredicate.<Integer>myIdentity(1);
+        System.out.println(integer);
+    }
+
+    @Test
     public void testEnumNameBiPredicates() {
         final Data e1 = new Data.Builder().withId("1").withName("x").withColour("RED").build();
         final Data e2 = new Data.Builder().withId("2").withName("y").withColour("PINK").build();
