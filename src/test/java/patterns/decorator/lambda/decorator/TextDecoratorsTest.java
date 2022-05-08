@@ -9,15 +9,15 @@ class TextDecoratorsTest {
     @Test
     public void testDecoratorRunnerBaseText() {
         final String result = new BaseText()
-                .apply("this is some random text");
-        Assertions.assertEquals("this is some random text", result);
+                .apply("this is some random textfile");
+        Assertions.assertEquals("this is some random textfile", result);
     }
 
     @Test
     public void testDecoratorRunnerAllCaps() {
         final String result = new BaseText()
                 .andThen(TextDecorators::allCaps)
-                .apply("this is some random text");
+                .apply("this is some random textfile");
         Assertions.assertEquals("THIS IS SOME RANDOM TEXT", result);
     }
 
@@ -25,16 +25,16 @@ class TextDecoratorsTest {
     public void testDecoratorReplaceThisWithThat() {
         final String result = new BaseText()
                 .andThen(TextDecorators::thisWithThat)
-                .apply("this is some random text");
-        Assertions.assertEquals("that is some random text", result);
+                .apply("this is some random textfile");
+        Assertions.assertEquals("that is some random textfile", result);
     }
 
     @Test
     public void testDecoratorStringConcat() {
         final String result = new BaseText()
                 .andThen(TextDecorators::concat)
-                .apply("this is some random text");
-        Assertions.assertEquals("this is some random textthis is some random text", result);
+                .apply("this is some random textfile");
+        Assertions.assertEquals("this is some random textthis is some random textfile", result);
 
     }
 
@@ -44,8 +44,8 @@ class TextDecoratorsTest {
                 .andThen(TextDecorators::allCaps)
                 .andThen(TextDecorators::concat)
                 .andThen(TextDecorators::thisWithThat)
-                .apply("this is some random text");
-        Assertions.assertEquals("THIS IS SOME RANDOM TEXTthat is some random text", result);
+                .apply("this is some random textfile");
+        Assertions.assertEquals("THIS IS SOME RANDOM TEXTthat is some random textfile", result);
     }
 
     @Test

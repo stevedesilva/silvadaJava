@@ -26,4 +26,21 @@ class BaseGenericTest {
         Assertions.assertEquals(6,result);
     }
 
+//    @Test
+//    public void testBaseGenericWithBothIntegerStringTypes() {
+//        MyBaseTest result = new MyBaseTest();
+//        result.execute("Test message");
+//        final Object o = result.get();
+//        System.out.println(o);
+//
+////                .andThen(NumberDecorators::addOne)
+////                .andThen(NumberDecorators::addTwo)
+////                .andThen(NumberDecorators::addThree)
+////                .andThen(TextDecorators::addOne)
+////                .andThen(TextDecorators::addTwo)
+////                .andThen(TextDecorators::addThree)
+////                .apply(0);
+////        Assertions.assertEquals(6,result);
+//    }
+
 }

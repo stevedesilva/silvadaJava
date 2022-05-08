@@ -5,7 +5,7 @@ public class TextDecorators {
        return input.toUpperCase();
     }
     public static String concat(String input) {
-        return input.concat("this is some random text");
+        return input.concat("this is some random textfile");
     }
     public static String thisWithThat(String input) {
         return input.replaceAll("this","that");
