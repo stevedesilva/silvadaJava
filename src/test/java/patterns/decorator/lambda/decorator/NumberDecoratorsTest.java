@@ -57,17 +57,17 @@ class NumberDecoratorsTest {
         Assertions.assertEquals(Integer.valueOf(3),result);
     }
 
-    @Test
-    public void testNumberDecorators(){
-        BaseNumber baseNumber = new BaseNumber();
-
-        final Integer result = baseNumber.andThen(NumberDecorators::addOne)
-                .andThen(NumberDecorators::addTwo)
-                .andThen(NumberDecorators::addThree)
-                .apply(0);
-
-        Assertions.assertEquals(6,result);
-//       baseNumber.andThen((n) -> n+2).apply(1);
-//       baseNumber.andThen((x) -> NumberDecorators.addTwo(x)).apply(1); ??TODO
-    }
+//    @Test
+//    public void testNumberDecorators(){
+//        BaseNumber baseNumber = new BaseNumber();
+//
+//        final Integer result = baseNumber.andThen(NumberDecorators::addOne)
+//                .andThen(NumberDecorators::addTwo)
+//                .andThen(NumberDecorators::addThree)
+//                .apply(0);
+//
+//        Assertions.assertEquals(6,result);
+////       baseNumber.andThen((n) -> n+2).apply(1);
+////       baseNumber.andThen((x) -> NumberDecorators.addTwo(x)).apply(1); ??TODO
+//    }
 }

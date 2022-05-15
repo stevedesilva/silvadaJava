@@ -23,7 +23,7 @@ class BaseGenericTest {
                 .andThen(NumberDecorators::addTwo)
                 .andThen(NumberDecorators::addThree)
                 .apply(0);
-        Assertions.assertEquals(6,result);
+        Assertions.assertEquals(Integer.valueOf(6),result);
     }
 
 //    @Test

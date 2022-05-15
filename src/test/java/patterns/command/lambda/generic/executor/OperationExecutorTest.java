@@ -11,8 +11,8 @@ class OperationExecutorTest {
         OperationExecutor executor = new OperationExecutor();
         Assertions.assertEquals("Opening file file1", executor.executeOperation(() -> "Opening file file1"));
         Assertions.assertEquals("Saving file file1", executor.executeOperation(() -> "Saving file file1"));
-        Assertions.assertEquals(1, executor.executeOperation(() -> 1));
-        Assertions.assertEquals(19.0, executor.executeOperation(() -> 19.0));
+        Assertions.assertEquals(Integer.valueOf(1), executor.executeOperation(() -> Integer.valueOf(1)));
+        Assertions.assertEquals(Float.valueOf(19), executor.executeOperation(() -> Float.valueOf(19)));
         Assertions.assertEquals(true, executor.executeOperation(() -> 11 == 11));
 
         final List<GenericOperation> operations = executor.operations;

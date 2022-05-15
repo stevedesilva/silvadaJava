@@ -1,6 +1,5 @@
 package lambda.predicate.builtin;
 
-import lambda.predicate.builtin.MyPredicateFilters;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,15 +16,15 @@ class MyPredicateFiltersTest {
         final Set<String> colours = Arrays.stream(ColourData.Colour.values()).map(c -> c.name()).collect(Collectors.toSet());
         MyPredicateFilters<String> myPredicateFilters = new MyPredicateFilters<>();
         final Optional<Set<String>> result = myPredicateFilters.filterSet(colours, Set.of(ColourData.isBlue, ColourData.isRed, ColourData.isGreen));
-        Assertions.assertEquals(result.get(), Set.of("BLUE", "RED", "GREEN"));
+        Assertions.assertEquals(Set.of("BLUE", "RED", "GREEN"), result.get());
     }
 
     @Test
     public void testNamePredicates() {
-        final Set<String> colours = Arrays.stream(NameData.NAME.values()).map(c -> c.name()).collect(Collectors.toSet());
+        final Set<String> names = Arrays.stream(NameData.NAME.values()).map(c -> c.name()).collect(Collectors.toSet());
         MyPredicateFilters<String> myPredicateFilters = new MyPredicateFilters<>();
-        final Optional<Set<String>> result = myPredicateFilters.filterSet(colours, Set.of(NameData.isWill, NameData.isSteve, NameData.isClive));
-        Assertions.assertEquals(result.get(), Set.of("WILL", "STEVE", "CLIVE"));
+        final Optional<Set<String>> result = myPredicateFilters.filterSet(names, Set.of(NameData.isWill, NameData.isSteve, NameData.isClive));
+        Assertions.assertEquals(Set.of("WILL", "STEVE", "CLIVE"),result.get());
     }
 
     @Test
@@ -64,9 +63,9 @@ class MyPredicateFiltersTest {
             }
         }
 
-        static Predicate<String> isSteve = (name) -> name.equals(NameData.NAME.STEVE);
-        static Predicate<String> isWill = (name) -> name.equals(NAME.WILL);
-        static Predicate<String> isClive = (name) -> name.equals(NAME.CLIVE);
+        static Predicate<String> isSteve = (name) -> name.equals(NameData.NAME.STEVE.name());
+        static Predicate<String> isWill = (name) -> name.equals(NAME.WILL.name());
+        static Predicate<String> isClive = (name) -> name.equals(NAME.CLIVE.name());
         static Predicate<NAME> greaterThen10 = (name) -> name.age > 10;
         static Predicate<NAME> isStevePredicate = (name) -> name.equals(NameData.NAME.STEVE);
 

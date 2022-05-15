@@ -18,10 +18,10 @@ class QueueTwoStacksTest {
 
         Assertions.assertEquals(4, queue.size());
 
-        Assertions.assertEquals(1, queue.remove());
-        Assertions.assertEquals(2, queue.remove());
-        Assertions.assertEquals(3, queue.remove());
-        Assertions.assertEquals(4, queue.remove());
+        Assertions.assertEquals(Integer.valueOf(1), queue.remove());
+        Assertions.assertEquals(Integer.valueOf(2), queue.remove());
+        Assertions.assertEquals(Integer.valueOf(3), queue.remove());
+        Assertions.assertEquals(Integer.valueOf(4), queue.remove());
 
         Assertions.assertEquals(0, queue.size());
     }
@@ -53,10 +53,10 @@ class QueueTwoStacksTest {
         queue.add(3);
         queue.add(4);
 
-        Assertions.assertEquals(1, queue.peek());
+        Assertions.assertEquals(Integer.valueOf(1), queue.peek());
 
         queue.remove();
-        Assertions.assertEquals(2, queue.peek());
+        Assertions.assertEquals(Integer.valueOf(2), queue.peek());
     }
 
 }

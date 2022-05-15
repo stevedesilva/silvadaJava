@@ -18,7 +18,7 @@ class TextDecoratorsTest {
         final String result = new BaseText()
                 .andThen(TextDecorators::allCaps)
                 .apply("this is some random textfile");
-        Assertions.assertEquals("THIS IS SOME RANDOM TEXT", result);
+        Assertions.assertEquals("THIS IS SOME RANDOM TEXTFILE", result);
     }
 
     @Test
@@ -34,7 +34,7 @@ class TextDecoratorsTest {
         final String result = new BaseText()
                 .andThen(TextDecorators::concat)
                 .apply("this is some random textfile");
-        Assertions.assertEquals("this is some random textthis is some random textfile", result);
+        Assertions.assertEquals("this is some random textfilethis is some random textfile", result);
 
     }
 
@@ -45,7 +45,7 @@ class TextDecoratorsTest {
                 .andThen(TextDecorators::concat)
                 .andThen(TextDecorators::thisWithThat)
                 .apply("this is some random textfile");
-        Assertions.assertEquals("THIS IS SOME RANDOM TEXTthat is some random textfile", result);
+        Assertions.assertEquals("THIS IS SOME RANDOM TEXTFILEthat is some random textfile", result);
     }
 
     @Test
