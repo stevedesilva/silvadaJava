@@ -9,7 +9,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="silvade" />
-        <module name="silvadeJava" />
+        <module name="katas" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="15" />
