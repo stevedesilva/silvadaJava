@@ -10,6 +10,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="silvade" />
         <module name="katas" />
+        <module name="patterns" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="15" />
