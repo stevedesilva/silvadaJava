@@ -10,7 +10,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="silvade" />
         <module name="katas" />
+        <module name="lambda" />
+        <module name="dsa" />
         <module name="patterns" />
+        <module name="concurrency" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="15" />

@@ -12,6 +12,9 @@
     <modules>
         <module>katas</module>
         <module>patterns</module>
+        <module>dsa</module>
+        <module>lambda</module>
+        <module>concurrency</module>
     </modules>
 
     <properties>
