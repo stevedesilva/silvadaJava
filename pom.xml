@@ -15,6 +15,7 @@
         <module>dsa</module>
         <module>lambda</module>
         <module>concurrency</module>
+        <module>network</module>
     </modules>
 
     <properties>
