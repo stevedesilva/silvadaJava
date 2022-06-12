@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class GreetServer {
+public class SingleServer {
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private PrintWriter out;
@@ -22,7 +22,9 @@ public class GreetServer {
         System.out.println("reading message ...");
         String inputLine, response;
 
-        while ((inputLine = in.readLine()) != null){
+        while (true){
+            final String inputLine1 = in.readLine();
+            if (!((inputLine = inputLine1) != null)) break;
             if ("Done".equals(inputLine)) {
                 out.println("good bye");
                 break;
@@ -41,9 +43,9 @@ public class GreetServer {
     }
 
     public static void main(String[] args) {
-        GreetServer greetServer = new GreetServer();
+        SingleServer singleServer = new SingleServer();
         try {
-            greetServer.start(9999);
+            singleServer.start(9999);
         } catch (IOException e) {
             e.printStackTrace();
         }
