@@ -16,9 +16,19 @@ class LinearSearchTest {
         String itemToFind = "Hi";
         String[] array = new String[]{};
 
-        LinearSearch<String> ls = new LinearSearch<String>();
+        LinearSearch<String> ls = new LinearSearch<>();
         Optional<Integer> result = ls.search(array,itemToFind);
         assertThat(result, Matchers.equalTo(Optional.empty()));
+    }
+
+    @Test
+    public void shouldReturnItemIndexWhenItemFound() {
+        String itemToFind = "Hi";
+        String[] array = new String[]{"Hi"};
+
+        LinearSearch<String> ls = new LinearSearch<>();
+        Optional<Integer> result = ls.search(array,itemToFind);
+        assertThat(result.get(), Matchers.equalTo(0));
 
     }
 }

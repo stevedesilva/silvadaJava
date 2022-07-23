@@ -7,6 +7,13 @@ public class LinearSearch<T> {
     }
 
     public Optional<Integer> search(T[] array, T value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value)) {
+                return Optional.of(i);
+            }
+        }
         return Optional.empty();
     }
+
+
 }
