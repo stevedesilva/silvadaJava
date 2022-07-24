@@ -1,14 +1,11 @@
 package commonsense.search;
 
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LinearSearchTest {
     @Test
@@ -17,17 +14,27 @@ class LinearSearchTest {
         String[] array = new String[]{};
 
         LinearSearch<String> ls = new LinearSearch<>();
-        Optional<Integer> result = ls.search(array,itemToFind);
+        Optional<Integer> result = ls.searchUnsorted(array,itemToFind);
         assertThat(result, Matchers.equalTo(Optional.empty()));
     }
 
     @Test
-    public void shouldReturnItemIndexWhenItemFound() {
+    public void shouldReturnItemIndexWhenItemFoundUnsorted() {
         String itemToFind = "Hi";
-        String[] array = new String[]{"Hi"};
+        String[] array = new String[]{"MMA","Zss","LC","Hi","Cazoo"};
 
         LinearSearch<String> ls = new LinearSearch<>();
-        Optional<Integer> result = ls.search(array,itemToFind);
+        Optional<Integer> result = ls.searchUnsorted(array,itemToFind);
+        assertThat(result.get(), Matchers.equalTo(3));
+
+    }
+    @Test
+    public void shouldReturnItemIndexWhenItemFoundSorted() {
+        String itemToFind = "Hi";
+        String[] array = new String[]{"A","B","C","Hi"};
+
+        LinearSearch<String> ls = new LinearSearch<>();
+        Optional<Integer> result = ls.searchUnsorted(array,itemToFind);
         assertThat(result.get(), Matchers.equalTo(0));
 
     }
