@@ -29,7 +29,7 @@ class LinearSearchTest {
 
     }
     @Test
-    public void shouldReturnItemIndexWhenItemFoundSorted() {
+    public void shouldReturnItemIndexWhenItemFoundUnSorted() {
         String itemToFind = "Hi";
         String[] array = new String[]{"A","B","C","Hi"};
 
@@ -37,5 +37,24 @@ class LinearSearchTest {
         Optional<Integer> result = ls.searchUnsorted(array,itemToFind);
         assertThat(result.get(), Matchers.equalTo(0));
 
+    }
+    @Test
+    public void shouldReturnItemIndexWhenItemFoundSorted() {
+        String itemToFind = "B";
+        String[] array = new String[]{"A","B","C","D","E"};
+
+        LinearSearch<String> ls = new LinearSearch<>();
+        Optional<Integer> result = ls.searchSorted(array,itemToFind);
+        assertThat(result.get(), Matchers.equalTo(1));
+    }
+
+    @Test
+    public void shouldReturnEarlyWhenItemNotFoundSorted() {
+        String itemToFind = "B";
+        String[] array = new String[]{"A","C","E","G","Z"};
+
+        LinearSearch<String> ls = new LinearSearch<>();
+        Optional<Integer> result = ls.searchSorted(array,itemToFind);
+        assertThat(result, Matchers.equalTo(Optional.empty()));
     }
 }
