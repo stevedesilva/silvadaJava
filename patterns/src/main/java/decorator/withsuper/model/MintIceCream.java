@@ -1,7 +1,8 @@
 package decorator.withsuper.model;
 
-import udemy.decorator.withsuper.interfaces.IceCream;
-import udemy.decorator.withsuper.interfaces.IceCreamDecorator;
+
+import decorator.withsuper.interfaces.IceCream;
+import decorator.withsuper.interfaces.IceCreamDecorator;
 
 import java.math.BigDecimal;
 
