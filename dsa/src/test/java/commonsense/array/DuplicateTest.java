@@ -2,24 +2,19 @@ package commonsense.array;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+
 
 class DuplicateTest {
-    @Test
-    public void noDuplicates() {
-        int[] array = new int[] {4,2,1,3};
-        Duplicate duplicate = new Duplicate();
-        boolean result = duplicate.hasDuplicates(array);
-        MatcherAssert.assertThat(false,Matchers.is(result));
-    }
 
-    @Test
-    public void hasDuplicates() {
-        int[] array = new int[] {4,2,1,4};
-        Duplicate duplicate = new Duplicate();
-        boolean result = duplicate.hasDuplicates(array);
-        MatcherAssert.assertThat(true,Matchers.is(result));
+
+    @ParameterizedTest
+    @CsvSource(value={"2,2,3,4:true","1,2,3,4:false","5,5,3,4:true","1:false"},delimiter = ':')
+    public void testHasDuplicates(String input, boolean output) {
+        int[] arrayOfInts =  Arrays.stream(input.split(",")).mapToInt(s -> Integer.parseInt(s)).toArray();
+        MatcherAssert.assertThat(output,Matchers.is(new Duplicate().hasDuplicates(arrayOfInts)));
     }
 }
