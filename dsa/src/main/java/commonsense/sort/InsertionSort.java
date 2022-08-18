@@ -39,7 +39,7 @@ public class InsertionSort {
                     break;
                 }
             }
-            array[position] = value;
+            array[position + 1] = value;
         }
         return array;
     }
