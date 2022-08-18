@@ -1,5 +1,9 @@
 package commonsense.sort;
-
+/*
+  For every element in the array:
+    for current element
+    sort everything to the left of the element
+*/
 public class InsertionSort {
     public int[] sort(int[] array) {
         for (int i = 0; i < array.length; i++) {
