@@ -14,11 +14,9 @@ class IntersectionTest {
             "1,2;2,1:1,2",
             "1,2,3;2,1,4:1,2"}, delimiter = ':')
     public void shouldFindIntersection(String input, String output) {
-        final String[] inAndOut = input.split(";");
+        final String[] inputArrays = input.split(";");
+        final int[] result = new Intersection().findTheIntersection(convertToIntArray(inputArrays[0]), convertToIntArray(inputArrays[1]));
         final int[] expected = convertToIntArray(output);
-        final int[] arrayA = convertToIntArray(inAndOut[0]);
-        final int[] arrayB = convertToIntArray(inAndOut[1]);
-        final int[] result = new Intersection().findTheIntersection(arrayA, arrayB);
         MatcherAssert.assertThat(result, Matchers.is(expected));
     }
 
