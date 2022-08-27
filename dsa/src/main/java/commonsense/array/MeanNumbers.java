@@ -13,7 +13,7 @@ public class MeanNumbers {
         }
 
         if (count < 1) {
-            return 0;
+            throw new IllegalArgumentException("No even numbers found");
         }
         return sum/count;
     }
