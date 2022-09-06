@@ -1,7 +1,10 @@
 package commonsense.array;
 
+import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,4 +22,11 @@ class ClothingLabelTest {
         MatcherAssert.assertThat(actual, Matchers.equalTo(splitOutput));
     }
 
+    @Test
+    public void shouldThrowExceptionWhenNoInputGiven() {
+        final IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new ClothingLabel().markInventory(new String[]{});
+        });
+        MatcherAssert.assertThat(exception.getMessage(), Matchers.equalTo("no input provided"));
+    }
 }
