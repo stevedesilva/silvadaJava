@@ -8,7 +8,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 class PalindromeTest {
     @ParameterizedTest
     @CsvSource(value = {"a,true","ada,true","Mom,true","kayak,true","Dad,true","not,false"})
-    public void TestIsPalindrome(String input, boolean expected) {
-        MatcherAssert.assertThat(Palindrome.isPalindrome(input), Matchers.equalTo(expected));
+    public void TestIsPalindromeWithFor(String input, boolean expected) {
+        MatcherAssert.assertThat(Palindrome.isPalindromeUsingWhileLoop(input), Matchers.equalTo(expected));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"a,true","ada,true","Mom,true","kayak,true","Dad,true","not,false"})
+    public void TestIsPalindromeWithWhil(String input, boolean expected) {
+        MatcherAssert.assertThat(Palindrome.isPalindromeUsingWhileLoop(input), Matchers.equalTo(expected));
     }
 }
