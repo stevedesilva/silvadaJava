@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 class MultiplierTest {
     @ParameterizedTest
-    @CsvSource(value = {"1,:1", "1,2:2"}, delimiter = ':')
+    @CsvSource(value = {"1,2:2", "1,2,3:2,3,6", "1,2,3,4:2,3,4,6,8,12","1,2,3,4,5,6:2,3,4,5,6,6,8,10,12,12,15,18,20,24,30"}, delimiter = ':')
     public void shouldProduceMultiplesOfInputArray(String input, String output) {
         final int[] inputArray = getIntArrayFromString(input);
         final int[] result = Multiplier.findTheProduct(inputArray);
@@ -34,7 +34,7 @@ class MultiplierTest {
 
     private int[] getIntArrayFromString(String input) {
         final String[] split = input.split(",");
-        final int[] inputArray = Arrays.stream(split).mapToInt(s -> Integer.parseInt(s)).toArray();
+        final int[] inputArray = Arrays.stream(split).map(String::trim).mapToInt(s -> Integer.parseInt(s)).toArray();
         return inputArray;
     }
 }
