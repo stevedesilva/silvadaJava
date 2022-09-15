@@ -9,12 +9,12 @@ class PalindromeTest {
     @ParameterizedTest
     @CsvSource(value = {"a,true","ada,true","Mom,true","kayak,true","Dad,true","not,false"})
     public void TestIsPalindromeWithFor(String input, boolean expected) {
-        MatcherAssert.assertThat(Palindrome.isPalindromeUsingWhileLoop(input), Matchers.equalTo(expected));
+        MatcherAssert.assertThat(Palindrome.isPalindromeUsingForLoop(input), Matchers.equalTo(expected));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"a,true","ada,true","Mom,true","kayak,true","Dad,true","not,false"})
-    public void TestIsPalindromeWithWhil(String input, boolean expected) {
+    public void TestIsPalindromeWithWhile(String input, boolean expected) {
         MatcherAssert.assertThat(Palindrome.isPalindromeUsingWhileLoop(input), Matchers.equalTo(expected));
     }
 }
