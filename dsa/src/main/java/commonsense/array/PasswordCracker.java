@@ -4,32 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PasswordCracker {
+//    private  List<String> combinations = new ArrayList<>();
 
-    public static void generateCombinations(char[] setOfChars, int combinationLength){
-        final List<String> results = generateCombinationsRec(setOfChars, setOfChars.length, "", combinationLength);
-        System.out.printf("Results: \n %s", results);
+    public String[] generateCombinations(char[] setOfChars, int combinationLength){
+        List<String> collector = new ArrayList<>();
+        generateCombinationsRec(setOfChars, setOfChars.length, "", combinationLength, collector);
+
+        return collector.toArray(String[]::new);
     }
-    public static List<String> generateCombinationsRec(char[] charSet, int  setOfCharsLength, String prefix, int combinationLength){
-        List<String> combinations = new ArrayList<>();
+
+    public void generateCombinationsRec(char[] charSet, int  setOfCharsLength, String prefix, int combinationLength,List<String> collector){
+
         // Base case
         if (combinationLength == 0) {
             System.out.println(prefix);
-            combinations.add(prefix);
-            return combinations;
+            collector.add(prefix);
+            return;
         }
-        // for each letter in charSet recursive call to find all possible combinations
+        // for each letter in charSet recursive call to find all possible collector
         //   a     b
         // a   b a   b
         for (int i=0; i < setOfCharsLength; i++){
             String updatedPrefix = prefix+charSet[i];
-            generateCombinationsRec(charSet, charSet.length, updatedPrefix, combinationLength-1);
+            generateCombinationsRec(charSet, charSet.length, updatedPrefix, combinationLength-1, collector);
         }
-
-        return combinations;
 
     }
 
     public static void main(String[] args) {
-        generateCombinations(new char[]{'a','b'},3);
+        final String[] strings = new PasswordCracker().generateCombinations(new char[]{'a', 'b'}, 3);
+
     }
 }
