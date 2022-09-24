@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PasswordCracker {
-//    private  List<String> combinations = new ArrayList<>();
-
     public String[] generateCombinations(char[] setOfChars, int combinationLength){
         List<String> collector = new ArrayList<>();
         generateCombinationsRec(setOfChars, setOfChars.length, "", combinationLength, collector);
@@ -33,6 +31,5 @@ public class PasswordCracker {
 
     public static void main(String[] args) {
         final String[] strings = new PasswordCracker().generateCombinations(new char[]{'a', 'b'}, 3);
-
     }
 }
