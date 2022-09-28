@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 
 class SumNumbersTest {
@@ -27,8 +28,9 @@ class SumNumbersTest {
 
     @ParameterizedTest
     @CsvSource(value = {"10,10:false","50,50:true"}, delimiter = ':')
-    public void innerAndOuterValuesWorkingInwardsShouldEqual100(String input, boolean output){
-
-        SumNumbers.outerAndInnerValuesEqualHundred(new int[]{1});
+    public void innerAndOuterValuesWorkingInwardsShouldEqual100(String inputString, boolean expected){
+        int[] input = Arrays.stream(inputString.split(",")).mapToInt(Integer::parseInt).toArray();
+        final boolean result = SumNumbers.outerAndInnerValuesEqualHundred(input);
+        MatcherAssert.assertThat(result, Matchers.equalTo(expected));
     }
 }
