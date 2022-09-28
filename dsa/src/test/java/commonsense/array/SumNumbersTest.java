@@ -27,7 +27,7 @@ class SumNumbersTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10,10:false","50,50:true"}, delimiter = ':')
+    @CsvSource(value = {"10,10,3,98:false","10,1,9,44:false","50,50:true","2,3,50,50,5,7:true","90,3,99,3,5,10:true","99,5,1:true"}, delimiter = ':')
     public void innerAndOuterValuesWorkingInwardsShouldEqual100(String inputString, boolean expected){
         int[] input = Arrays.stream(inputString.split(",")).mapToInt(Integer::parseInt).toArray();
         final boolean result = SumNumbers.outerAndInnerValuesEqualHundred(input);
