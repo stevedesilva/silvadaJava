@@ -1,5 +1,7 @@
 package commonsense.array;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -9,11 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LuhnAlgorithmTest {
     @ParameterizedTest
-    @CsvSource(value = {"123456,false"})
-    public void shouldValidateCreditCard(int input, boolean expected) {
-        final int[] array = Integer.toString(input).chars().map(c -> c - '0').toArray();
-
-
-
+    @CsvSource(value = {"49927398716,true", "49927398717,false","1234567812345678,false","1234567812345670,true","11111666,false"})
+    public void shouldValidateCreditCard(long input, boolean expected) {
+        MatcherAssert.assertThat(LuhnAlgorithm.isValidCreditCardNumber(input),Matchers.equalTo(expected));
     }
 }
