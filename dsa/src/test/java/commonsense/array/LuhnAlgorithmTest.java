@@ -15,4 +15,10 @@ class LuhnAlgorithmTest {
     public void shouldValidateCreditCard(long input, boolean expected) {
         MatcherAssert.assertThat(LuhnAlgorithm.isValidCreditCardNumber(input),Matchers.equalTo(expected));
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"49927398716,true", "49927398717,false","1234567812345678,false","1234567812345670,true","11111666,false"})
+    public void shouldValidateCreditCard(String input, boolean expected) {
+        MatcherAssert.assertThat(LuhnAlgorithm.isValidCreditCardNumber(input),Matchers.equalTo(expected));
+    }
 }
