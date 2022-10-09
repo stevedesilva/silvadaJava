@@ -1,9 +1,6 @@
 package commonsense.array;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 /**
  * Given a positive integer of up to 16 digits, return true if it is a valid credit card number, and false if it is not.
