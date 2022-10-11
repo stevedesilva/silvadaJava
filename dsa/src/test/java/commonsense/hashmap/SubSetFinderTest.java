@@ -40,4 +40,5 @@ class SubSetFinderTest {
     private int[] extractIntArray(String array) {
         return Arrays.stream(array.split(",")).mapToInt(Integer::parseInt).toArray();
     }
+
 }
