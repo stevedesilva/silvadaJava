@@ -14,9 +14,8 @@ public class DuplicateFinder {
             throw new IllegalArgumentException(MINIMUM_INPUT_REQUIRED);
         }
         Set<String> values = new HashSet<>();
-        Arrays.stream(in).forEach( v -> values.add(v));
-        for(String v: values){
-            if( values.contains(v)) {
+        for(String v: in){
+            if(values.contains(v)) {
                 return v;
             }
             values.add(v);
