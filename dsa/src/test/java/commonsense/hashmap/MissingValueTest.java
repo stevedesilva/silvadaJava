@@ -38,7 +38,7 @@ class MissingValueTest {
         } else {
             expected = Arrays.stream(output.split(",")).collect(Collectors.toList());
         }
-        var res = MissingValue.findFirstMissingCharacters(input);
+        var res = MissingValue.findMissingCharacters(input);
         MatcherAssert.assertThat(res, Matchers.equalTo(expected));
     }
 }

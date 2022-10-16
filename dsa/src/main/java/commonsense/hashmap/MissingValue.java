@@ -21,14 +21,13 @@ public class MissingValue {
         return missing;
     }
 
-    public static List<String> findFirstMissingCharacters(String sentence)  {
+    public static List<String> findMissingCharacters(String sentence)  {
         final Set<Character> sentenceSet = sentence.chars().mapToObj(c -> (char) c).collect(Collectors.toSet());
         List<String> missing = new ArrayList<>();
         Character curr = 'a';
         while (curr <= 'z') {
             if (!sentenceSet.contains(curr)) {
                 missing.add(curr.toString());
-                break;
             }
             curr++;
         }
