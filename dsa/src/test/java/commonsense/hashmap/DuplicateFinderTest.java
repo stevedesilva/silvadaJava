@@ -61,5 +61,4 @@ class DuplicateFinderTest {
         MatcherAssert.assertThat(DuplicateFinder.findFirstNonDuplicate(input.split(",")),Matchers.equalTo(expected));
     }
 
-
 }

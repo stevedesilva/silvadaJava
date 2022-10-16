@@ -24,14 +24,9 @@ public class DuplicateFinder {
 
         Map<String,Integer> values = new HashMap<>();
         for(String v: in){
-            if (values.containsKey(v)) {
-                var cur = values.get(v);
-                values.put(v,cur + 1);
-            } else {
-                values.put(v,1);
-            }
+            values.compute(v, (k,val) -> val == null ? 1 : val + 1);
         }
-        for(String v: values.keySet()){
+        for(String v: in){
             if (values.get(v) == 1) {
                 return v;
             }
