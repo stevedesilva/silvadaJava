@@ -12,28 +12,53 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DuplicateFinderTest {
     @Test
-    public void shouldThrowExceptionWhenMinimumInputNotFound() {
+    public void findFirstDuplicateShouldThrowExceptionWhenMinimumInputNotFound() {
         final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             DuplicateFinder.findFirstDuplicate(new String[]{});
         });
         MatcherAssert.assertThat(exception.getMessage(),Matchers.equalTo(DuplicateFinder.MINIMUM_INPUT_REQUIRED));
     }
     @Test
-    public void shouldThrowExceptionWhenDuplicateNotFound() {
+    public void findFirstDuplicateShouldThrowExceptionWhenDuplicateNotFound() {
         final NoSuchElementException exception = assertThrows(NoSuchElementException.class, () -> {
             DuplicateFinder.findFirstDuplicate(new String[]{"a","b","c"});
         });
         MatcherAssert.assertThat(exception.getMessage(),Matchers.equalTo(DuplicateFinder.NO_DUPLICATE_FOUND));
     }
+
     @ParameterizedTest
     @CsvSource(delimiter = ':', value = {
             "cat,dog,mouse,dog:dog",
-            "cat,dog,cat,dog,cat:cat",
-            "a,b,c,c:c",
-            "a,b,a,c,c:a",
     })
-    public void shouldReturnDuplicate(String input, String expected) {
+    public void findFirstDuplicateShouldReturnDuplicate(String input, String expected) {
         MatcherAssert.assertThat(DuplicateFinder.findFirstDuplicate(input.split(",")),Matchers.equalTo(expected));
+    }
+
+
+    @Test
+    public void findFirstNonDuplicateShouldThrowExceptionWhenMinimumInputNotFound() {
+        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            DuplicateFinder.findFirstNonDuplicate(new String[]{});
+        });
+        MatcherAssert.assertThat(exception.getMessage(),Matchers.equalTo(DuplicateFinder.MINIMUM_INPUT_REQUIRED));
+    }
+    @Test
+    public void findFirstNonDuplicateShouldThrowExceptionWhenDuplicateNotFound() {
+        final NoSuchElementException exception = assertThrows(NoSuchElementException.class, () -> {
+            DuplicateFinder.findFirstNonDuplicate(new String[]{"a","b","c","a","b","c"});
+        });
+        MatcherAssert.assertThat(exception.getMessage(),Matchers.equalTo(DuplicateFinder.NON_DUPLICATE_FOUND));
+    }
+
+    @ParameterizedTest
+    @CsvSource(delimiter = ':', value = {
+            "a,a,b,c,d,d,e,e:b",
+            "a,a,b,y,d,d,b,e,e:y",
+            "a,a,b,c,d,d,e,b,e:c",
+            "at,at,bat,you,bat,you,dog,dude,egg,egg:dog",
+    })
+    public void findFirstNonDuplicateShouldReturnNonDuplicate(String input, String expected) {
+        MatcherAssert.assertThat(DuplicateFinder.findFirstNonDuplicate(input.split(",")),Matchers.equalTo(expected));
     }
 
 
