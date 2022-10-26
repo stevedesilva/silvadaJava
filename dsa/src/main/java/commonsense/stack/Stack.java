@@ -4,7 +4,7 @@ package commonsense.stack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Stack<T> implements AllowedFunctions<T> {
+public class Stack<T> implements StackFunctions<T> {
     private List<T> stack;
 
     public Stack() {
