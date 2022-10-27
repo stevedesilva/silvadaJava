@@ -18,7 +18,7 @@ public class Linter implements LinterFunctions {
     }
 
     @Override
-    public boolean Validate(String data) throws IllegalArgumentException {
+    public boolean Validate() throws IllegalArgumentException {
         if (data == null || data.length() < 1) {
             throw new IllegalArgumentException(MINIMUM_INPUT_NOT_MET);
         }
