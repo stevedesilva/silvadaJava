@@ -27,7 +27,6 @@ class LinterTest {
 
     @Test
     public void shouldThrowExceptionWhenMinimumInputNotMet() {
-
         final Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             LinterFunctions linter = new Linter("");
             linter.Validate();
