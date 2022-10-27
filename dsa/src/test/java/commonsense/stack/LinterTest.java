@@ -1,62 +1,62 @@
 package commonsense.stack;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.regex.Matcher;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinterTest {
-    /*
-    	{
-			name:    "empty string",
-			data:    "",
-			want:    true,
-			wantErr: nil,
-		},
-		{
-			name:    "simple stack ignored",
-			data:    "abscefg",
-			want:    true,
-			wantErr: nil,
-		},
-		{
-			name:    "(var x = {y: [1,2,3]})",
-			data:    "(var x = {y: [1,2,3]})",
-			want:    true,
-			wantErr: nil,
-		},
-		{
-			name:    "(var x = 2;",
-			data:    "(var x = 2;",
-			want:    false,
-			wantErr: ErrMissingClosingBrace,
-		},
-		{
-			name:    "var x = 2;)",
-			data:    "var x = 2;)",
-			want:    false,
-			wantErr: ErrMissingOpeningBrace,
-		},
-		{
-			name:    "(var x = [1,2,3)];",
-			data:    "(var x = [1,2,3)];",
-			want:    false,
-			wantErr: ErrBraceMismatch,
-		},
 
-     */
     @ParameterizedTest
     @CsvSource(value = {
             "abscefg,true",
             "(var x = {y: [1,2,3]}),true",
-            "(var x = 2;,false",
-            "var x = 2;),false",
-            "(var x = [1,2,3)];,false"
 
     },delimiter = ',')
-    public void shouldLintData() {
+    public void shouldLintData(String input, Boolean expected) {
+        LinterFunctions linter = new Linter(input);
+        linter.Validate();
+        MatcherAssert.assertThat(linter.Validate(), Matchers.is(true));
+    }
 
+    @Test
+    public void shouldThrowExceptionWhenMinimumInputNotMet() {
+
+        final Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            LinterFunctions linter = new Linter("");
+            linter.Validate();
+        });
+        MatcherAssert.assertThat(throwable.getMessage(), Matchers.is(LinterFunctions.MINIMUM_INPUT_NOT_MET));
+    }
+    @Test
+    public void shouldThrowExceptionWhenErrMissingClosingBrace() {
+        final Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            LinterFunctions linter = new Linter("(var x = 2;");
+            linter.Validate();
+        });
+        MatcherAssert.assertThat(throwable.getMessage(), Matchers.is(LinterFunctions.ERROR_MISSING_CLOSING_BRACE));
+    }
+    @Test
+    public void shouldThrowExceptionWhenErrMissingOpeningBrace() {
+        final Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            LinterFunctions linter = new Linter("var x = 2;)");
+            linter.Validate();
+        });
+        MatcherAssert.assertThat(throwable.getMessage(), Matchers.is(LinterFunctions.ERROR_MISSING_OPENING_BRACE));
+    }
+    @Test
+    public void shouldThrowExceptionWhenErrBraceMismatch() {
+        final Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            LinterFunctions linter = new Linter("(var x = [1,2,3)];");
+            linter.Validate();
+        });
+        MatcherAssert.assertThat(throwable.getMessage(), Matchers.is(LinterFunctions.ERROR_BRACE_MISMATCH));
     }
 
 }
