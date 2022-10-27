@@ -1,8 +1,7 @@
 package commonsense.stack;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Linter implements LinterFunctions {
@@ -28,10 +27,15 @@ public class Linter implements LinterFunctions {
             if (openBraces.contains(value)){
                 stack.push(value);
             } else if (closingBraces.containsKey(value)) {
-
-                if (!closingBraces.get(value).equals(stack.peek())){
-                    throw new IllegalArgumentException(LinterFunctions.ERROR_BRACE_MISMATCH);
+                try {
+                    Character poppedValue = stack.pop();
+                    if (!closingBraces.get(value).equals(poppedValue)){
+                        throw new IllegalArgumentException(LinterFunctions.ERROR_BRACE_MISMATCH);
+                    }
+                } catch (NoSuchElementException e) {
+                    throw new IllegalArgumentException(LinterFunctions.ERROR_MISSING_OPENING_BRACE);
                 }
+
             }
         }
         if(stack.size() > 0) {
