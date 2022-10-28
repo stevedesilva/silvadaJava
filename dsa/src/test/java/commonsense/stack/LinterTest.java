@@ -7,18 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.regex.Matcher;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class LinterTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "abscefg,true",
-            "(var x = {y: [1,2,3]}),true",
+            "abscefg|true",
+            "(var x = {y: [1,2,3]})|true",
 
-    },delimiter = ',')
+    },delimiter = '|')
     public void shouldLintData(String input, Boolean expected) {
         LinterFunctions linter = new Linter(input);
         linter.Validate();

@@ -7,7 +7,7 @@ import java.util.Set;
 public class Linter implements LinterFunctions {
 
     private static Set<Character> openBraces =  Set.of('{','[','(');
-    private static Map<Character,Character> closingBraces = Map.of('{','}','[',']','(',')');
+    private static Map<Character,Character> closingBraces = Map.of('}','{',']','[',')','(');
 
     private String data;
     private Stack<Character> stack;
@@ -23,13 +23,14 @@ public class Linter implements LinterFunctions {
         }
 
         for (int i = 0; i < data.length(); i++) {
-            final char value = data.charAt(i);
+            final Character value = data.charAt(i);
             if (openBraces.contains(value)){
                 stack.push(value);
             } else if (closingBraces.containsKey(value)) {
                 try {
-                    Character poppedValue = stack.pop();
-                    if (!closingBraces.get(value).equals(poppedValue)){
+                    final Character poppedValue = stack.pop();
+                    final Character match = closingBraces.get(value);
+                    if (!match.equals(poppedValue)){
                         throw new IllegalArgumentException(LinterFunctions.ERROR_BRACE_MISMATCH);
                     }
                 } catch (NoSuchElementException e) {

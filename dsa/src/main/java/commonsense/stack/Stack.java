@@ -19,7 +19,7 @@ public class Stack<T> implements StackFunctions<T> {
 
     @Override
     public T pop() {
-        if(stack.size() > 1) {
+        if(stack.size() < 1) {
             throw new NoSuchElementException();
         }
         return stack.remove(stack.size() - 1);
@@ -27,7 +27,7 @@ public class Stack<T> implements StackFunctions<T> {
 
     @Override
     public T peek() {
-        if(stack.size() > 1) {
+        if(stack.size() < 1) {
             throw new NoSuchElementException();
         }
         return stack.get(stack.size() - 1);
