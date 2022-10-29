@@ -12,6 +12,10 @@ public class Stack<T> implements StackFunctions<T> {
         this.stack = new ArrayList<T>();
     }
 
+    public Stack(List<T> stack) {
+        this.stack =  new ArrayList<T>(stack); ;
+    }
+
     @Override
     public void push(T value) {
         stack.add(value);
