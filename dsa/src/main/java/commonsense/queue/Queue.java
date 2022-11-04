@@ -3,6 +3,7 @@ package commonsense.queue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 public class Queue<T> implements QueueFunctions<T> {
     private List<T> data;
@@ -35,7 +36,6 @@ public class Queue<T> implements QueueFunctions<T> {
         }
         return data.get(size()-1);
     }
-
     @Override
     public int size() {
         return this.data.size();
