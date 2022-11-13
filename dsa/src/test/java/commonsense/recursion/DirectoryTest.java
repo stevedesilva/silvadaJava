@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ class DirectoryTest {
     void findDirectories() {
         // Given a test directory structure with files
         List<String> expected = new ArrayList<>();
+        final Path level_root;
         try {
-            final Path level_root = createDirectoryAndFiles("level_root_","file1","file2");
+            level_root = createDirectoryAndFiles("level_root_","file1","file2");
             expected.add(level_root.toFile().getAbsolutePath());
-            level_root.toFile().deleteOnExit();
 
             final Path level1 = createDirectoryAndFiles(level_root, "level_1_", "file3", "file4");
             expected.add(level1.toFile().getAbsolutePath());
@@ -38,6 +39,17 @@ class DirectoryTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        try(DirectoryStream<Path> ds = Files.newDirectoryStream(level_root)) {
+            level_root.toFile().deleteOnExit();
+
+            for (Path file : ds) {
+                file.toFile().deleteOnExit();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
         // When called
         String root = "";
