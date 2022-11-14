@@ -22,7 +22,7 @@ class DirectoryTest {
         List<String> expected = createTestDirectoriesWithFiles();
 
         // When called
-        String root = "";
+        String root = expected.get(0);
         final List<String> directories = Directory.findDirectories(root);
 
         // Then only directories are returned
