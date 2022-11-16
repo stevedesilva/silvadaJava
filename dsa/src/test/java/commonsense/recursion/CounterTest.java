@@ -29,8 +29,8 @@ class CounterTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "0,10:2,4,6,8,10",
-            "0,20:2,4,6,8,10,12,14,16,18,20",
+            "0,10:0,2,4,6,8,10",
+            "0,20:0,2,4,6,8,10,12,14,16,18,20",
     }, delimiter = ':')
     public void shouldReturnEvenNumber(String nums, String expected) {
         final String[] lowHigh = nums.split(",");

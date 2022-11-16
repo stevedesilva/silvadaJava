@@ -25,6 +25,10 @@ public class Counter {
     }
 
     private void countEvenRec(int low, int high, List<Integer> acc) {
-
+        if (low > high) {
+            return;
+        }
+        acc.add(low);
+        countEvenRec(low + 2, high, acc);
     }
 }
