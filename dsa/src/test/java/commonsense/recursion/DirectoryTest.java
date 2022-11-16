@@ -19,22 +19,32 @@ class DirectoryTest {
         // Temp locations are found here: System.getProperty("java.io.tmpdir")
 
         // Given a test directory structure with files
-        List<String> expected = createTestDirectoriesWithFiles();
+        TestFiles expected = createTestDirectoriesWithFiles();
 
         // When called
-        String root = expected.get(0);
+        String root = expected.root;
         final List<String> directories = Directory.findDirectories(root);
 
         // Then only directories are returned
-        MatcherAssert.assertThat(directories, Matchers.equalTo(expected));
+        MatcherAssert.assertThat(directories, Matchers.equalTo(expected.expected));
     }
 
-    private List<String> createTestDirectoriesWithFiles() {
+    private static class TestFiles {
+        protected String root;
+        protected List<String> expected = new ArrayList<>();
+
+        public TestFiles(String root, List<String> expected) {
+            this.root = root;
+            this.expected = expected;
+        }
+    }
+    private TestFiles createTestDirectoriesWithFiles() {
+
         List<String> expected = new ArrayList<>();
+        TestFiles testFiles;
         final Path level_root;
         try {
             level_root = createDirectoryAndFiles("level_root_", "file1", "file2");
-            expected.add(level_root.toFile().getAbsolutePath());
 
             final Path level1 = createDirectoryAndFiles(level_root, "level_1_", "file3", "file4");
             expected.add(level1.toFile().getAbsolutePath());
@@ -44,6 +54,8 @@ class DirectoryTest {
 
             final Path level3 = createDirectoryAndFiles(level2, "level_3_", "file6", "file7");
             expected.add(level3.toFile().getAbsolutePath());
+
+             testFiles = new TestFiles(level_root.toFile().getAbsolutePath(), expected);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -58,7 +70,7 @@ class DirectoryTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return expected;
+        return testFiles;
     }
 
 
