@@ -2,12 +2,14 @@ package commonsense.recursion;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,6 +41,11 @@ class CounterTest {
         final List<Integer> got = new Counter().countEven(low,high);
         final List<Integer> want = Arrays.stream(expected.split(",")).map(Integer::valueOf).collect(Collectors.toList());
         MatcherAssert.assertThat(got, Matchers.equalTo(want));
+    }
+    @Test
+    public void shouldReturnNumbersFromArray() {
+//        int[] input = new int[]{1,2,3,[4,5,6],7,[8]};
+        Object[] input = new Object[]{1,2,3,4,5,};
     }
 
 }
