@@ -1,13 +1,16 @@
 package commonsense.recursion.numbers;
 
-public class IntegerElement implements Element<Integer> {
+public class IntegerElement implements Element<Integer>{
     private Integer value;
 
-    public IntegerElement(Integer value) {
+    private IntegerElement(Integer value) {
         this.value = value;
     }
 
-    @Override
+    public static IntegerElement of(Integer value) {
+        return new IntegerElement(value);
+    }
+
     public Integer get() {
         return value;
     }

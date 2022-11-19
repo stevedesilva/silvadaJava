@@ -1,17 +1,25 @@
 package commonsense.recursion.numbers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class ArrayElement implements Element<List<Integer>> {
-    private List<Integer> value;
-
-    public ArrayElement(List<Integer> value) {
-        this.value = value;
+public class ArrayElement implements Element<List<Element>> {
+    public List<Element> get() {
+        return elements;
     }
 
+    private List<Element> elements;
 
-    @Override
-    public List<Integer> get() {
-        return value;
+    private ArrayElement(List<Element> elements) {
+        this.elements = elements;
     }
+    public static ArrayElement of(Element... elements) {
+        List<Element> tempElement = new ArrayList<>();
+        Arrays.stream(elements).forEach( e -> {
+            tempElement.add(e);
+        });
+        return new ArrayElement(tempElement);
+    }
+
 }
