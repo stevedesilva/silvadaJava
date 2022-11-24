@@ -9,7 +9,11 @@ import java.util.Arrays;
 
 class DoubleNumbersTest {
     @ParameterizedTest
-    @CsvSource(delimiter = ':', value = {"1,2,3:2,4,6","1,2,3,4,5:2,4,6,8,10"})
+    @CsvSource(delimiter = ':', value = {
+            "1,2,3:2,4,6",
+            "1,2,3,4,5:2,4,6,8,10",
+            "10,20,30,40,50:20,40,60,80,100",
+    })
     public void shouldDoubleNumbersInArray(String inputArrayAsString, String outputArrayAsString) {
         final int[] input = Arrays.stream(inputArrayAsString.split(",")).mapToInt(Integer::valueOf).toArray();
         final int[] want = Arrays.stream(outputArrayAsString.split(",")).mapToInt(Integer::valueOf).toArray();
