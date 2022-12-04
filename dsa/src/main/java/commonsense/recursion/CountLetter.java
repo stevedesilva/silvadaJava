@@ -13,20 +13,15 @@ public class CountLetter {
     }
 
     public static int countXsRec(char[] word) {
-        if (word.length == 1) {
-            final Character c = Character.toLowerCase(word[0]);
-            if (c.equals('x')) {
-                return 1;
-            } else {
-                return 0;
-            }
+        if (word.length == 0) {
+            return 0;
         }
         final Character c = Character.toLowerCase(word[0]);
-        int count = 0;
         if (c.equals('x')) {
-            count = 1;
+            return countXsRec(Arrays.copyOfRange(word, 1, word.length)) + 1;
+        } else {
+            return countXsRec(Arrays.copyOfRange(word, 1, word.length));
         }
-        return countXsRec(Arrays.copyOfRange(word, 1, word.length)) + count;
     }
 
 }
