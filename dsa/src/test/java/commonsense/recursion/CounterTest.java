@@ -42,10 +42,5 @@ class CounterTest {
         final List<Integer> want = Arrays.stream(expected.split(",")).map(Integer::valueOf).collect(Collectors.toList());
         MatcherAssert.assertThat(got, Matchers.equalTo(want));
     }
-    @Test
-    public void shouldReturnNumbersFromArray() {
-//        int[] input = new int[]{1,2,3,[4,5,6],7,[8]};
-        Object[] input = new Object[]{1,2,3,4,5,};
-    }
 
 }
