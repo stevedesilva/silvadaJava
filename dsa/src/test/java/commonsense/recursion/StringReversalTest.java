@@ -14,8 +14,7 @@ class StringReversalTest {
     @ParameterizedTest
     @CsvSource(delimiter = ',', value = {"a,a","abcdef,fedcba","1234567,7654321"})
     public void shouldReverseString(String word, String expected) {
-        String result = StringReversal.reverse(word);
-        MatcherAssert.assertThat(result, Matchers.equalTo(expected));
+        MatcherAssert.assertThat(StringReversal.reverse(word), Matchers.equalTo(expected));
     }
 
     @Test
