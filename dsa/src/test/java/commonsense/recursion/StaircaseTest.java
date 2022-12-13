@@ -24,6 +24,12 @@ class StaircaseTest {
     }
 
     @ParameterizedTest
+    @CsvSource(value = {"1,1","2,2","3,4","4,7","5,13","6,24","7,44","8,81"})
+    public void shouldCountStepsAlt(int input, int expected) {
+        MatcherAssert.assertThat(Staircase.countNumberOfPathsAlt(input), Matchers.equalTo(expected));
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"1,1","2,2","3,3","4,4","5,5","6,6","7,7","8,8"})
     public void countNumberOfPathsForOneStep(int input, int expected) {
         MatcherAssert.assertThat(Staircase.countNumberOfPathsForOneStep(input), Matchers.equalTo(expected));
