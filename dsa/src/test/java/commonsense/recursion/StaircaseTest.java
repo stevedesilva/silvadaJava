@@ -22,4 +22,17 @@ class StaircaseTest {
     public void shouldCountSteps(int input, int expected) {
         MatcherAssert.assertThat(Staircase.countNumberOfPaths(input), Matchers.equalTo(expected));
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,1","2,2","3,3","4,4","5,5","6,6","7,7","8,8"})
+    public void countNumberOfPathsForOneStep(int input, int expected) {
+        MatcherAssert.assertThat(Staircase.countNumberOfPathsForOneStep(input), Matchers.equalTo(expected));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,1","2,2","3,3","4,5","5,8","6,13","7,21","8,34"})
+    public void countNumberOfPathsForTwoStep(int input, int expected) {
+        MatcherAssert.assertThat(Staircase.countNumberOfPathsForTwoStep(input), Matchers.equalTo(expected));
+    }
+
 }
