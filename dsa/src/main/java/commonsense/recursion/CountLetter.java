@@ -1,6 +1,7 @@
 package commonsense.recursion;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class CountLetter {
     public static final String MINIMUM_INPUT_OF_ONE_NOT_MET = "minimum input of one not met";
@@ -23,5 +24,17 @@ public class CountLetter {
             return countXsRec(Arrays.copyOfRange(word, 1, word.length));
         }
     }
+
+    public static int countLetters(String[] word) {
+        if (word == null || word.length == 0) {
+            return 0;
+        }
+        if (word.length == 1) {
+            // word length
+            return word[0].length();
+        }
+        return word[0].length() + countLetters(Arrays.copyOfRange(word,1,word.length));
+    }
+
 
 }

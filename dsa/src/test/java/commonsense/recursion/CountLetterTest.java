@@ -23,4 +23,18 @@ class CountLetterTest {
         MatcherAssert.assertThat(illegalArgumentException.getMessage(), Matchers.equalTo(MINIMUM_INPUT_OF_ONE_NOT_MET));
     }
 
+    @ParameterizedTest
+    @CsvSource(delimiter = ':', value = {
+            "a:1",
+            "ab:2",
+            "a,b,c:3",
+            "ac,cd,ef:6",
+            "cbd,d,d,d:6",
+            "cb,d,d,d,dr,tyh,wer,q:14",
+    })
+    public void shouldCountLetterInWordArray(String word, int expected) {
+        String[] input = word.split(",");
+        MatcherAssert.assertThat(CountLetter.countLetters(input), Matchers.equalTo(expected));
+    }
+
 }
