@@ -29,10 +29,6 @@ public class CountLetter {
         if (word == null || word.length == 0) {
             return 0;
         }
-        if (word.length == 1) {
-            // word length
-            return word[0].length();
-        }
         return word[0].length() + countLetters(Arrays.copyOfRange(word,1,word.length));
     }
 
