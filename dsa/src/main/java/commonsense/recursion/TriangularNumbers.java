@@ -7,7 +7,15 @@ import java.util.List;
 public class TriangularNumbers {
 
     public static int execute(int number) {
-        return 0;
+        return triangularNumbersRec(number, 0, 0);
+    }
+
+    public static int triangularNumbersRec(int number, int index, int prev) {
+        if (index > number) {
+            return prev;
+        }
+        int triangularNumbers = prev + index;
+        return triangularNumbersRec(number, index + 1, triangularNumbers);
     }
 
 }
