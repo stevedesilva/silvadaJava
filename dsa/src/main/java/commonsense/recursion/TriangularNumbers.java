@@ -14,4 +14,13 @@ public class TriangularNumbers {
         return triangularNumbersRec(number, index + 1, triangularNumbers);
     }
 
+    public static int executeAlt(int number) {
+        // index + position
+        // 1(+0), 2(+1), 3(+3), 4(+6), 5(+10)
+        if (number <= 1) {
+            return number;
+        }
+        return number + executeAlt(number - 1);
+    }
+
 }
