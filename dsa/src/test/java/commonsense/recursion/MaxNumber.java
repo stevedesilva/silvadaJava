@@ -2,7 +2,7 @@ package commonsense.recursion;
 
 public class MaxNumber {
 
-    public int findMaxNumber(int[] numbers) {
+    public static int findMaxNumber(int[] numbers) {
         return 0;
     }
 }
