@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 class MaxNumberTest {
     @ParameterizedTest
-    @CsvSource(value = {":1","1:1", "1,2,3,4:1", "5,1,2,3,4:1"}, delimiter = ':')
+    @CsvSource(value = {":1","1:1", "1,2,3,4:4", "5,1,2,3,4:5"}, delimiter = ':')
     public void shouldReturnMaxNumber(String input, int expected) {
         if(input == null) {
             Assertions.assertThrows(IllegalArgumentException.class, () -> {
