@@ -1,12 +1,9 @@
-package commonsense.recursion;
+package commonsense.recursion.dynamic;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FibonacciTest {
     // 0 1 1 2 3 5 8 13 21 34 55

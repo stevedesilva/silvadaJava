@@ -1,4 +1,4 @@
-package commonsense.recursion;
+package commonsense.recursion.dynamic;
 
 public class Fibonacci {
     public static int fibonacci(int number) {
