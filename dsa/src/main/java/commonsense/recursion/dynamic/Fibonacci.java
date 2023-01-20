@@ -23,4 +23,18 @@ public class Fibonacci {
             return cache.get(number);
         }
     }
+
+    public static int fibonacciNoAdditionalSpace(int number) {
+        int a = 0;
+        int b = 1;
+        if(number <= 0) return number;
+        for (int i = 1; i < number; i++) {
+            int temp = a;
+            a = b;
+            b = temp + a;
+        }
+        return b;
+    }
 }
+
+
