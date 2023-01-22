@@ -36,5 +36,3 @@ public class Fibonacci {
         return b;
     }
 }
-
-
