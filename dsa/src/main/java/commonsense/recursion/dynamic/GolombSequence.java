@@ -19,20 +19,7 @@ public class GolombSequence {
         return golomb(number, new HashMap<>());
     }
 
-    /*
-    func golomb(number int, cache map[int]int) int {
-	if number == 1 {
-		return 1
-	}
-	if val, ok := cache[number]; ok {
-		fmt.Printf("cached number%d= %d \n", number, val)
-		return val
-	}
-	cache[number] = 1 + golomb(number-golomb(golomb(number-1, cache), cache), cache)
-	return cache[number]
-}
 
-     */
     private static int golomb(Integer number, Map<Integer, Integer> cache) {
         if (number == 1) {
             return 1;
