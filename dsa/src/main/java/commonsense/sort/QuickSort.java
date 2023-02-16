@@ -7,16 +7,17 @@ public class QuickSort {
     }
 
     private int[] array;
+
     public int[] sort(int leftIdx, int rightIdx) {
-        // base case
-        if ((rightIdx - leftIdx) >= 0) {
+        // base case - 1 cell array
+        if ((rightIdx - leftIdx) <= 0) {
             return array;
         }
         // partition
-        int partition = partition(leftIdx,rightIdx);
+        int partition = partition(leftIdx, rightIdx);
 
         // quicksort left
-        sort(leftIdx, partition -1);
+        sort(leftIdx, partition - 1);
         // quicksort right
         sort(partition + 1, rightIdx);
 
@@ -24,8 +25,42 @@ public class QuickSort {
         return array;
     }
 
+    // 3 2 1
+    // 1 2 3
+    public int partition(int leftIdx, int rightIdx) {
+        // store partition value and idx
+        int partitionIdx = rightIdx;
+        int partitionValue = this.array[partitionIdx];
 
-    private int partition(int leftIdx, int rightIdx) {
+        // move right --
+        rightIdx--;
+
+        while (true) {
+            // move left to swap value
+            while (this.array[leftIdx] < partitionValue) {
+                leftIdx++;
+            }
+
+            // move right to swap value
+            while (rightIdx >= 0 && this.array[rightIdx] > partitionValue) {
+                rightIdx--;
+            }
+
+            if (leftIdx >= rightIdx) {
+                break;
+            } else {
+                // swap value
+                int temp = this.array[rightIdx];
+                this.array[rightIdx] = this.array[leftIdx];
+                this.array[leftIdx] = temp;
+            }
+        }
+
+        // swap left with partition value
+        int temp = this.array[leftIdx];
+        this.array[leftIdx] = this.array[partitionIdx];
+        this.array[partitionIdx] = temp;
+
         return leftIdx;
     }
 }
