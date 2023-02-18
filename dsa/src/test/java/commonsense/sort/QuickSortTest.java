@@ -18,7 +18,9 @@ class QuickSortTest {
             "4,3,2,1:1,2,3,4",
             "5,4,3,2,1:1,2,3,4,5",
             "6,5,4,3,2,1:1,2,3,4,5,6",
-            "7,6,5,4,3,2,1:1,2,3,4,5,6,7"
+            "7,6,5,4,3,2,1:1,2,3,4,5,6,7",
+            "8,7,6,5,4,3,2,1:1,2,3,4,5,6,7,8",
+
     }, delimiter = ':')
     public void shouldSortArray(String input, String output) {
         final int[] inputUnsortedInts= Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).toArray();
