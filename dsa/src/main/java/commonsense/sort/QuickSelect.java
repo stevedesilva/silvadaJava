@@ -11,19 +11,20 @@ public class QuickSelect {
     public int select(int indexToFind, int leftIdx, int rightIdx) {
         // base case - 1 cell array
         if ((rightIdx - leftIdx) <= 0) {
-            return array[0];
+            return array[leftIdx];
         }
         // partition
         int partition = partition(leftIdx, rightIdx);
 
         if (indexToFind < partition) {
             // quicksort left
-            select(indexToFind,leftIdx, partition - 1);
+            return select(indexToFind,leftIdx, partition - 1);
         } else if (indexToFind > partition) {
             // quicksort right
-            select(indexToFind,partition + 1, rightIdx);
+           return select(indexToFind,partition + 1, rightIdx);
+        } else {
+            return array[partition];
         }
-        return array[partition];
     }
 
     // 3 2 1
