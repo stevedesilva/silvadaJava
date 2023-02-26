@@ -29,8 +29,8 @@ public class QuickSort {
     // 1 2 3
     public int partition(int leftIdx, int rightIdx) {
         // store partition value and idx
-        int partitionIdx = rightIdx;
-        int partitionValue = this.array[partitionIdx];
+        int partitionIndex = rightIdx;
+        int partitionValue = this.array[partitionIndex];
 
         // move right --
         rightIdx--;
@@ -58,8 +58,8 @@ public class QuickSort {
 
         // swap left with partition value
         int temp = this.array[leftIdx];
-        this.array[leftIdx] = this.array[partitionIdx];
-        this.array[partitionIdx] = temp;
+        this.array[leftIdx] = this.array[partitionIndex];
+        this.array[partitionIndex] = temp;
 
         return leftIdx;
     }
