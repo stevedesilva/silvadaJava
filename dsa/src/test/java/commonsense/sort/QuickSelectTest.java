@@ -2,6 +2,7 @@ package commonsense.sort;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -29,6 +30,13 @@ class QuickSelectTest {
         int indexToFind = expectedSortedInts[0];
         int expectedValue = expectedSortedInts[1];
         MatcherAssert.assertThat(new QuickSelect(inputUnsortedInts).select(indexToFind,0,inputUnsortedInts.length - 1), Matchers.is(expectedValue));
+    }
+    @Test
+    public void shouldThrowExceptionIfInputArrayDoesNotMeetMinimumLength(){
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new QuickSelect(new int[]{});
+        });
+        MatcherAssert.assertThat(ex.getMessage(), Matchers.is(QuickSelect.ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE));
     }
 
 }

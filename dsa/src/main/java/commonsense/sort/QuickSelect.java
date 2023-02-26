@@ -2,7 +2,12 @@ package commonsense.sort;
 
 public class QuickSelect {
 
+    public static final String ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE = "array must contain at least one value";
+
     public QuickSelect(int[] array) {
+        if (array.length < 1) {
+            throw new IllegalArgumentException(ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE);
+        }
         this.array = array;
     }
 
