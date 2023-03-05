@@ -4,6 +4,7 @@ public class QuickSelect {
 
     public static final String ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE = "array must contain at least one value";
 
+
     public QuickSelect(int[] array) {
         if (array.length < 1) {
             throw new IllegalArgumentException(ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE);
@@ -23,10 +24,10 @@ public class QuickSelect {
 
         if (indexToFind < partition) {
             // quicksort left
-            return select(indexToFind,leftIdx, partition - 1);
+            return select(indexToFind, leftIdx, partition - 1);
         } else if (indexToFind > partition) {
             // quicksort right
-           return select(indexToFind,partition + 1, rightIdx);
+            return select(indexToFind, partition + 1, rightIdx);
         } else {
             return array[partition];
         }

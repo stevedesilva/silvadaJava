@@ -33,4 +33,11 @@ class ProductCalculatorTest {
         });
         MatcherAssert.assertThat(ex.getMessage(), Matchers.is(QuickSelect.ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE));
     }
+    @Test
+    public void shouldThrowExceptionIfNumberRangeIsNotValid() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new ProductCalculator().findGreatestProductForNumbers(new int[]{1,2},-1);
+        });
+        MatcherAssert.assertThat(ex.getMessage(), Matchers.is(ProductCalculator.RANGE_IS_INVALID));
+    }
 }
