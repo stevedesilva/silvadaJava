@@ -1,4 +1,6 @@
-package commonsense.sort;
+package commonsense.sort.applications;
+
+import commonsense.sort.QuickSort;
 
 import static commonsense.sort.QuickSelect.ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE;
 

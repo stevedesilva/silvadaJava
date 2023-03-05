@@ -1,5 +1,7 @@
-package commonsense.sort;
+package commonsense.sort.applications;
 
+import commonsense.sort.QuickSelect;
+import commonsense.sort.applications.DuplicateFinder;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
