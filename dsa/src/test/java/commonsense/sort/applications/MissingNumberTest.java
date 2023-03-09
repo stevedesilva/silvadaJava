@@ -13,16 +13,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class MissingNumberTest {
     @ParameterizedTest
     @CsvSource(value = {
-            "1,2-3:3",
-            "1,2,3,5-5:4",
-            "1,2,3,4,6,7,8,9,10-10:5",
+            "1,2:1",
+            "1,2:3",
+            "1,2,3,5:4",
+            "1,2,3,4,6,7,8,9,10:5",
 
     },
             delimiter = ':')
-    public void shouldFindMissingNumberFromArray(String array, int expected) {
-        final String[] parms = array.split("-");
-        final String input = parms[0];
-        final String max = parms[1];
+    public void shouldFindMissingNumberFromArray(String input, int expected) {
+
 
         final int[] numsToSearch = Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).toArray();
 

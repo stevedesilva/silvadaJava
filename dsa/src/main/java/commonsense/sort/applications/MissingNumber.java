@@ -12,7 +12,10 @@ public class MissingNumber {
             throw new IllegalArgumentException(ARRAY_MUST_CONTAIN_AT_LEAST_ONE_VALUE);
         }
         final int[] sortedArray = new QuickSort(numbersToSearch).sort(0, numbersToSearch.length - 1);
-        // TODO
-        throw new NoSuchElementException("missing number");
+        for (int i = 0; i < numbersToSearch.length; i++) {
+            if(numbersToSearch[i] != i){
+
+            }
+        }
     }
 }
