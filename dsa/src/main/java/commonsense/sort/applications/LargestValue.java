@@ -21,7 +21,20 @@ public class LargestValue {
         if (numbers == null || numbers.length < 1) {
             throw new IllegalArgumentException("numbers array must contain at least one value");
         }
-        throw new UnsupportedOperationException();
+        int max = numbers[0];
+        for (int i = 0; i < numbers.length; i++) {
+            boolean isLargest = true;
+            for (int j = i+1; j < numbers.length; j++) {
+                if (numbers[j] > max) {
+                    max = numbers[j];
+                    isLargest = false;
+                }
+            }
+            if (isLargest) {
+                break;
+            }
+        }
+        return max;
     }
 
     public static Integer findLargestValueNLogN(Integer[] numbers) {
