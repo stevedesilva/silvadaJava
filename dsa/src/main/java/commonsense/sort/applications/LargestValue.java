@@ -1,6 +1,8 @@
 package commonsense.sort.applications;
 
-import jdk.jshell.spi.ExecutionControl;
+import commonsense.sort.QuickSort;
+
+import java.util.Arrays;
 
 public class LargestValue {
 
@@ -41,6 +43,8 @@ public class LargestValue {
         if (numbers == null || numbers.length < 1) {
             throw new IllegalArgumentException("numbers array must contain at least one value");
         }
-        throw new UnsupportedOperationException();
+        final int[] ints = Arrays.stream(numbers).mapToInt(Integer::intValue).toArray();
+        final int[] sortedArray = QuickSort.sortedArray(ints);
+        return sortedArray[numbers.length - 1];
     }
 }

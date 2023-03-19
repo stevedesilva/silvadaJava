@@ -6,6 +6,10 @@ public class QuickSort {
         this.array = array;
     }
 
+    public static int[] sortedArray(int[] inputUnsortedInts) {
+       return new QuickSort(inputUnsortedInts).sort(0,inputUnsortedInts.length - 1);
+    }
+
     private int[] array;
 
     public int[] sort(int leftIdx, int rightIdx) {
