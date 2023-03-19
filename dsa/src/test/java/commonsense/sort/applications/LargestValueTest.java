@@ -26,7 +26,7 @@ class LargestValueTest {
                     "1:1",
                     "1,2:2",
                     "3,1,2:3",
-                    "10,3,1,2,8,19,22:19",
+                    "10,3,1,2,8,19,12:19",
             })
     void findLargestValueN(String input, Integer expected) {
         execute(input, expected, (in) ->LargestValue.findLargestValueN(in));
@@ -39,7 +39,7 @@ class LargestValueTest {
                     "1:1",
                     "1,2:2",
                     "3,1,2:3",
-                    "10,3,1,2,8,19,22:19",
+                    "10,3,1,2,8,19,12:19",
             })
     void findLargestValueN2(String input, Integer expected) {
         execute(input, expected, (in) ->LargestValue.findLargestValueN2(in));
@@ -52,7 +52,7 @@ class LargestValueTest {
                     "1:1",
                     "1,2:2",
                     "3,1,2:3",
-                    "10,3,1,2,8,19,22:19",
+                    "10,3,1,2,8,19,12:19",
             })
     void findLargestValueNLogN(String input, Integer expected) {
         execute(input, expected, (in) ->LargestValue.findLargestValueNLogN(in));
