@@ -1,5 +1,7 @@
 package commonsense.linkedlist;
 
+import commonsense.node.Node;
+
 public class LinkedList<T> {
     Node<T> head;
 
