@@ -1,7 +1,7 @@
 package commonsense.node;
 
 public class Node<T> {
-    T value;
+    public T value;
     public Node<T> next;
 
     public Node(T value) {

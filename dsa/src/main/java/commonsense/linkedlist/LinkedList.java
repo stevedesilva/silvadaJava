@@ -8,4 +8,9 @@ public class LinkedList<T> {
     public LinkedList(Node<T> head) {
         this.head = head;
     }
+
+    public T read(int index) {
+
+        return null;
+    }
 }
