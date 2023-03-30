@@ -26,7 +26,7 @@ public class LinkedList<T> {
         return currentNode.value;
     }
 
-    public int search(T value) {
+    public int search(T value) throws NoSuchElementException {
         Node<T> currentNode = head;
         int currentIndex = 0;
         while(currentNode != null) {
@@ -37,6 +37,10 @@ public class LinkedList<T> {
             currentIndex++;
         }
         throw new NoSuchElementException();
+    }
+
+    public void add(int index, T value) throws NoSuchElementException {
+
     }
 
 }

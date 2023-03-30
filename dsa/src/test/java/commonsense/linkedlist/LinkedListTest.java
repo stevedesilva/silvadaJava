@@ -86,9 +86,69 @@ class LinkedListTest {
         });
     }
 
+    @Test
+    public void shouldAddValueAtHeadOfLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
 
+        LinkedList<String> linkedList = new LinkedList<>(node1);
+        final String newValue = "z";
+        linkedList.add(0, newValue);
+        final String firstValue = linkedList.read(0);
+        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+    }
 
+    @Test
+    public void shouldAddValueInTheMiddleOfLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
 
+        LinkedList<String> linkedList = new LinkedList<>(node1);
+        final String newValue = "z";
+        linkedList.add(1, newValue);
+        final String firstValue = linkedList.read(1);
+        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+    }
 
+    @Test
+    public void shouldAddValueAtEndOfLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        LinkedList<String> linkedList = new LinkedList<>(node1);
+        final String newValue = "z";
+        linkedList.add(3, newValue);
+        final String firstValue = linkedList.read(3);
+        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenAddIndexNotFoundInLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        LinkedList<String> linkedList = new LinkedList<>(node1);
+        linkedList.add(10,"z");
+    }
 
 }
