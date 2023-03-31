@@ -147,8 +147,77 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            new LinkedList<>(node1).add(10,"z");
+        });
+    }
+
+    // delete
+    @Test
+    public void shouldDeleteValueAtHeadOfLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
         LinkedList<String> linkedList = new LinkedList<>(node1);
-        linkedList.add(10,"z");
+        linkedList.delete(0);
+        final String firstValue = linkedList.read(0);
+        MatcherAssert.assertThat(firstValue, Matchers.equalTo("b"));
+    }
+
+    @Test
+    public void shouldDeleteValueFromTheMiddleOfLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        LinkedList<String> linkedList = new LinkedList<>(node1);
+        linkedList.delete(1);
+        final String firstValue = linkedList.read(1);
+        MatcherAssert.assertThat(firstValue, Matchers.equalTo("c"));
+    }
+
+    @Test
+    public void shouldDeleteValueAtEndOfLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        LinkedList<String> linkedList = new LinkedList<>(node1);
+        linkedList.delete(3);
+
+        Assertions.assertThrows(NoSuchElementException.class, ()-> {
+            linkedList.read(3);
+        });
+        final String firstValue = linkedList.read(2);
+        MatcherAssert.assertThat(firstValue, Matchers.equalTo("c"));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenDeleteIndexNotFoundInLinkedList(){
+        Node<String> node4 = new Node<>("d");
+        Node<String> node3 = new Node<>("c");
+        Node<String> node2 = new Node<>("b");
+        Node<String> node1 = new Node<>("a");
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            new LinkedList<>(node1).delete(10);
+        });
     }
 
 }

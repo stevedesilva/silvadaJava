@@ -1,6 +1,7 @@
 package commonsense.linkedlist;
 
 import commonsense.node.Node;
+import jdk.jshell.spi.ExecutionControl;
 
 import java.util.NoSuchElementException;
 
@@ -40,7 +41,40 @@ public class LinkedList<T> {
     }
 
     public void add(int index, T value) throws NoSuchElementException {
-
+        Node<T> nodeToAdd = new Node<>(value);
+        if (index == 0) {
+            nodeToAdd.next = head;
+            head = nodeToAdd;
+            return;
+        }
+        int currentIdx = 0;
+        Node<T> currentNode = head;
+        while (currentIdx < index -1) {
+            currentIdx++;
+            currentNode = currentNode.next;
+            if(currentNode == null && index > currentIdx) {
+                throw new NoSuchElementException();
+            }
+        }
+        nodeToAdd.next = currentNode.next;
+        currentNode.next = nodeToAdd;
+    }
+    // node -> node -> nil
+    public void delete(int index) throws NoSuchElementException {
+        if (index == 0) {
+            head = head.next;
+            return;
+        }
+        int currentIdx = 0;
+        Node<T> currentNode = head;
+        while (currentIdx < index-1) {
+            currentIdx++;
+            currentNode = currentNode.next;
+            if (currentNode == null && index > currentIdx) {
+                throw new NoSuchElementException();
+            }
+        }
+        currentNode.next = currentNode.next.next;
     }
 
 }
