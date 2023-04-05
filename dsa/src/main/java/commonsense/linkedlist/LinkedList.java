@@ -4,6 +4,7 @@ import commonsense.node.Node;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 public class LinkedList<T> {
     Node<T> head;
@@ -75,6 +76,19 @@ public class LinkedList<T> {
             }
         }
         currentNode.next = currentNode.next.next;
+    }
+
+    public void deleteItems(Predicate<T> match) {
+        // if shouldDelete the remove currentItem
+        throw new UnsupportedOperationException();
+    }
+
+//    public void deleteItems(List<T> items) {
+//        // if shouldDelete the remove currentItem
+//    }
+
+    public void addListOfItems() {
+        throw new UnsupportedOperationException();
     }
 
 }
