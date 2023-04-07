@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
-class LinkedListTest {
+class ClassicLinkedListTest {
 
     @Test
     public void shouldCreateLinkedList(){
@@ -17,11 +17,11 @@ class LinkedListTest {
         Node<Integer> node1 = new Node<>(1);
         node1.next = node2;
         node2.next = node3;
-        LinkedList<Integer> linkedList = new LinkedList<>(node1);
+        ClassicLinkedList<Integer> classicLinkedList = new ClassicLinkedList<>(node1);
 
-        MatcherAssert.assertThat(linkedList.head, Matchers.equalTo(node1));
-        MatcherAssert.assertThat(linkedList.head.next, Matchers.equalTo(node2));
-        MatcherAssert.assertThat(linkedList.head.next.next, Matchers.equalTo(node3));
+        MatcherAssert.assertThat(classicLinkedList.head, Matchers.equalTo(node1));
+        MatcherAssert.assertThat(classicLinkedList.head.next, Matchers.equalTo(node2));
+        MatcherAssert.assertThat(classicLinkedList.head.next.next, Matchers.equalTo(node3));
     }
 
     @Test
@@ -34,12 +34,12 @@ class LinkedListTest {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        LinkedList<Integer> linkedList = new LinkedList<>(node1);
+        ClassicLinkedList<Integer> classicLinkedList = new ClassicLinkedList<>(node1);
 
-        MatcherAssert.assertThat(linkedList.read(0), Matchers.equalTo(node1.value));
-        MatcherAssert.assertThat(linkedList.read(1), Matchers.equalTo(node2.value));
-        MatcherAssert.assertThat(linkedList.read(2), Matchers.equalTo(node3.value));
-        MatcherAssert.assertThat(linkedList.read(3), Matchers.equalTo(node4.value));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo(node1.value));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo(node2.value));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo(node3.value));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo(node4.value));
     }
 
     @Test
@@ -53,7 +53,7 @@ class LinkedListTest {
         node3.next = node4;
 
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new LinkedList<>(node1).read(10);
+            new ClassicLinkedList<>(node1).read(10);
         });
 
     }
@@ -68,7 +68,7 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        MatcherAssert.assertThat(new LinkedList<>(node1).search("c"), Matchers.equalTo(2));
+        MatcherAssert.assertThat(new ClassicLinkedList<>(node1).search("c"), Matchers.equalTo(2));
     }
 
     @Test
@@ -82,7 +82,7 @@ class LinkedListTest {
         node3.next = node4;
 
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new LinkedList<>(node1).search("e");
+            new ClassicLinkedList<>(node1).search("e");
         });
     }
 
@@ -96,10 +96,10 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        LinkedList<String> linkedList = new LinkedList<>(node1);
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
         final String newValue = "z";
-        linkedList.add(0, newValue);
-        final String firstValue = linkedList.read(0);
+        classicLinkedList.add(0, newValue);
+        final String firstValue = classicLinkedList.read(0);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
     }
 
@@ -113,10 +113,10 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        LinkedList<String> linkedList = new LinkedList<>(node1);
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
         final String newValue = "z";
-        linkedList.add(1, newValue);
-        final String firstValue = linkedList.read(1);
+        classicLinkedList.add(1, newValue);
+        final String firstValue = classicLinkedList.read(1);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
     }
 
@@ -130,10 +130,10 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        LinkedList<String> linkedList = new LinkedList<>(node1);
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
         final String newValue = "z";
-        linkedList.add(3, newValue);
-        final String firstValue = linkedList.read(3);
+        classicLinkedList.add(3, newValue);
+        final String firstValue = classicLinkedList.read(3);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
     }
 
@@ -148,7 +148,7 @@ class LinkedListTest {
         node3.next = node4;
 
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new LinkedList<>(node1).add(10,"z");
+            new ClassicLinkedList<>(node1).add(10,"z");
         });
     }
 
@@ -163,9 +163,9 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        LinkedList<String> linkedList = new LinkedList<>(node1);
-        linkedList.delete(0);
-        final String firstValue = linkedList.read(0);
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
+        classicLinkedList.delete(0);
+        final String firstValue = classicLinkedList.read(0);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo("b"));
     }
 
@@ -179,9 +179,9 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        LinkedList<String> linkedList = new LinkedList<>(node1);
-        linkedList.delete(1);
-        final String firstValue = linkedList.read(1);
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
+        classicLinkedList.delete(1);
+        final String firstValue = classicLinkedList.read(1);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo("c"));
     }
 
@@ -195,13 +195,13 @@ class LinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        LinkedList<String> linkedList = new LinkedList<>(node1);
-        linkedList.delete(3);
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
+        classicLinkedList.delete(3);
 
         Assertions.assertThrows(NoSuchElementException.class, ()-> {
-            linkedList.read(3);
+            classicLinkedList.read(3);
         });
-        final String firstValue = linkedList.read(2);
+        final String firstValue = classicLinkedList.read(2);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo("c"));
     }
 
@@ -216,7 +216,7 @@ class LinkedListTest {
         node3.next = node4;
 
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new LinkedList<>(node1).delete(10);
+            new ClassicLinkedList<>(node1).delete(10);
         });
     }
 

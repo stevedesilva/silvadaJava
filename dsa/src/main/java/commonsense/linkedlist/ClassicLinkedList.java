@@ -1,15 +1,14 @@
 package commonsense.linkedlist;
 
 import commonsense.node.Node;
-import jdk.jshell.spi.ExecutionControl;
 
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
-public class LinkedList<T> {
+public class ClassicLinkedList<T> {
     Node<T> head;
 
-    public LinkedList(Node<T> head) {
+    public ClassicLinkedList(Node<T> head) {
         this.head = head;
     }
 
