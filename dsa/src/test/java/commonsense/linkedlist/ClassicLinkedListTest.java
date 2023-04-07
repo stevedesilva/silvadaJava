@@ -25,6 +25,21 @@ class ClassicLinkedListTest {
     }
 
     @Test
+    public void shouldCreateLinkedListEmpty(){
+        Node<Integer> node3 = new Node<>(3);
+        Node<Integer> node2 = new Node<>(2);
+        Node<Integer> node1 = new Node<>(1);
+        node1.next = node2;
+        node2.next = node3;
+        ClassicLinkedList<Integer> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.head = node1;
+
+        MatcherAssert.assertThat(classicLinkedList.head, Matchers.equalTo(node1));
+        MatcherAssert.assertThat(classicLinkedList.head.next, Matchers.equalTo(node2));
+        MatcherAssert.assertThat(classicLinkedList.head.next.next, Matchers.equalTo(node3));
+    }
+
+    @Test
     public void shouldReadIndexOfLinkedList(){
         Node<Integer> node4 = new Node<>(4);
         Node<Integer> node3 = new Node<>(3);

@@ -12,6 +12,10 @@ public class ClassicLinkedList<T> {
         this.head = head;
     }
 
+    public ClassicLinkedList() {
+    }
+
+
     public T read(int index) throws NoSuchElementException {
         Node<T> currentNode = head;
         int currentIndex = 0;
