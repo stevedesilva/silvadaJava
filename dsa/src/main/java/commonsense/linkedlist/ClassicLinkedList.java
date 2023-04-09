@@ -6,7 +6,11 @@ import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
 public class ClassicLinkedList<T> {
-    Node<T> head;
+    private Node<T> head;
+
+    public Node<T> getHead() {
+        return head;
+    }
 
     public ClassicLinkedList(Node<T> head) {
         this.head = head;
@@ -44,8 +48,7 @@ public class ClassicLinkedList<T> {
         throw new NoSuchElementException();
     }
 
-    public void add(int index, T value) throws NoSuchElementException {
-        Node<T> nodeToAdd = new Node<>(value);
+    public void add(int index, Node<T> nodeToAdd) throws NoSuchElementException {
         if (index == 0) {
             nodeToAdd.next = head;
             head = nodeToAdd;
@@ -63,6 +66,26 @@ public class ClassicLinkedList<T> {
         nodeToAdd.next = currentNode.next;
         currentNode.next = nodeToAdd;
     }
+
+
+    public void add(T value) throws NoSuchElementException {
+        Node<T> nodeToAdd = new Node<>(value);
+        if (head == null) {
+            head = nodeToAdd;
+            return;
+        }
+        Node<T> currentNode = head;
+        while (currentNode != null) {
+            currentNode = currentNode.next;
+        }
+        currentNode.next = nodeToAdd;
+    }
+
+    public void add(int index, T value) throws NoSuchElementException {
+        Node<T> nodeToAdd = new Node<>(value);
+        this.add(index,nodeToAdd);
+    }
+
     // node -> node -> nil
     public void delete(int index) throws NoSuchElementException {
         if (index == 0) {
