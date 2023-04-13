@@ -239,14 +239,13 @@ class ClassicLinkedListTest {
     public void shouldDeleteValuesForStartOfList() {
         ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
         classicLinkedList.add("a");
-        classicLinkedList.add("b");
+        classicLinkedList.add("a");
         classicLinkedList.add("c");
 
         classicLinkedList.deleteItems((s) ->
                 s.equalsIgnoreCase("a")
         );
-        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("b"));
-        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("c"));
     }
 
     @Test

@@ -105,14 +105,24 @@ public class ClassicLinkedList<T> {
     }
     // a -> b -> c -> -d -> e -> null
     public void deleteItems(Predicate<T> match) {
-        Node<T> previousNode = head;
-        Node<T> currentNode = head.next;
-
+        Node<T> previousNode = null;
+        Node<T> currentNode = head;
         while (currentNode != null) {
-            if (match.test(currentNode.value)) {
-                previousNode.next = currentNode.next;
+            if (previousNode == null) {
+                // head case
+                if (match.test(currentNode.value)) {
+                    head = currentNode.next;
+                } else {
+                    previousNode = currentNode;
+                }
+            } else {
+                // not head
+                if (match.test(currentNode.value)) {
+                    previousNode.next = currentNode.next;
+                } else {
+                    previousNode = currentNode;
+                }
             }
-            previousNode = currentNode;
             currentNode = currentNode.next;
         }
 
