@@ -75,7 +75,7 @@ public class ClassicLinkedList<T> {
             return;
         }
         Node<T> currentNode = head;
-        while (currentNode != null) {
+        while (currentNode.next != null) {
             currentNode = currentNode.next;
         }
         currentNode.next = nodeToAdd;
@@ -103,10 +103,19 @@ public class ClassicLinkedList<T> {
         }
         currentNode.next = currentNode.next.next;
     }
-
+    // a -> b -> c -> -d -> e -> null
     public void deleteItems(Predicate<T> match) {
-        // if shouldDelete the remove currentItem
-        throw new UnsupportedOperationException();
+        Node<T> previousNode = head;
+        Node<T> currentNode = head.next;
+
+        while (currentNode != null) {
+            if (match.test(currentNode.value)) {
+                previousNode.next = currentNode.next;
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+
     }
 
 //    public void deleteItems(List<T> items) {

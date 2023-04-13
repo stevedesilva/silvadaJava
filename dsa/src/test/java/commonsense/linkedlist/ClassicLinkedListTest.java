@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 class ClassicLinkedListTest {
 
     @Test
-    public void shouldCreateLinkedList(){
+    public void shouldCreateLinkedList() {
         Node<Integer> node3 = new Node<>(3);
         Node<Integer> node2 = new Node<>(2);
         Node<Integer> node1 = new Node<>(1);
@@ -25,7 +25,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldReadIndexOfLinkedList(){
+    public void shouldReadIndexOfLinkedList() {
         Node<Integer> node4 = new Node<>(4);
         Node<Integer> node3 = new Node<>(3);
         Node<Integer> node2 = new Node<>(2);
@@ -43,7 +43,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenReadIndexNotFoundInLinkedList(){
+    public void shouldThrowExceptionWhenReadIndexNotFoundInLinkedList() {
         Node<Integer> node4 = new Node<>(4);
         Node<Integer> node3 = new Node<>(3);
         Node<Integer> node2 = new Node<>(2);
@@ -59,7 +59,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldSearchForValueInLinkedList(){
+    public void shouldSearchForValueInLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -72,7 +72,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenSearchValueNotFoundInLinkedList(){
+    public void shouldThrowExceptionWhenSearchValueNotFoundInLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -87,7 +87,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldAddValueAtHeadOfLinkedList(){
+    public void shouldAddValueAtHeadOfLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -104,7 +104,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldAddValueInTheMiddleOfLinkedList(){
+    public void shouldAddValueInTheMiddleOfLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -121,7 +121,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldAddValueAtEndOfLinkedList(){
+    public void shouldAddValueAtEndOfLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -138,7 +138,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenAddIndexNotFoundInLinkedList(){
+    public void shouldThrowExceptionWhenAddIndexNotFoundInLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -148,13 +148,13 @@ class ClassicLinkedListTest {
         node3.next = node4;
 
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new ClassicLinkedList<>(node1).add(10,"z");
+            new ClassicLinkedList<>(node1).add(10, "z");
         });
     }
 
     // delete
     @Test
-    public void shouldDeleteValueAtHeadOfLinkedList(){
+    public void shouldDeleteValueAtHeadOfLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -170,7 +170,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldDeleteValueFromTheMiddleOfLinkedList(){
+    public void shouldDeleteValueFromTheMiddleOfLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -186,7 +186,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldDeleteValueAtEndOfLinkedList(){
+    public void shouldDeleteValueAtEndOfLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -198,7 +198,7 @@ class ClassicLinkedListTest {
         ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
         classicLinkedList.delete(3);
 
-        Assertions.assertThrows(NoSuchElementException.class, ()-> {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
             classicLinkedList.read(3);
         });
         final String firstValue = classicLinkedList.read(2);
@@ -206,7 +206,7 @@ class ClassicLinkedListTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenDeleteIndexNotFoundInLinkedList(){
+    public void shouldThrowExceptionWhenDeleteIndexNotFoundInLinkedList() {
         Node<String> node4 = new Node<>("d");
         Node<String> node3 = new Node<>("c");
         Node<String> node2 = new Node<>("b");
@@ -218,6 +218,79 @@ class ClassicLinkedListTest {
         Assertions.assertThrows(NoSuchElementException.class, () -> {
             new ClassicLinkedList<>(node1).delete(10);
         });
+    }
+
+    @Test
+    public void shouldAddValues() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+        classicLinkedList.add("d");
+        classicLinkedList.add("e");
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.read(4), Matchers.equalTo("e"));
+    }
+
+    @Test
+    public void shouldDeleteValuesForStartOfList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+
+        classicLinkedList.deleteItems((s) ->
+                s.equalsIgnoreCase("a")
+        );
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("c"));
+    }
+
+    @Test
+    public void shouldNotDeleteValuesNoPredicateMatch() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+
+        classicLinkedList.deleteItems((s) ->
+                s.equalsIgnoreCase("z")
+        );
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo("c"));
+    }
+
+    @Test
+    public void shouldNotDeleteValuesMiddleList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+
+        classicLinkedList.deleteItems((s) ->
+                s.equalsIgnoreCase("b")
+        );
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("c"));
+    }
+
+    @Test
+    public void shouldDeleteValues() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("a");
+        classicLinkedList.add("d");
+        classicLinkedList.add("a");
+        classicLinkedList.deleteItems((s) ->
+                s.equalsIgnoreCase("a")
+        );
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("d"));
     }
 
 }
