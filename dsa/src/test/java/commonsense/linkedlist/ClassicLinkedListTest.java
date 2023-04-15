@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
+import java.util.regex.Pattern;
 
 class ClassicLinkedListTest {
 
@@ -290,6 +291,27 @@ class ClassicLinkedListTest {
         );
         MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("b"));
         MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("d"));
+    }
+
+    @Test
+    public void shouldDeleteValuesUsingRegex() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("this is a password:1 that needs obfuscating");
+        classicLinkedList.add("this is a password:12 that needs obfuscating");
+        classicLinkedList.add("this is a password:123 that needs obfuscating");
+        classicLinkedList.add("this is a password:12cae that needs obfuscating");
+        classicLinkedList.add("this is a password:some_password that needs obfuscating");
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+
+
+        classicLinkedList.deleteItems((s) -> {
+                    Pattern p = Pattern.compile("\\bpassword:[\\w]+\\b");
+                    return p.matcher(s).find();
+                }
+        );
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("b"));
     }
 
 }

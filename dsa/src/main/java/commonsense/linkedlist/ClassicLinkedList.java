@@ -4,6 +4,8 @@ import commonsense.node.Node;
 
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClassicLinkedList<T> {
     private Node<T> head;
@@ -128,9 +130,28 @@ public class ClassicLinkedList<T> {
 
     }
 
-//    public void deleteItems(List<T> items) {
-//        // if shouldDelete the remove currentItem
-//    }
+    public static void main(String[] args) {
+
+        String[] words = {"{apf","hum_","dkoe","12f"};
+        for(String s:words)
+        {
+            if(s.matches("[a-z]*"))
+            {
+                System.out.println(s);
+            }
+        }
+
+
+//        String test = "this is a password:123 that needs obfuscating";
+////        String test = "password:123";
+//        Pattern p = Pattern.compile("password:[\\w]+");
+//        final Matcher matched = p.matcher(test);
+//
+////        final boolean matches = test.matches("password:[\\w]+");
+//        System.out.println("find : "+ matched.find());
+//        System.out.println("matches : "+ matched.matches());
+
+    }
 
     public void addListOfItems() {
         throw new UnsupportedOperationException();
