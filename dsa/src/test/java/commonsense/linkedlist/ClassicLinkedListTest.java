@@ -1,6 +1,7 @@
 package commonsense.linkedlist;
 
-import commonsense.node.Node;
+import commonsense.linkedlist.classic.ClassicLinkedList;
+import commonsense.linkedlist.classic.Node;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;

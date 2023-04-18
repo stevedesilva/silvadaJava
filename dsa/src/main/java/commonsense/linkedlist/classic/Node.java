@@ -1,4 +1,4 @@
-package commonsense.node;
+package commonsense.linkedlist.classic;
 
 public class Node<T> {
     public T value;

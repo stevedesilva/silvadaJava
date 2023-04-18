@@ -1,11 +1,7 @@
-package commonsense.linkedlist;
-
-import commonsense.node.Node;
+package commonsense.linkedlist.classic;
 
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ClassicLinkedList<T> {
     private Node<T> head;
@@ -127,7 +123,6 @@ public class ClassicLinkedList<T> {
             }
             currentNode = currentNode.next;
         }
-
     }
 
     public static void main(String[] args) {
