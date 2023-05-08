@@ -1,4 +1,4 @@
-package commonsense.linkedlist;
+package commonsense.linkedlist.classic;
 
 import commonsense.linkedlist.classic.ClassicLinkedList;
 import commonsense.linkedlist.classic.Node;
