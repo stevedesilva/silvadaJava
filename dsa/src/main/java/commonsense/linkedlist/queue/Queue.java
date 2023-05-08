@@ -1,12 +1,13 @@
 package commonsense.linkedlist.queue;
 
+import commonsense.linkedlist.doubly.AllowedLinkedListMethod;
 import commonsense.linkedlist.doubly.DoublyLinkedList;
 
 import java.util.NoSuchElementException;
 
 public class Queue<T> implements AllowedQueueMethod<T> {
 
-    private DoublyLinkedList<T> list;
+    private AllowedLinkedListMethod<T> list;
 
 
     @Override
