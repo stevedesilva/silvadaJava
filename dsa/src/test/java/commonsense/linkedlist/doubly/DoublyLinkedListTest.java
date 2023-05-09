@@ -28,12 +28,47 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void addByIndex() {
+    void addByIndexFront() {
+    }
+
+    @Test
+    void addByIndexMid() {
+    }
+
+    @Test
+    void addByIndexMidEnd() {
+    }
+
+    @Test
+    void addByIndexEnd() {
     }
 
     @Test
     void addToFront() {
     }
+
+    @Test
+    void readByIndex() {
+    }
+    @Test
+    void readByIndexShouldErrorWhenEmptyList() {
+    }
+    @Test
+    void readByIndexShouldErrorWhenIndexNotFound() {
+    }
+    @Test
+    void readFromFront() {
+    }
+    @Test
+    void readFromFrontShouldErrorEmptyList() {
+    }
+    @Test
+    void readFromEnd() {
+    }
+    @Test
+    void readFromEndShouldErrorEmptyList() {
+    }
+    //
 
     @Test
     void deleteByIndex() {
@@ -49,22 +84,12 @@ class DoublyLinkedListTest {
 
     @Test
     void deleteItems() {
+
     }
+
 
     @Test
     void printItems() {
-    }
-
-    @Test
-    void readByIndex() {
-    }
-
-    @Test
-    void readFromEnd() {
-    }
-
-    @Test
-    void readFromFront() {
     }
 
     @Test
