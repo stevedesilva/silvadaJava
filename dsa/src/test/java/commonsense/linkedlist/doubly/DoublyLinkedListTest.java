@@ -44,6 +44,10 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void addByIndexReturnErrorWhenIndexOutOfBounds() {
+    }
+
+    @Test
     void addToFront() {
     }
 
@@ -71,19 +75,50 @@ class DoublyLinkedListTest {
     //
 
     @Test
-    void deleteByIndex() {
+    void deleteTail() {
     }
 
     @Test
-    void deleteFromEnd() {
+    void deleteMiddleByIndex() {
     }
 
     @Test
-    void deleteFromFront() {
+    void deleteItemsMid() {
+    }
+
+    @Test
+    void deleteItemsHead() {
+
+    }
+    @Test
+    void deleteItemsEnd() {
+
     }
 
     @Test
     void deleteItems() {
+
+    }
+
+    @Test
+    void deleteHead() {
+
+    }
+
+    @Test
+    void deleteFrontByIndex() {
+
+    }
+    @Test
+    void deleteErrorWhenIndexNotFound() {
+
+    }
+    @Test
+    void DeleteEndByIndex() {
+
+    }
+    @Test
+    void DeleteAllListHead() {
 
     }
 
