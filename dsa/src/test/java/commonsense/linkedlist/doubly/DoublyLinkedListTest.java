@@ -128,15 +128,26 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void removeByIndex() {
+    void RemoveFromMiddleByIndex() {
     }
 
     @Test
-    void removeFromEnd() {
+    void RemoveFromFrontSingle() {
     }
 
     @Test
-    void removeFromFront() {
+    void RemoveFromFrontByIndex() {
+    }
+
+    @Test
+    void RemoveFromFront() {
+    }
+    @Test
+    void RemoveFromEndByIndex() {
+    }
+
+    @Test
+    void RemoveFromEnd() {
     }
 
     @Test
@@ -144,14 +155,7 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void size() {
+    void searchErrorWhenIndexNotFound() {
     }
 
-    @Test
-    void head() {
-    }
-
-    @Test
-    void tail() {
-    }
 }
