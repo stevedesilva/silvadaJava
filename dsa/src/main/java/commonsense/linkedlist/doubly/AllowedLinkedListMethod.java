@@ -22,7 +22,7 @@ public interface AllowedLinkedListMethod<T> {
     T removeFromEnd() throws NoSuchElementException;
     T removeFromFront() throws NoSuchElementException;
     T search(T value) throws NoSuchElementException;
-    int size(T value);
+    int size();
     Node<T> head();
     Node<T> tail();
 }

@@ -1,15 +1,15 @@
 package commonsense.linkedlist.classic;
 
 public class Node<T> {
-    public T value;
+    public T data;
     public Node<T> next;
 
-    public Node(T value) {
-        this.value = value;
+    public Node(T data) {
+        this.data = data;
     }
 
-    public Node(T value, Node<T> next) {
-        this.value = value;
+    public Node(T data, Node<T> next) {
+        this.data = data;
         this.next = next;
     }
 }

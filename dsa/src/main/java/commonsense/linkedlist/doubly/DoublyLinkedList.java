@@ -86,7 +86,7 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T>{
     }
 
     @Override
-    public int size(T value) {
+    public int size() {
         return 0;
     }
 

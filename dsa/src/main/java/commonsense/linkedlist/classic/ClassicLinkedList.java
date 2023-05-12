@@ -30,14 +30,14 @@ public class ClassicLinkedList<T> {
                 throw new NoSuchElementException();
             }
         }
-        return currentNode.value;
+        return currentNode.data;
     }
 
     public int search(T value) throws NoSuchElementException {
         Node<T> currentNode = head;
         int currentIndex = 0;
         while(currentNode != null) {
-            if (currentNode.value.equals(value)) {
+            if (currentNode.data.equals(value)) {
                 return currentIndex;
             }
             currentNode = currentNode.next;
@@ -108,14 +108,14 @@ public class ClassicLinkedList<T> {
         while (currentNode != null) {
             if (previousNode == null) {
                 // head case
-                if (match.test(currentNode.value)) {
+                if (match.test(currentNode.data)) {
                     head = currentNode.next;
                 } else {
                     previousNode = currentNode;
                 }
             } else {
                 // not head
-                if (match.test(currentNode.value)) {
+                if (match.test(currentNode.data)) {
                     previousNode.next = currentNode.next;
                 } else {
                     previousNode = currentNode;

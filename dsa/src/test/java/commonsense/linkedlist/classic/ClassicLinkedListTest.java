@@ -1,7 +1,5 @@
 package commonsense.linkedlist.classic;
 
-import commonsense.linkedlist.classic.ClassicLinkedList;
-import commonsense.linkedlist.classic.Node;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -38,10 +36,10 @@ class ClassicLinkedListTest {
         node3.next = node4;
         ClassicLinkedList<Integer> classicLinkedList = new ClassicLinkedList<>(node1);
 
-        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo(node1.value));
-        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo(node2.value));
-        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo(node3.value));
-        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo(node4.value));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo(node1.data));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo(node2.data));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo(node3.data));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo(node4.data));
     }
 
     @Test
