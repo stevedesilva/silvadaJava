@@ -122,30 +122,86 @@ class DoublyLinkedListTest {
 
     @Test
     void addToFront() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+
+        list.addToFront("y");
+
+        MatcherAssert.assertThat(3, Matchers.equalTo(list.size()));
+        MatcherAssert.assertThat("y", Matchers.equalTo(list.head().data));
+        MatcherAssert.assertThat("a", Matchers.equalTo(list.head().next.data));
+        MatcherAssert.assertThat("a", Matchers.equalTo(list.head().next.next.data));
+        MatcherAssert.assertThat("b", Matchers.equalTo(list.tail().data));
+
+        list.addToFront("z");
+        MatcherAssert.assertThat(4, Matchers.equalTo(list.size()));
+        MatcherAssert.assertThat("z", Matchers.equalTo(list.head().data));
+        MatcherAssert.assertThat("y", Matchers.equalTo(list.head().next.data));
+        MatcherAssert.assertThat("a", Matchers.equalTo(list.head().next.next.data));
+        MatcherAssert.assertThat("b", Matchers.equalTo(list.head().next.next.next.data));
+        MatcherAssert.assertThat("b", Matchers.equalTo(list.tail().data));
     }
+
 
     @Test
     void readByIndex() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+        list.addAtEnd("c");
+        MatcherAssert.assertThat("a", Matchers.equalTo(list.readByIndex(0)));
+        MatcherAssert.assertThat("b", Matchers.equalTo(list.readByIndex(1)));
+        MatcherAssert.assertThat("c", Matchers.equalTo(list.readByIndex(2)));
     }
     @Test
     void readByIndexShouldErrorWhenEmptyList() {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            DoublyLinkedList<String> list = new DoublyLinkedList<>();
+            list.readByIndex(0);
+        });
     }
     @Test
     void readByIndexShouldErrorWhenIndexNotFound() {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            DoublyLinkedList<String> list = new DoublyLinkedList<>();
+            list.addAtEnd("a");
+            list.addAtEnd("b");
+            list.addAtEnd("c");
+            list.readByIndex(3);
+        });
     }
     @Test
     void readFromFront() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+        list.addAtEnd("c");
+        MatcherAssert.assertThat("a", Matchers.equalTo(list.readFromFront()));
     }
     @Test
     void readFromFrontShouldErrorEmptyList() {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            DoublyLinkedList<String> list = new DoublyLinkedList<>();
+            list.readFromFront();
+        });
     }
     @Test
     void readFromEnd() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+        list.addAtEnd("c");
+        MatcherAssert.assertThat("c", Matchers.equalTo(list.readFromEnd()));
     }
     @Test
     void readFromEndShouldErrorEmptyList() {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            DoublyLinkedList<String> list = new DoublyLinkedList<>();
+            list.readFromEnd();
+        });
     }
-    //
+
 
     @Test
     void deleteTail() {
