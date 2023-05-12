@@ -1,7 +1,5 @@
 package commonsense.linkedlist.doubly;
 
-import commonsense.linkedlist.classic.Node;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;

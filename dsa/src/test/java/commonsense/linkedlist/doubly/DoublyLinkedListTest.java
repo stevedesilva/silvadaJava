@@ -76,22 +76,6 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat("c", Matchers.equalTo(list.head().next.next.next.data));
     }
 
-    /*
-    func TestDoublyLinkedList_AddByIndexEnd(t *testing.T) {
-	list := NewDoublyLinkedList[string]()
-	list.AddAtEnd("a")
-	list.AddAtEnd("b")
-	list.AddAtEnd("c")
-
-	list.AddByIndex(3, "z")
-	assert.Equal(t, 4, list.Size())
-	assert.Equal(t, "a", list.Head().data)
-	assert.Equal(t, "z", list.Tail().data)
-	assert.Equal(t, "b", list.Head().next.data)
-	assert.Equal(t, "c", list.Head().next.next.data)
-	assert.Equal(t, "z", list.Head().next.next.next.data)
-}
-     */
     @Test
     void addByIndexEnd() {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
@@ -150,6 +134,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("a");
         list.addAtEnd("b");
         list.addAtEnd("c");
+        MatcherAssert.assertThat(3, Matchers.equalTo(list.size()));
         MatcherAssert.assertThat("a", Matchers.equalTo(list.readByIndex(0)));
         MatcherAssert.assertThat("b", Matchers.equalTo(list.readByIndex(1)));
         MatcherAssert.assertThat("c", Matchers.equalTo(list.readByIndex(2)));
@@ -177,6 +162,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("a");
         list.addAtEnd("b");
         list.addAtEnd("c");
+        MatcherAssert.assertThat(3, Matchers.equalTo(list.size()));
         MatcherAssert.assertThat("a", Matchers.equalTo(list.readFromFront()));
     }
     @Test
@@ -192,6 +178,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("a");
         list.addAtEnd("b");
         list.addAtEnd("c");
+        MatcherAssert.assertThat(3, Matchers.equalTo(list.size()));
         MatcherAssert.assertThat("c", Matchers.equalTo(list.readFromEnd()));
     }
     @Test
@@ -202,9 +189,19 @@ class DoublyLinkedListTest {
         });
     }
 
-
     @Test
     void deleteTail() {
+
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+        list.addAtEnd("c");
+        list.deleteFromEnd();
+        MatcherAssert.assertThat(2, Matchers.equalTo(list.size()));
+        MatcherAssert.assertThat("b", Matchers.equalTo(list.readFromEnd()));
+        list.deleteFromEnd();
+        MatcherAssert.assertThat(1, Matchers.equalTo(list.size()));
+        MatcherAssert.assertThat("a", Matchers.equalTo(list.readFromEnd()));
     }
 
     @Test

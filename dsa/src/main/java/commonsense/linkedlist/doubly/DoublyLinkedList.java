@@ -91,12 +91,12 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T>{
     }
 
     @Override
-    public commonsense.linkedlist.classic.Node<T> head() {
+    public Node<T> head() {
         return null;
     }
 
     @Override
-    public commonsense.linkedlist.classic.Node<T> tail() {
+    public Node<T> tail() {
         return null;
     }
 }
