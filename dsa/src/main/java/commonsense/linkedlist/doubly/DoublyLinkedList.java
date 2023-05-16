@@ -12,7 +12,21 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T>{
 
     @Override
     public void addAtEnd(T value) {
-
+        Node<T> node = new Node<>(value);
+        if (head == null) {
+            head = node;
+            tail = node;
+            size++;
+            return;
+        }
+        Node<T> current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = node;
+        node.previous = current;
+        tail = node;
+        size++;
     }
 
     @Override
@@ -87,16 +101,16 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T>{
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public Node<T> head() {
-        return null;
+        return head;
     }
 
     @Override
     public Node<T> tail() {
-        return null;
+        return tail;
     }
 }
