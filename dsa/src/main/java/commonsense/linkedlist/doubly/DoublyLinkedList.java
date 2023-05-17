@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
-public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T>{
+public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
     private int size;
     private Node<T> head;
     private Node<T> tail;
@@ -31,7 +31,35 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T>{
 
     @Override
     public void addByIndex(int index, T value) throws NoSuchElementException {
-
+        Node<T> node = new Node<>(value);
+        if (index == 0) {
+            if (head == null) {
+                head = node;
+                tail = node;
+            } else {
+                node.next = head;
+                head.previous = node;
+                head = node;
+            }
+            size++;
+            return;
+        }
+        // a - b - c
+        Node<T> current = head;
+        int position = 0;
+        // get to node before one to insert
+        while (position < index - 1) {
+            position++;
+            current = current.next;
+            if (current == null) {
+                throw  new NoSuchElementException("index not found");
+            }
+        }
+        node.previous = current;
+        node.next=current.next;
+        current.next.previous = node;
+        current.next = node;
+        size++;
     }
 
     @Override
