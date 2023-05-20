@@ -11,22 +11,13 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
 
 
     @Override
+    public void addToFront(T value) {
+        addByIndex(0, value);
+    }
+
+    @Override
     public void addAtEnd(T value) {
-        Node<T> node = new Node<>(value);
-        if (head == null) {
-            head = node;
-            tail = node;
-            size++;
-            return;
-        }
-        Node<T> current = head;
-        while (current.next != null) {
-            current = current.next;
-        }
-        current.next = node;
-        node.previous = current;
-        tail = node;
-        size++;
+        addByIndex(size, value);
     }
 
     @Override
@@ -44,6 +35,16 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
             size++;
             return;
         }
+
+        if (index == size) {
+            // last element
+            node.previous = tail;
+            tail.next = node;
+            tail = node;
+            size++;
+            return;
+        }
+
         // a - b - c
         Node<T> current = head;
         int position = 0;
@@ -52,20 +53,17 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
             position++;
             current = current.next;
             if (current == null) {
-                throw  new NoSuchElementException("index not found");
+                throw new NoSuchElementException("index not found");
             }
         }
         node.previous = current;
-        node.next=current.next;
+        node.next = current.next;
         current.next.previous = node;
         current.next = node;
         size++;
     }
 
-    @Override
-    public void addToFront(T value) {
 
-    }
 
     @Override
     public void deleteByIndex(int index) throws NoSuchElementException {
