@@ -3,6 +3,7 @@ package commonsense.linkedlist.doubly;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
     private int size;
@@ -67,27 +68,54 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
 
     @Override
     public void deleteByIndex(int index) throws NoSuchElementException {
-
+         removeByIndex(index);
     }
 
     @Override
     public void deleteFromEnd() throws NoSuchElementException {
-
+        removeFromEnd();
     }
 
     @Override
     public void deleteFromFront() throws NoSuchElementException {
-
+        removeFromFront();
     }
 
     @Override
     public void deleteItems(Predicate<T> fn) {
-
+        Node<T> curr = head;
+        while(curr != null) {
+            if(fn.test(curr.data)){
+              if(curr.previous == null) {
+                  // head
+                  head = curr.next;
+                  curr.next.previous = null;
+              } else if(curr.next == null) {
+                  // tail
+                  tail = curr.previous;
+                  curr.previous.next = null;
+              } else {
+                  curr.previous.next = curr.next;
+                  curr.next.previous = curr.previous;
+              }
+              size--;
+            }
+            curr = curr.next;
+        }
     }
 
     @Override
-    public List<T> printItems() {
-        return null;
+    public String printItems() {
+        StringBuilder sb = new StringBuilder();
+        Node<T> curr = head;
+        while (curr != null) {
+            sb.append(curr.data);
+            curr = curr.next;
+            if (curr != null) {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
     }
 
     @Override
@@ -122,22 +150,56 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
 
     @Override
     public T removeByIndex(int index) throws NoSuchElementException {
-        return null;
+        if (index >= size) {
+            throw new NoSuchElementException("index not found");
+        }
+        if (index == 0) {
+            T data = head.data;
+            head = head.next;
+            size--;
+            return data;
+        }
+        Node<T> current = head;
+        int count = 0;
+        T value;
+        while (count < index) {
+            count++;
+            current = current.next;
+        }
+        value = current.data;
+        if (current.next == null) {
+            tail = current.previous;
+            current.previous.next = null;
+        } else {
+            current.previous.next = current.next;
+            current.next.previous = current.previous;
+        }
+        size--;
+        return value;
     }
 
     @Override
     public T removeFromEnd() throws NoSuchElementException {
-        return null;
+        return removeByIndex(size -1);
     }
 
     @Override
     public T removeFromFront() throws NoSuchElementException {
-        return null;
+        return removeByIndex(0);
     }
 
     @Override
-    public T search(T value) throws NoSuchElementException {
-        return null;
+    public int search(T value) throws NoSuchElementException {
+        Node<T> current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data == value) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        throw new NoSuchElementException("index not found");
     }
 
     @Override

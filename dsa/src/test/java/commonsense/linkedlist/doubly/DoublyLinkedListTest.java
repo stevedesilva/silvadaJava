@@ -252,7 +252,6 @@ class DoublyLinkedListTest {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addAtEnd("a");
         list.addAtEnd("b");
-        list.addAtEnd("b");
         list.addAtEnd("c");
 
         list.deleteByIndex(0);
@@ -442,7 +441,7 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.removeByIndex(1), Matchers.equalTo("b"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(1));
 
-        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("a"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(0));
     }
 
@@ -451,9 +450,8 @@ class DoublyLinkedListTest {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addAtEnd("a");
 
-        list.deleteFromFront();
-        MatcherAssert.assertThat(list.size(), Matchers.equalTo(0));
         MatcherAssert.assertThat(list.removeFromFront(), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(list.size(), Matchers.equalTo(0));
     }
 
     @Test
@@ -466,11 +464,9 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.removeFromFront(), Matchers.equalTo("a"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
 
-        list.deleteFromFront();
         MatcherAssert.assertThat(list.removeFromFront(), Matchers.equalTo("b"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(1));
 
-        list.deleteFromFront();
         MatcherAssert.assertThat(list.removeFromFront(), Matchers.equalTo("c"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(0));
     }
@@ -485,11 +481,9 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.removeFromEnd(), Matchers.equalTo("c"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
 
-        list.deleteFromFront();
         MatcherAssert.assertThat(list.removeFromEnd(), Matchers.equalTo("b"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(1));
 
-        list.deleteFromFront();
         MatcherAssert.assertThat(list.removeFromEnd(), Matchers.equalTo("a"));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(0));
     }
@@ -526,7 +520,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("a");
         list.addAtEnd("b");
         list.addAtEnd("c");
-        MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("[a b c]"));
+        MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("a,b,c"));
     }
 
 }

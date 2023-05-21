@@ -12,14 +12,14 @@ public interface AllowedLinkedListMethod<T> {
     void deleteFromEnd() throws NoSuchElementException;
     void deleteFromFront() throws NoSuchElementException;
     void deleteItems(Predicate<T> fn);
-    List<T> printItems();
+    String printItems();
     T readByIndex(int index) throws NoSuchElementException;
     T readFromEnd() throws NoSuchElementException;
     T readFromFront() throws NoSuchElementException;
     T removeByIndex(int index) throws NoSuchElementException;
     T removeFromEnd() throws NoSuchElementException;
     T removeFromFront() throws NoSuchElementException;
-    T search(T value) throws NoSuchElementException;
+    int search(T value) throws NoSuchElementException;
     int size();
     Node<T> head();
     Node<T> tail();
