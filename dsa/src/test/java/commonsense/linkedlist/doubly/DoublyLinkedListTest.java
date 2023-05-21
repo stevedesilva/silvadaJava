@@ -345,8 +345,8 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
         MatcherAssert.assertThat(list.readFromFront(), Matchers.equalTo("2 a"));
         MatcherAssert.assertThat(list.readFromEnd(), Matchers.equalTo("3 b"));
-        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("2 a"));
         MatcherAssert.assertThat(list.removeByIndex(1), Matchers.equalTo("3 b"));
+        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("2 a"));
     }
 
     @Test
