@@ -118,7 +118,7 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(3, Matchers.equalTo(list.size()));
         MatcherAssert.assertThat("y", Matchers.equalTo(list.head().data));
         MatcherAssert.assertThat("a", Matchers.equalTo(list.head().next.data));
-        MatcherAssert.assertThat("a", Matchers.equalTo(list.head().next.next.data));
+        MatcherAssert.assertThat("b", Matchers.equalTo(list.head().next.next.data));
         MatcherAssert.assertThat("b", Matchers.equalTo(list.tail().data));
 
         list.addToFront("z");

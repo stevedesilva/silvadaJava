@@ -92,17 +92,32 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
 
     @Override
     public T readByIndex(int index) throws NoSuchElementException {
-        return null;
-    }
-
-    @Override
-    public T readFromEnd() throws NoSuchElementException {
-        return null;
+        if (index >= size) {
+            throw new NoSuchElementException("index not found");
+        }
+        int counter = 0;
+        Node<T> current = head;
+        while (counter < index) {
+            current = current.next;
+            counter++;
+        }
+        return current.data;
     }
 
     @Override
     public T readFromFront() throws NoSuchElementException {
-        return null;
+        if (head != null) {
+            return head.data;
+        }
+        throw new NoSuchElementException("index not found");
+    }
+
+    @Override
+    public T readFromEnd() throws NoSuchElementException {
+        if (tail != null) {
+            return tail.data;
+        }
+        throw new NoSuchElementException("index not found");
     }
 
     @Override
