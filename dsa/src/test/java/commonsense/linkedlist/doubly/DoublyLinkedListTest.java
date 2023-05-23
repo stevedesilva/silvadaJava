@@ -1,6 +1,5 @@
 package commonsense.linkedlist.doubly;
 
-import commonsense.linkedlist.classic.ClassicLinkedList;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class DoublyLinkedListTest {
@@ -337,6 +335,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("2 a");
         list.addAtEnd("3 b");
 
+
         final Predicate<String> stringPredicate = (text) -> {
             final Pattern p = Pattern.compile("\\bpassword:(\\w)+\\b");
             return p.matcher(text).find();
@@ -365,8 +364,8 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
         MatcherAssert.assertThat(list.readFromFront(), Matchers.equalTo("1 a"));
         MatcherAssert.assertThat(list.readFromEnd(), Matchers.equalTo("4 b"));
-        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("1 a"));
         MatcherAssert.assertThat(list.removeByIndex(1), Matchers.equalTo("4 b"));
+        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("1 a"));
     }
 
 
@@ -385,8 +384,8 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
         MatcherAssert.assertThat(list.readFromFront(), Matchers.equalTo("1 a"));
         MatcherAssert.assertThat(list.readFromEnd(), Matchers.equalTo("2 b"));
-        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("1 a"));
         MatcherAssert.assertThat(list.removeByIndex(1), Matchers.equalTo("2 b"));
+        MatcherAssert.assertThat(list.removeByIndex(0), Matchers.equalTo("1 a"));
     }
 
 
