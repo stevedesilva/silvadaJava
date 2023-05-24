@@ -125,27 +125,8 @@ public class ClassicLinkedList<T> {
         }
     }
 
-    public static void main(String[] args) {
-
-        String[] words = {"{apf","hum_","dkoe","12f"};
-        for(String s:words)
-        {
-            if(s.matches("[a-z]*"))
-            {
-                System.out.println(s);
-            }
-        }
-
-
-//        String test = "this is a password:123 that needs obfuscating";
-////        String test = "password:123";
-//        Pattern p = Pattern.compile("password:[\\w]+");
-//        final Matcher matched = p.matcher(test);
-//
-////        final boolean matches = test.matches("password:[\\w]+");
-//        System.out.println("find : "+ matched.find());
-//        System.out.println("matches : "+ matched.matches());
-
+    public void reverseItems() {
+        throw new UnsupportedOperationException();
     }
 
     public void addListOfItems() {

@@ -313,4 +313,27 @@ class ClassicLinkedListTest {
         MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("b"));
     }
 
+    // reverse list
+    @Test
+    public void shouldReverseLinkedList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+
+        classicLinkedList.reverseItems();
+//        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenHasNoElementsInLinkedListDuringReverse() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+
+        classicLinkedList.reverseItems();
+
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+//            new ClassicLinkedList<>(node1).add(10, "z");
+        });
+    }
+
 }
