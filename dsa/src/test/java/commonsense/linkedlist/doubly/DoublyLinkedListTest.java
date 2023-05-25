@@ -510,7 +510,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("b");
         list.addAtEnd("c");
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            list.search( "d");
+            list.search("d");
         });
     }
 
@@ -531,7 +531,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("c");
 
         list.reverseItems();
-//        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+        MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("c,b,a"));
     }
 
     @Test
@@ -540,7 +540,7 @@ class DoublyLinkedListTest {
         list.reverseItems();
 
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-//            new ClassicLinkedList<>(node1).add(10, "z");
+            list.reverseItems();
         });
     }
 
