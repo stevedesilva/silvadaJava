@@ -23,6 +23,5 @@ public interface AllowedLinkedListMethod<T> {
     int size();
     Node<T> head();
     Node<T> tail();
-
     AllowedLinkedListMethod<T> reverseItems();
 }

@@ -146,39 +146,7 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
         throw new NoSuchElementException("index not found");
     }
 
-    /*
-    func (d *doublyLinkedList[T]) RemoveByIndex(index int) (T, error) {
-	var value T
-	if index >= d.size {
-		return value, errors.New("index not found")
-	}
 
-	if index == 0 {
-		value = d.head.data
-		d.head = d.head.next
-		d.size--
-		return value, nil
-	}
-
-	curr := d.head
-	count := 0
-	for count < index {
-		count++
-		curr = curr.next
-	}
-	if curr.next == nil {
-		value = curr.data
-		d.tail = curr.previous
-		curr.previous.next = nil
-	} else {
-		value = curr.data
-		curr.previous.next = curr.next
-		curr.next.previous = curr.previous
-	}
-	d.size--
-	return value, nil
-}
-     */
     @Override
     public T removeByIndex(int index) throws NoSuchElementException {
         if (index >= size) {
@@ -187,9 +155,6 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
         if (index == 0) {
             T data = head.data;
             head = head.next;
-//            if (head.previous != null) {
-//                head.previous = null;
-//            }
             size--;
             return data;
         }
@@ -204,9 +169,6 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
         if (current.next == null) {
             tail = current.previous;
             current.previous.next = null;
-//            if (tail.next != null) {
-//                tail.next = null;
-//            }
         } else {
             current.previous.next = current.next;
             current.next.previous = current.previous;
@@ -254,7 +216,7 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
         return tail;
     }
 
-    public AllowedLinkedListMethod<T> reverseItems(); {
-
+    public AllowedLinkedListMethod<T> reverseItems() {
+        return new DoublyLinkedList<T>();
     }
 }
