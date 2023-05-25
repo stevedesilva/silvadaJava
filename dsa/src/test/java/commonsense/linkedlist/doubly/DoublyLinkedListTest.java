@@ -1,5 +1,6 @@
 package commonsense.linkedlist.doubly;
 
+import commonsense.linkedlist.classic.ClassicLinkedList;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -520,6 +521,27 @@ class DoublyLinkedListTest {
         list.addAtEnd("b");
         list.addAtEnd("c");
         MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("a,b,c"));
+    }
+
+    @Test
+    public void shouldReverseLinkedList() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+        list.addAtEnd("c");
+
+        list.reverseItems();
+//        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenHasNoElementsInLinkedListDuringReverse() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.reverseItems();
+
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+//            new ClassicLinkedList<>(node1).add(10, "z");
+        });
     }
 
 }

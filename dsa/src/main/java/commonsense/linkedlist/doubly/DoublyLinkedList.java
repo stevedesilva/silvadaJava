@@ -253,4 +253,8 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
     public Node<T> tail() {
         return tail;
     }
+
+    public AllowedLinkedListMethod<T> reverseItems(); {
+
+    }
 }
