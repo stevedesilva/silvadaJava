@@ -117,6 +117,20 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
     }
 
     @Override
+    public String printItemsInReverse() {
+        StringBuilder sb = new StringBuilder();
+        Node<T> curr = tail;
+        while (curr != null) {
+            sb.append(curr.data);
+            curr = curr.previous;
+            if (curr != null) {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
+    }
+
+    @Override
     public T readByIndex(int index) throws NoSuchElementException {
         if (index >= size) {
             throw new NoSuchElementException("index not found");

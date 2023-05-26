@@ -13,6 +13,7 @@ public interface AllowedLinkedListMethod<T> {
     void deleteFromFront() throws NoSuchElementException;
     void deleteItems(Predicate<T> fn);
     String printItems();
+    String printItemsInReverse();
     T readByIndex(int index) throws NoSuchElementException;
     T readFromEnd() throws NoSuchElementException;
     T readFromFront() throws NoSuchElementException;

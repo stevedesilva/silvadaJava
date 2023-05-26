@@ -524,6 +524,15 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void printItemsInReverse() {
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
+        list.addAtEnd("a");
+        list.addAtEnd("b");
+        list.addAtEnd("c");
+        MatcherAssert.assertThat(list.printItemsInReverse(), Matchers.equalTo("c,b,a"));
+    }
+
+    @Test
     public void shouldReverseLinkedList() {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addAtEnd("a");
