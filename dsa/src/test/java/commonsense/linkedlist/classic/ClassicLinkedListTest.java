@@ -1,5 +1,6 @@
 package commonsense.linkedlist.classic;
 
+import commonsense.linkedlist.doubly.DoublyLinkedList;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -313,7 +314,24 @@ class ClassicLinkedListTest {
         MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("b"));
     }
 
-    // reverse list
+    @Test
+    void shouldPrintItems() {
+        ClassicLinkedList<String> list = new ClassicLinkedList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("a -> b -> c -> null"));
+    }
+
+    @Test
+    void shouldPrintItemsInReverse() {
+        ClassicLinkedList<String> list = new ClassicLinkedList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        MatcherAssert.assertThat(list.printItemsInReverse(), Matchers.equalTo("c -> b -> a -> null"));
+    }
+
     @Test
     public void shouldReverseLinkedList() {
         ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
@@ -324,6 +342,8 @@ class ClassicLinkedListTest {
         classicLinkedList.reverseItems();
 //        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
     }
+
+
 
     @Test
     public void shouldThrowExceptionWhenHasNoElementsInLinkedListDuringReverse() {

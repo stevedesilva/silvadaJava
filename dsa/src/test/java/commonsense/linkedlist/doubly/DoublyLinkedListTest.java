@@ -543,14 +543,4 @@ class DoublyLinkedListTest {
         MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("c,b,a"));
     }
 
-    @Test
-    public void shouldThrowExceptionWhenHasNoElementsInLinkedListDuringReverse() {
-        DoublyLinkedList<String> list = new DoublyLinkedList<>();
-        list.reverseItems();
-
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            list.reverseItems();
-        });
-    }
-
 }

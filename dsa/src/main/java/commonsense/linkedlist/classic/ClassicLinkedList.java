@@ -125,6 +125,35 @@ public class ClassicLinkedList<T> {
         }
     }
 
+    public String printItems() {
+        StringBuilder sb = new StringBuilder();
+        Node<T> currentNode = head;
+        while (currentNode != null) {
+            sb.append(currentNode.data);
+            sb.append(" -> ");
+            currentNode = currentNode.next;
+        }
+        sb.append("null");
+        return sb.toString();
+    }
+
+    public String printItemsInReverse() {
+        // if list is empty return empty string
+        if (head == null) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.insert(0, " -> null");
+        Node<T> currentNode = head;
+        while (currentNode != null) {
+            sb.insert(0, currentNode.data);
+            currentNode = currentNode.next;
+            if (currentNode != null){
+                sb.insert(0, " -> ");
+            }
+        }
+        return sb.toString();
+    }
     public void reverseItems() {
         throw new UnsupportedOperationException();
     }
