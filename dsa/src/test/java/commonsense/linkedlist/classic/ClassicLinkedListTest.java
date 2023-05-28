@@ -44,6 +44,17 @@ class ClassicLinkedListTest {
     }
 
     @Test
+    public void shouldReadLastItem() {
+        ClassicLinkedList<Integer> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add(0);
+        classicLinkedList.add(1);
+        classicLinkedList.add(2);
+        classicLinkedList.add(3);
+
+        MatcherAssert.assertThat(classicLinkedList.readLastItem(), Matchers.equalTo(3));
+    }
+
+    @Test
     public void shouldThrowExceptionWhenReadIndexNotFoundInLinkedList() {
         Node<Integer> node4 = new Node<>(4);
         Node<Integer> node3 = new Node<>(3);

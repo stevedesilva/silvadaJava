@@ -162,4 +162,15 @@ public class ClassicLinkedList<T> {
         throw new UnsupportedOperationException();
     }
 
+    public T readLastItem() {
+        if (head == null) {
+            throw new NoSuchElementException();
+        }
+        Node<T> current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        return current.data;
+    }
+
 }
