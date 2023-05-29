@@ -350,17 +350,4 @@ class ClassicLinkedListTest {
         MatcherAssert.assertThat(classicLinkedList.read(4), Matchers.equalTo("a"));
     }
 
-
-
-    @Test
-    public void shouldThrowExceptionWhenHasNoElementsInLinkedListDuringReverse() {
-        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
-
-        classicLinkedList.reverseItems();
-
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-//            new ClassicLinkedList<>(node1).add(10, "z");
-        });
-    }
-
 }

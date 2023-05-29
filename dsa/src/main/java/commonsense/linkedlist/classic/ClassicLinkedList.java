@@ -158,10 +158,6 @@ public class ClassicLinkedList<T> {
         throw new UnsupportedOperationException();
     }
 
-    public void addListOfItems() {
-        throw new UnsupportedOperationException();
-    }
-
     public T readLastItem() {
         if (head == null) {
             throw new NoSuchElementException();
