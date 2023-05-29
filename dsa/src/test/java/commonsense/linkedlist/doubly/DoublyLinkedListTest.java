@@ -1,6 +1,5 @@
 package commonsense.linkedlist.doubly;
 
-import commonsense.linkedlist.classic.ClassicLinkedList;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -298,9 +297,7 @@ class DoublyLinkedListTest {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addAtEnd("a");
         list.addAtEnd("b");
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            list.deleteByIndex(2);
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> list.deleteByIndex(2));
         MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
 
     }
@@ -509,9 +506,7 @@ class DoublyLinkedListTest {
         list.addAtEnd("a");
         list.addAtEnd("b");
         list.addAtEnd("c");
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            list.search("d");
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> list.search("d"));
     }
 
     @Test
@@ -533,14 +528,21 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    public void shouldReverseLinkedList() {
+    public void reverseLinkedList() {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addAtEnd("a");
         list.addAtEnd("b");
         list.addAtEnd("c");
+        list.addAtEnd("d");
+        list.addAtEnd("e");
 
         list.reverseItems();
-        MatcherAssert.assertThat(list.printItems(), Matchers.equalTo("c,b,a"));
+        MatcherAssert.assertThat(list.head().data, Matchers.equalTo("e"));
+        MatcherAssert.assertThat(list.readByIndex(0), Matchers.equalTo("e"));
+        MatcherAssert.assertThat(list.readByIndex(1), Matchers.equalTo("d"));
+        MatcherAssert.assertThat(list.readByIndex(2), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(list.readByIndex(3), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(list.readByIndex(4), Matchers.equalTo("a"));
     }
 
 }

@@ -1,6 +1,5 @@
 package commonsense.linkedlist.classic;
 
-import commonsense.linkedlist.doubly.DoublyLinkedList;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -64,9 +63,7 @@ class ClassicLinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new ClassicLinkedList<>(node1).read(10);
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> new ClassicLinkedList<>(node1).read(10));
 
     }
 
@@ -93,9 +90,7 @@ class ClassicLinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new ClassicLinkedList<>(node1).search("e");
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> new ClassicLinkedList<>(node1).search("e"));
     }
 
     @Test
@@ -159,9 +154,7 @@ class ClassicLinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new ClassicLinkedList<>(node1).add(10, "z");
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> new ClassicLinkedList<>(node1).add(10, "z"));
     }
 
     // delete
@@ -210,9 +203,7 @@ class ClassicLinkedListTest {
         ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>(node1);
         classicLinkedList.delete(3);
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            classicLinkedList.read(3);
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> classicLinkedList.read(3));
         final String firstValue = classicLinkedList.read(2);
         MatcherAssert.assertThat(firstValue, Matchers.equalTo("c"));
     }
@@ -227,9 +218,7 @@ class ClassicLinkedListTest {
         node2.next = node3;
         node3.next = node4;
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            new ClassicLinkedList<>(node1).delete(10);
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> new ClassicLinkedList<>(node1).delete(10));
     }
 
     @Test
@@ -349,9 +338,16 @@ class ClassicLinkedListTest {
         classicLinkedList.add("a");
         classicLinkedList.add("b");
         classicLinkedList.add("c");
+        classicLinkedList.add("d");
+        classicLinkedList.add("e");
 
         classicLinkedList.reverseItems();
-//        MatcherAssert.assertThat(firstValue, Matchers.equalTo(newValue));
+        MatcherAssert.assertThat(classicLinkedList.getHead().data, Matchers.equalTo("e"));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("e"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(4), Matchers.equalTo("a"));
     }
 
 
