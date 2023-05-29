@@ -230,7 +230,16 @@ public class DoublyLinkedList<T> implements AllowedLinkedListMethod<T> {
         return tail;
     }
 
-    public AllowedLinkedListMethod<T> reverseItems() {
-        return new DoublyLinkedList<T>();
+    public void reverseItems() {
+        Node<T> start = head;
+        Node<T> end = tail;
+        while (start != end) {
+            T s = start.data;
+            start.data = end.data;
+            end.data = s;
+            start = start.next;
+            end = end.previous;
+        }
+
     }
 }

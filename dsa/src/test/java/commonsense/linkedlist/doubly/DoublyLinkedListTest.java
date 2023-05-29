@@ -528,7 +528,7 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    public void reverseLinkedList() {
+    public void reverseItems() {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addAtEnd("a");
         list.addAtEnd("b");

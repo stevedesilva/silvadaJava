@@ -167,7 +167,6 @@ public class ClassicLinkedList<T> {
         }
         head = previousNode;
     }
-    // a -> -b -> c -> d -> e -> null
     public T readLastItem() {
         if (head == null) {
             throw new NoSuchElementException();
