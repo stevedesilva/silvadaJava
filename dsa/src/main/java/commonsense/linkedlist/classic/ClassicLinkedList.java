@@ -155,9 +155,19 @@ public class ClassicLinkedList<T> {
         return sb.toString();
     }
     public void reverseItems() {
-        throw new UnsupportedOperationException();
-    }
+        Node<T> previousNode = null;
+        Node<T> currentNode = head;
+        Node<T> nextNode = null;
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
 
+        }
+        head = previousNode;
+    }
+    // a -> -b -> c -> d -> e -> null
     public T readLastItem() {
         if (head == null) {
             throw new NoSuchElementException();
