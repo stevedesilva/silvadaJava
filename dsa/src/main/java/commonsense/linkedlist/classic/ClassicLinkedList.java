@@ -33,6 +33,21 @@ public class ClassicLinkedList<T> {
         return currentNode.data;
     }
 
+    public Node<T> getNode(int index) throws NoSuchElementException {
+        Node<T> currentNode = head;
+        int currentIndex = 0;
+
+        while (currentIndex < index) {
+            currentNode = currentNode.next;
+            currentIndex++;
+            if (currentNode == null) {
+                // end of list
+                throw new NoSuchElementException();
+            }
+        }
+        return currentNode;
+    }
+
     public int search(T value) throws NoSuchElementException {
         Node<T> currentNode = head;
         int currentIndex = 0;
@@ -178,4 +193,7 @@ public class ClassicLinkedList<T> {
         return current.data;
     }
 
+    public void delete(Node<T> node) {
+
+    }
 }

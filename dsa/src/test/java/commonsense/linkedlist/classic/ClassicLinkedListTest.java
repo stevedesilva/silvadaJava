@@ -350,4 +350,86 @@ class ClassicLinkedListTest {
         MatcherAssert.assertThat(classicLinkedList.read(4), Matchers.equalTo("a"));
     }
 
+    @Test
+    public void shouldGetNodeFromLinkedList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+        classicLinkedList.add("d");
+        classicLinkedList.add("e");
+
+        MatcherAssert.assertThat(classicLinkedList.getNode(0).data, Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.getNode(1).data, Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.getNode(2).data, Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.getNode(3).data, Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.getNode(4).data, Matchers.equalTo("e"));
+    }
+
+    @Test
+    public void shouldDeleteStartNodeFromLinkedList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+        classicLinkedList.add("d");
+        classicLinkedList.add("e");
+        final Node<String> start = classicLinkedList.getNode(0);
+        classicLinkedList.delete(start);
+
+
+        MatcherAssert.assertThat(classicLinkedList.getHead().data, Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.data, Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.next.data, Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.next.next.data, Matchers.equalTo("e"));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo("e"));
+    }
+
+    @Test
+    public void shouldDeleteMidNodeFromLinkedList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+        classicLinkedList.add("d");
+        classicLinkedList.add("e");
+        final Node<String> mid = classicLinkedList.getNode(1);
+        classicLinkedList.delete(mid);
+
+
+        MatcherAssert.assertThat(classicLinkedList.getHead().data, Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.data, Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.next.data, Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.next.next.data, Matchers.equalTo("e"));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo("e"));
+    }
+
+    @Test
+    public void shouldDeleteEndNodeFromLinkedList() {
+        ClassicLinkedList<String> classicLinkedList = new ClassicLinkedList<>();
+        classicLinkedList.add("a");
+        classicLinkedList.add("b");
+        classicLinkedList.add("c");
+        classicLinkedList.add("d");
+        classicLinkedList.add("e");
+        final Node<String> end = classicLinkedList.getNode(4);
+        classicLinkedList.delete(end);
+
+
+        MatcherAssert.assertThat(classicLinkedList.getHead().data, Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.read(0), Matchers.equalTo("a"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.data, Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.read(1), Matchers.equalTo("b"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.next.data, Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.read(2), Matchers.equalTo("c"));
+        MatcherAssert.assertThat(classicLinkedList.getHead().next.next.next.data, Matchers.equalTo("d"));
+        MatcherAssert.assertThat(classicLinkedList.read(3), Matchers.equalTo("d"));
+    }
+
 }
