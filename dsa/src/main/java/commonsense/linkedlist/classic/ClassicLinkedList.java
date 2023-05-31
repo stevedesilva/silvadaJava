@@ -194,6 +194,17 @@ public class ClassicLinkedList<T> {
     }
 
     public void delete(Node<T> node) {
+        if (head == null) {
+            return;
+        }
+        Node<T> previous = null;
+        Node<T> current = head;
+        while (current != node) {
+            previous = current;
+            current = current.next;
+        }
+        previous.next = current.next;
+        current.next = null;
 
     }
 }
