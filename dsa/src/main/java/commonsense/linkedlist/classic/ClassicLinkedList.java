@@ -197,6 +197,10 @@ public class ClassicLinkedList<T> {
         if (head == null) {
             return;
         }
+        if (head == node) {
+            head = head.next;
+            return;
+        }
         Node<T> previous = null;
         Node<T> current = head;
         while (current != node) {
@@ -205,6 +209,6 @@ public class ClassicLinkedList<T> {
         }
         previous.next = current.next;
         current.next = null;
-
     }
+
 }
