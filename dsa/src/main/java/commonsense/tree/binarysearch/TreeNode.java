@@ -13,4 +13,11 @@ public class TreeNode<T> {
         this.left = left;
         this.right = right;
     }
+
+    public TreeNode<T> Search(T value, TreeNode<T> node) {
+        if (node.value == value) {
+            return node;
+        }
+        return null;
+    }
 }
