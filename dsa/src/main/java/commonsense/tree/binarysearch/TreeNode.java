@@ -20,7 +20,7 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
     }
 
     public TreeNode<T> Search(T value, TreeNode<T> node) {
-        if (node.value == value) {
+        if (node == null|| node.value == value) {
             return node;
         } else if (compare(value, node.value) < 1) {
             return Search(value, node.left);
