@@ -29,6 +29,21 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         }
     }
 
+    public TreeNode<T> Insert(T value, TreeNode<T> node) {
+
+
+        if (node == null|| node.value == value) {
+            if (node == null) {
+                node = new TreeNode<>(value);
+            }
+            return node;
+        } else if (compare(value, node.value) < 1) {
+            return Search(value, node.left);
+        } else {
+            return Search(value, node.right);
+        }
+    }
+
     @Override
     public int compare(T o1, T o2) {
         return o1.compareTo(o2);

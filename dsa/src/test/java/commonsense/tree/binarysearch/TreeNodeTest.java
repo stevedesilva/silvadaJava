@@ -30,4 +30,17 @@ class TreeNodeTest {
         MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
     }
 
+    @Test
+    public void shouldInsertTreeNode() {
+        TreeNode<Integer> left = new TreeNode<>(3, new TreeNode<Integer>(2), new TreeNode<Integer>(4));
+        TreeNode<Integer> right = new TreeNode<>(6,null, null);
+        TreeNode<Integer> root = new TreeNode<>(5,left,right);
+        MatcherAssert.assertThat(2, Matchers.equalTo(root.Search(2, root).value));
+        MatcherAssert.assertThat(3, Matchers.equalTo(root.Search(3, root).value));
+        MatcherAssert.assertThat(4, Matchers.equalTo(root.Search(4, root).value));
+        MatcherAssert.assertThat(5, Matchers.equalTo(root.Search(5, root).value));
+        MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
+    }
+
+
 }
