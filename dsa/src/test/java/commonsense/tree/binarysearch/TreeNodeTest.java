@@ -55,6 +55,4 @@ class TreeNodeTest {
         MatcherAssert.assertThat(7, Matchers.equalTo(root.Search(7, root).value));
     }
 
-
-
 }

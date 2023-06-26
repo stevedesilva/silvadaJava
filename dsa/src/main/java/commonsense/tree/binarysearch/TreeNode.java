@@ -55,13 +55,17 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         } else if (compare(value, node.value) < 1) {
             if (node.left == null) {
                 node.left = new TreeNode<>(value);
+                return node.left;
+            } else {
+                return Insert(value, node.left);
             }
-            return Insert(value, node.left);
         } else {
             if (node.right == null) {
                 node.right = new TreeNode<>(value);
+                return node.right;
+            } else {
+                return Insert(value, node.right);
             }
-            return Insert(value, node.right);
         }
     }
 
