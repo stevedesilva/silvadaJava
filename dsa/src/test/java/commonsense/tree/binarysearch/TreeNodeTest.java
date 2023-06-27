@@ -55,4 +55,32 @@ class TreeNodeTest {
         MatcherAssert.assertThat(7, Matchers.equalTo(root.Search(7, root).value));
     }
 
+    @Test
+    public void shouldInsertTreeNodesInEmptyTreeInOrder() {
+        //      1
+        //     / \
+        //    2   null
+        //   /
+        //  3
+        // /
+        //..
+        //7
+        TreeNode<Integer> root = new TreeNode<>();
+        root.Insert(1, root);
+        root.Insert(2, root);
+        root.Insert(3, root);
+        root.Insert(4, root);
+        root.Insert(5, root);
+        root.Insert(6, root);
+        root.Insert(7, root);
+
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(1, root).value));
+        MatcherAssert.assertThat(2, Matchers.equalTo(root.Search(2, root).value));
+        MatcherAssert.assertThat(3, Matchers.equalTo(root.Search(3, root).value));
+        MatcherAssert.assertThat(4, Matchers.equalTo(root.Search(4, root).value));
+        MatcherAssert.assertThat(5, Matchers.equalTo(root.Search(5, root).value));
+        MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
+        MatcherAssert.assertThat(7, Matchers.equalTo(root.Search(7, root).value));
+    }
+
 }
