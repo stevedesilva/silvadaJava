@@ -57,14 +57,11 @@ class TreeNodeTest {
 
     @Test
     public void shouldInsertTreeNodesInEmptyTreeInOrder() {
-        //      1
+        //      4
         //     / \
-        //    2   null
-        //   /
-        //  3
-        // /
-        //..
-        //7
+        //    3   5
+        //   / \  / \
+        //  1  2  6  7
         TreeNode<Integer> root = new TreeNode<>();
         root.Insert(1, root);
         root.Insert(2, root);
