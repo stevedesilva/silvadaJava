@@ -80,4 +80,113 @@ class TreeNodeTest {
         MatcherAssert.assertThat(7, Matchers.equalTo(root.Search(7, root).value));
     }
 
+
+    @Test
+    public void shouldDeleteNodeWithNoChildren() {
+        //      4
+        //     / \
+        //    3   5
+        //   / \  / \
+        //  1  2  6  7
+        TreeNode<Integer> root = new TreeNode<>();
+        root.Insert(4, root);
+        root.Insert(5, root);
+        root.Insert(3, root);
+        root.Insert(6, root);
+        root.Insert(1, root);
+        root.Insert(2, root);
+        root.Insert(7, root);
+
+        final TreeNode<Integer> delete = root.Delete(1, root);
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(1, root).value));
+
+    }
+
+    @Test
+    public void shouldDeleteNodeWithOneChild() {
+        //         50
+        //      / 	    \
+        //     /         \
+        //   25          75
+        //   / \        /  \
+        // 10   33      56    89
+        //  \    /  \    / \    / \
+        //  11  30  40  52 61  82  95
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.Insert(50,root);
+        root.Insert(25,root);
+        root.Insert(75,root);
+        root.Insert(11,root);
+        root.Insert(33,root);
+        root.Insert(56,root);
+        root.Insert(89,root);
+        root.Insert(11,root);
+        root.Insert(30,root);
+        root.Insert(40,root);
+        root.Insert(52,root);
+        root.Insert(61,root);
+        root.Insert(95,root);
+
+        final TreeNode<Integer> delete = root.Delete(10, root);
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(10, root).value));
+    }
+
+    @Test
+    public void shouldDeleteNodeWithTwoChildren() {
+        //          50
+        //     /         \
+        //   25          75
+        //   / \        /  \
+        // 11  33      56    89
+        //    /  \    / \    / \
+        //   30  40  52 61  82  95
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.Insert(50,root);
+        root.Insert(25,root);
+        root.Insert(75,root);
+        root.Insert(11,root);
+        root.Insert(33,root);
+        root.Insert(56,root);
+        root.Insert(89,root);
+        root.Insert(30,root);
+        root.Insert(40,root);
+        root.Insert(52,root);
+        root.Insert(61,root);
+        root.Insert(95,root);
+
+        final TreeNode<Integer> delete = root.Delete(56, root);
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(56, root).value));
+    }
+    @Test
+    public void shouldDeleteNodeWhereSuccessorNodeHasRightChild() {
+        //          50
+        //     /        \
+        //   25         75
+        //   / \        / \
+        // 11  33      61  89
+        //    /  \    /   / \
+        //   30  40  52  82  95
+        //            \
+        //            55
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.Insert(50,root);
+        root.Insert(25,root);
+        root.Insert(75,root);
+        root.Insert(11,root);
+        root.Insert(33,root);
+        root.Insert(61,root);
+        root.Insert(89,root);
+        root.Insert(30,root);
+        root.Insert(40,root);
+        root.Insert(52,root);
+        root.Insert(82,root);
+        root.Insert(95,root);
+
+        final TreeNode<Integer> delete = root.Delete(50, root);
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(50, root).value));
+    }
+
 }

@@ -69,6 +69,11 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         }
     }
 
+    public TreeNode<T> Delete(T value, TreeNode<T> node) {
+        return null;
+    }
+
+
     @Override
     public int compare(T o1, T o2) {
         return o1.compareTo(o2);
