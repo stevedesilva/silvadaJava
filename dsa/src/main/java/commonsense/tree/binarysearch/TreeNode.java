@@ -70,6 +70,10 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
     }
 
     public TreeNode<T> Delete(T value, TreeNode<T> node) {
+        // if node to delete has no children, just delete it
+        // if node to delete has one child, replace it with its child
+        // if node to delete has two children, replace it with its successor
+        // successor is the smallest node in the right subtree
         return null;
     }
 
