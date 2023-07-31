@@ -76,10 +76,10 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
             // base case
             return null;
 
-        } else if (node.value.compareTo(value) < 0) {
+        } else if (node.value.compareTo(value) > 0) {
             node.left = Delete(value, node.left);
             return node;
-        } else if (node.value.compareTo(value) > 0) {
+        } else if (node.value.compareTo(value) < 0) {
             node.right = Delete(value, node.right);
         } else if (node.value.equals(value)) {
             // if node to delete has no children, just delete it
@@ -91,7 +91,8 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
             } else {
                 // if node to delete has two children, replace it with its successor.
                 // successor is the smallest node in the right subtree
-                return lift(node, value, node.right);
+                node.right = lift(node, value, node.right);
+                return node;
             }
         }
         return node;
@@ -111,10 +112,13 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
     private TreeNode<T> lift(TreeNode<T> nodeToDelete, T value, TreeNode<T> currentNode) {
         // nodeToDelete gets successor node value
         // remove successor node
-        if (currentNode == null) {
-
+        if (currentNode.left != null) {
+            currentNode.left = lift(nodeToDelete,value,currentNode.left);
+            return currentNode;
         }
-        return null;
+
+        nodeToDelete.value = currentNode.value;
+        return currentNode.right;
     }
 
 

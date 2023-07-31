@@ -94,7 +94,7 @@ class TreeNodeTest {
         //     / \
         //    3   5
         //   / \  / \
-        //  1  2  6  7
+        //  1  2     6
         TreeNode<Integer> root = new TreeNode<>();
         root.Insert(4, root);
         root.Insert(5, root);
@@ -102,10 +102,9 @@ class TreeNodeTest {
         root.Insert(6, root);
         root.Insert(1, root);
         root.Insert(2, root);
-        root.Insert(7, root);
 
-        final TreeNode<Integer> delete = root.Delete(1, root);
-        MatcherAssert.assertThat(Matchers.equalTo(root.Search(1, root).value),Matchers.nullValue());
+        root.Delete(1, root);
+        MatcherAssert.assertThat(root.Search(1, root),Matchers.nullValue());
 
     }
 
@@ -136,8 +135,8 @@ class TreeNodeTest {
         root.Insert(95,root);
 
         root.Delete(10, root);
+        MatcherAssert.assertThat(root.Search(10, root), Matchers.nullValue());
         MatcherAssert.assertThat(root.Search(11, root).value, Matchers.equalTo(11));
-        MatcherAssert.assertThat(root.Search(10, root).value, Matchers.nullValue());
     }
 
     @Test
@@ -164,8 +163,11 @@ class TreeNodeTest {
         root.Insert(61,root);
         root.Insert(95,root);
 
-        final TreeNode<Integer> delete = root.Delete(56, root);
-        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(56, root).value));
+        root.Delete(56, root);
+        MatcherAssert.assertThat(root.Search(56, root), Matchers.nullValue());
+
+        MatcherAssert.assertThat(52, Matchers.equalTo(root.Search(52, root).value));
+        MatcherAssert.assertThat(61, Matchers.equalTo(root.Search(61, root).value));
     }
     @Test
     public void shouldDeleteNodeWhereSuccessorNodeHasRightChild() {
@@ -191,10 +193,14 @@ class TreeNodeTest {
         root.Insert(40,root);
         root.Insert(52,root);
         root.Insert(82,root);
-        root.Insert(95,root);
+        root.Insert(55,root);
 
-        final TreeNode<Integer> delete = root.Delete(50, root);
-        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(50, root).value));
+        root.Delete(50, root);
+        MatcherAssert.assertThat(root.Search(50, root), Matchers.nullValue());
+
+        MatcherAssert.assertThat(52, Matchers.equalTo(root.Search(52, root).value));
+        MatcherAssert.assertThat(55, Matchers.equalTo(root.Search(55, root).value));
+
     }
 
 }
