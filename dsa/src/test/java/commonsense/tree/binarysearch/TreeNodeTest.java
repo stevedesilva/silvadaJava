@@ -193,6 +193,7 @@ class TreeNodeTest {
         root.Insert(40,root);
         root.Insert(52,root);
         root.Insert(82,root);
+        root.Insert(95,root);
         root.Insert(55,root);
 
         root.Delete(50, root);
