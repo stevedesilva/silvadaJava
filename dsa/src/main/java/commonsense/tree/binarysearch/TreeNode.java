@@ -23,7 +23,7 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
     }
 
     public TreeNode<T> Search(T value, TreeNode<T> node) {
-        if (node == null|| node.value == value) {
+        if (node == null || node.value == value) {
             return node;
         } else if (compare(value, node.value) < 1) {
             return Search(value, node.left);
@@ -31,20 +31,20 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
             return Search(value, node.right);
         }
     }
-/*
-        4
-       / \
-      2   5
-     / \
-    1   3
-       
- */
+
+    /*
+            4
+           / \
+          2   5
+         / \
+        1   3
+
+     */
     public TreeNode<T> Insert(T value, TreeNode<T> node) {
         // base case
         // if node == null or node.left
-
         if (node == null || node.value == null || node.value == value) {
-            if (node == null ) {
+            if (node == null) {
                 // if empty, create new node
                 node = new TreeNode<>(value);
             } else if (node.value == null) {
@@ -52,7 +52,8 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
                 node.value = value;
             }
             return node;
-        } else if (compare(value, node.value) < 1) {
+
+        } else if (compare(value, node.value) < 0) {
             if (node.left == null) {
                 node.left = new TreeNode<>(value);
                 return node.left;
@@ -70,10 +71,49 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
     }
 
     public TreeNode<T> Delete(T value, TreeNode<T> node) {
-        // if node to delete has no children, just delete it
-        // if node to delete has one child, replace it with its child
-        // if node to delete has two children, replace it with its successor
-        // successor is the smallest node in the right subtree
+
+        if (value == null || node == null) {
+            // base case
+            return null;
+
+        } else if (node.value.compareTo(value) < 0) {
+            node.left = Delete(value, node.left);
+            return node;
+        } else if (node.value.compareTo(value) > 0) {
+            node.right = Delete(value, node.right);
+        } else if (node.value.equals(value)) {
+            // if node to delete has no children, just delete it
+            // if node to delete has one child, replace it with its child
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            } else {
+                // if node to delete has two children, replace it with its successor.
+                // successor is the smallest node in the right subtree
+                return lift(node, value, node.right);
+            }
+        }
+        return node;
+    }
+    //         50
+    //       /    \
+    //      /      \
+    //     /        \
+    //   25         75
+    //   / \        / \
+    // 11  33      61  89
+    //    /  \    /   / \
+    //   30  40  52  82  95
+    //            \
+    //            55
+
+    private TreeNode<T> lift(TreeNode<T> nodeToDelete, T value, TreeNode<T> currentNode) {
+        // nodeToDelete gets successor node value
+        // remove successor node
+        if (currentNode == null) {
+
+        }
         return null;
     }
 

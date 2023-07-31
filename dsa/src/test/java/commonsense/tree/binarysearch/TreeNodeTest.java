@@ -29,6 +29,13 @@ class TreeNodeTest {
         MatcherAssert.assertThat(5, Matchers.equalTo(root.Search(5, root).value));
         MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
     }
+    @Test
+    public void shouldSearchTreeNodeAndNotFindValue() {
+        TreeNode<Integer> left = new TreeNode<>(3, new TreeNode<Integer>(2), new TreeNode<Integer>(4));
+        TreeNode<Integer> right = new TreeNode<>(6,null, null);
+        TreeNode<Integer> root = new TreeNode<>(5,left,right);
+        MatcherAssert.assertThat(root.Search(11, root), is(nullValue()));
+    }
 
     @Test
     public void shouldInsertTreeNodesInEmptyTree() {
@@ -98,7 +105,7 @@ class TreeNodeTest {
         root.Insert(7, root);
 
         final TreeNode<Integer> delete = root.Delete(1, root);
-        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(1, root).value));
+        MatcherAssert.assertThat(Matchers.equalTo(root.Search(1, root).value),Matchers.nullValue());
 
     }
 
@@ -128,8 +135,9 @@ class TreeNodeTest {
         root.Insert(61,root);
         root.Insert(95,root);
 
-        final TreeNode<Integer> delete = root.Delete(10, root);
-        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(10, root).value));
+        root.Delete(10, root);
+        MatcherAssert.assertThat(root.Search(11, root).value, Matchers.equalTo(11));
+        MatcherAssert.assertThat(root.Search(10, root).value, Matchers.nullValue());
     }
 
     @Test
