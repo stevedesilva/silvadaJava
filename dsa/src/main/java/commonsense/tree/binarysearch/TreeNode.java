@@ -127,5 +127,22 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         return o1.compareTo(o2);
     }
 
+    public void Print(TreeNode<T> node) {
+        if (node == null) {
+            return;
+        }
+        if (node.left != null) {
+            Print(node.left);
+        }
+        System.out.println(node.value);
+        if (node.right != null) {
+            Print(node.right);
+        }
+    }
+
+    // Print tree in orderNode
+
+
+
 
 }

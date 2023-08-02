@@ -204,4 +204,34 @@ class TreeNodeTest {
 
     }
 
+    @Test
+    public void shouldPrintTreeNodes() {
+        //          50
+        //     /        \
+        //   25         75
+        //   / \        / \
+        // 11  33      61  89
+        //    /  \    /   / \
+        //   30  40  52  82  95
+        //            \
+        //            55
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.Insert(50,root);
+        root.Insert(25,root);
+        root.Insert(75,root);
+        root.Insert(11,root);
+        root.Insert(33,root);
+        root.Insert(61,root);
+        root.Insert(89,root);
+        root.Insert(30,root);
+        root.Insert(40,root);
+        root.Insert(52,root);
+        root.Insert(82,root);
+        root.Insert(95,root);
+        root.Insert(55,root);
+
+        root.Print(root);
+
+    }
 }
