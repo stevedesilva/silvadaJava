@@ -1,7 +1,5 @@
 package commonsense.tree.binarysearch;
 
-import org.hamcrest.Matchers;
-
 import java.util.Comparator;
 
 public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
@@ -22,13 +20,13 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         this.right = right;
     }
 
-    public TreeNode<T> Search(T value, TreeNode<T> node) {
+    public TreeNode<T> search(T value, TreeNode<T> node) {
         if (node == null || node.value == value) {
             return node;
         } else if (compare(value, node.value) < 1) {
-            return Search(value, node.left);
+            return search(value, node.left);
         } else {
-            return Search(value, node.right);
+            return search(value, node.right);
         }
     }
 
@@ -40,7 +38,7 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         1   3
 
      */
-    public TreeNode<T> Insert(T value, TreeNode<T> node) {
+    public TreeNode<T> insert(T value, TreeNode<T> node) {
         // base case
         // if node == null or node.left
         if (node == null || node.value == null || node.value == value) {
@@ -58,29 +56,29 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
                 node.left = new TreeNode<>(value);
                 return node.left;
             } else {
-                return Insert(value, node.left);
+                return insert(value, node.left);
             }
         } else {
             if (node.right == null) {
                 node.right = new TreeNode<>(value);
                 return node.right;
             } else {
-                return Insert(value, node.right);
+                return insert(value, node.right);
             }
         }
     }
 
-    public TreeNode<T> Delete(T value, TreeNode<T> node) {
+    public TreeNode<T> delete(T value, TreeNode<T> node) {
 
         if (value == null || node == null) {
             // base case
             return null;
 
         } else if (node.value.compareTo(value) > 0) {
-            node.left = Delete(value, node.left);
+            node.left = delete(value, node.left);
             return node;
         } else if (node.value.compareTo(value) < 0) {
-            node.right = Delete(value, node.right);
+            node.right = delete(value, node.right);
         } else if (node.value.equals(value)) {
             // if node to delete has no children, just delete it
             // if node to delete has one child, replace it with its child
@@ -127,20 +125,30 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         return o1.compareTo(o2);
     }
 
-    public void Print(TreeNode<T> node) {
+    public void PrintInOrder(TreeNode<T> node) {
         if (node == null) {
             return;
         }
         if (node.left != null) {
-            Print(node.left);
+            PrintInOrder(node.left);
         }
         System.out.println(node.value);
         if (node.right != null) {
-            Print(node.right);
+            PrintInOrder(node.right);
         }
     }
 
-    // Print tree in orderNode
+    public void printPreOrder(TreeNode<T> node) {
+
+    }
+
+    public void printPostOrder(TreeNode<T> node) {
+
+    }
+
+    public T findLargestItem(TreeNode<T> root) {
+        return null;
+    }
 
 
 

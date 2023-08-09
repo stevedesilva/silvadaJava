@@ -26,11 +26,11 @@ class TreeNodeTest {
         TreeNode<Integer> left = new TreeNode<>(3, new TreeNode<Integer>(2), new TreeNode<Integer>(4));
         TreeNode<Integer> right = new TreeNode<>(6, null, null);
         TreeNode<Integer> root = new TreeNode<>(5, left, right);
-        MatcherAssert.assertThat(2, Matchers.equalTo(root.Search(2, root).value));
-        MatcherAssert.assertThat(3, Matchers.equalTo(root.Search(3, root).value));
-        MatcherAssert.assertThat(4, Matchers.equalTo(root.Search(4, root).value));
-        MatcherAssert.assertThat(5, Matchers.equalTo(root.Search(5, root).value));
-        MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
+        MatcherAssert.assertThat(2, Matchers.equalTo(root.search(2, root).value));
+        MatcherAssert.assertThat(3, Matchers.equalTo(root.search(3, root).value));
+        MatcherAssert.assertThat(4, Matchers.equalTo(root.search(4, root).value));
+        MatcherAssert.assertThat(5, Matchers.equalTo(root.search(5, root).value));
+        MatcherAssert.assertThat(6, Matchers.equalTo(root.search(6, root).value));
     }
 
     @Test
@@ -38,7 +38,7 @@ class TreeNodeTest {
         TreeNode<Integer> left = new TreeNode<>(3, new TreeNode<Integer>(2), new TreeNode<Integer>(4));
         TreeNode<Integer> right = new TreeNode<>(6, null, null);
         TreeNode<Integer> root = new TreeNode<>(5, left, right);
-        MatcherAssert.assertThat(root.Search(11, root), is(nullValue()));
+        MatcherAssert.assertThat(root.search(11, root), is(nullValue()));
     }
 
     @Test
@@ -49,21 +49,21 @@ class TreeNodeTest {
         //   / \  / \
         //  1  2  6  7
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(4, root);
-        root.Insert(5, root);
-        root.Insert(3, root);
-        root.Insert(6, root);
-        root.Insert(1, root);
-        root.Insert(2, root);
-        root.Insert(7, root);
+        root.insert(4, root);
+        root.insert(5, root);
+        root.insert(3, root);
+        root.insert(6, root);
+        root.insert(1, root);
+        root.insert(2, root);
+        root.insert(7, root);
 
-        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(1, root).value));
-        MatcherAssert.assertThat(2, Matchers.equalTo(root.Search(2, root).value));
-        MatcherAssert.assertThat(3, Matchers.equalTo(root.Search(3, root).value));
-        MatcherAssert.assertThat(4, Matchers.equalTo(root.Search(4, root).value));
-        MatcherAssert.assertThat(5, Matchers.equalTo(root.Search(5, root).value));
-        MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
-        MatcherAssert.assertThat(7, Matchers.equalTo(root.Search(7, root).value));
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.search(1, root).value));
+        MatcherAssert.assertThat(2, Matchers.equalTo(root.search(2, root).value));
+        MatcherAssert.assertThat(3, Matchers.equalTo(root.search(3, root).value));
+        MatcherAssert.assertThat(4, Matchers.equalTo(root.search(4, root).value));
+        MatcherAssert.assertThat(5, Matchers.equalTo(root.search(5, root).value));
+        MatcherAssert.assertThat(6, Matchers.equalTo(root.search(6, root).value));
+        MatcherAssert.assertThat(7, Matchers.equalTo(root.search(7, root).value));
     }
 
     @Test
@@ -74,21 +74,21 @@ class TreeNodeTest {
         //   / \  / \
         //  1  2  6  7
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(1, root);
-        root.Insert(2, root);
-        root.Insert(3, root);
-        root.Insert(4, root);
-        root.Insert(5, root);
-        root.Insert(6, root);
-        root.Insert(7, root);
+        root.insert(1, root);
+        root.insert(2, root);
+        root.insert(3, root);
+        root.insert(4, root);
+        root.insert(5, root);
+        root.insert(6, root);
+        root.insert(7, root);
 
-        MatcherAssert.assertThat(1, Matchers.equalTo(root.Search(1, root).value));
-        MatcherAssert.assertThat(2, Matchers.equalTo(root.Search(2, root).value));
-        MatcherAssert.assertThat(3, Matchers.equalTo(root.Search(3, root).value));
-        MatcherAssert.assertThat(4, Matchers.equalTo(root.Search(4, root).value));
-        MatcherAssert.assertThat(5, Matchers.equalTo(root.Search(5, root).value));
-        MatcherAssert.assertThat(6, Matchers.equalTo(root.Search(6, root).value));
-        MatcherAssert.assertThat(7, Matchers.equalTo(root.Search(7, root).value));
+        MatcherAssert.assertThat(1, Matchers.equalTo(root.search(1, root).value));
+        MatcherAssert.assertThat(2, Matchers.equalTo(root.search(2, root).value));
+        MatcherAssert.assertThat(3, Matchers.equalTo(root.search(3, root).value));
+        MatcherAssert.assertThat(4, Matchers.equalTo(root.search(4, root).value));
+        MatcherAssert.assertThat(5, Matchers.equalTo(root.search(5, root).value));
+        MatcherAssert.assertThat(6, Matchers.equalTo(root.search(6, root).value));
+        MatcherAssert.assertThat(7, Matchers.equalTo(root.search(7, root).value));
     }
 
 
@@ -100,15 +100,15 @@ class TreeNodeTest {
         //   / \  / \
         //  1  2     6
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(4, root);
-        root.Insert(5, root);
-        root.Insert(3, root);
-        root.Insert(6, root);
-        root.Insert(1, root);
-        root.Insert(2, root);
+        root.insert(4, root);
+        root.insert(5, root);
+        root.insert(3, root);
+        root.insert(6, root);
+        root.insert(1, root);
+        root.insert(2, root);
 
-        root.Delete(1, root);
-        MatcherAssert.assertThat(root.Search(1, root), Matchers.nullValue());
+        root.delete(1, root);
+        MatcherAssert.assertThat(root.search(1, root), Matchers.nullValue());
 
     }
 
@@ -124,23 +124,23 @@ class TreeNodeTest {
         //  11  30  40  52 61  82  95
 
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(50, root);
-        root.Insert(25, root);
-        root.Insert(75, root);
-        root.Insert(11, root);
-        root.Insert(33, root);
-        root.Insert(56, root);
-        root.Insert(89, root);
-        root.Insert(11, root);
-        root.Insert(30, root);
-        root.Insert(40, root);
-        root.Insert(52, root);
-        root.Insert(61, root);
-        root.Insert(95, root);
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(56, root);
+        root.insert(89, root);
+        root.insert(11, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(61, root);
+        root.insert(95, root);
 
-        root.Delete(10, root);
-        MatcherAssert.assertThat(root.Search(10, root), Matchers.nullValue());
-        MatcherAssert.assertThat(root.Search(11, root).value, Matchers.equalTo(11));
+        root.delete(10, root);
+        MatcherAssert.assertThat(root.search(10, root), Matchers.nullValue());
+        MatcherAssert.assertThat(root.search(11, root).value, Matchers.equalTo(11));
     }
 
     @Test
@@ -154,24 +154,24 @@ class TreeNodeTest {
         //   30  40  52 61  82  95
 
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(50, root);
-        root.Insert(25, root);
-        root.Insert(75, root);
-        root.Insert(11, root);
-        root.Insert(33, root);
-        root.Insert(56, root);
-        root.Insert(89, root);
-        root.Insert(30, root);
-        root.Insert(40, root);
-        root.Insert(52, root);
-        root.Insert(61, root);
-        root.Insert(95, root);
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(56, root);
+        root.insert(89, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(61, root);
+        root.insert(95, root);
 
-        root.Delete(56, root);
-        MatcherAssert.assertThat(root.Search(56, root), Matchers.nullValue());
+        root.delete(56, root);
+        MatcherAssert.assertThat(root.search(56, root), Matchers.nullValue());
 
-        MatcherAssert.assertThat(52, Matchers.equalTo(root.Search(52, root).value));
-        MatcherAssert.assertThat(61, Matchers.equalTo(root.Search(61, root).value));
+        MatcherAssert.assertThat(52, Matchers.equalTo(root.search(52, root).value));
+        MatcherAssert.assertThat(61, Matchers.equalTo(root.search(61, root).value));
     }
 
     @Test
@@ -187,25 +187,25 @@ class TreeNodeTest {
         //            55
 
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(50, root);
-        root.Insert(25, root);
-        root.Insert(75, root);
-        root.Insert(11, root);
-        root.Insert(33, root);
-        root.Insert(61, root);
-        root.Insert(89, root);
-        root.Insert(30, root);
-        root.Insert(40, root);
-        root.Insert(52, root);
-        root.Insert(82, root);
-        root.Insert(95, root);
-        root.Insert(55, root);
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(61, root);
+        root.insert(89, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(82, root);
+        root.insert(95, root);
+        root.insert(55, root);
 
-        root.Delete(50, root);
-        MatcherAssert.assertThat(root.Search(50, root), Matchers.nullValue());
+        root.delete(50, root);
+        MatcherAssert.assertThat(root.search(50, root), Matchers.nullValue());
 
-        MatcherAssert.assertThat(52, Matchers.equalTo(root.Search(52, root).value));
-        MatcherAssert.assertThat(55, Matchers.equalTo(root.Search(55, root).value));
+        MatcherAssert.assertThat(52, Matchers.equalTo(root.search(52, root).value));
+        MatcherAssert.assertThat(55, Matchers.equalTo(root.search(55, root).value));
 
     }
 
@@ -222,33 +222,66 @@ class TreeNodeTest {
         //            55
 
         TreeNode<Integer> root = new TreeNode<>();
-        root.Insert(50, root);
-        root.Insert(25, root);
-        root.Insert(75, root);
-        root.Insert(11, root);
-        root.Insert(33, root);
-        root.Insert(61, root);
-        root.Insert(89, root);
-        root.Insert(30, root);
-        root.Insert(40, root);
-        root.Insert(52, root);
-        root.Insert(82, root);
-        root.Insert(95, root);
-        root.Insert(55, root);
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(61, root);
+        root.insert(89, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(82, root);
+        root.insert(95, root);
+        root.insert(55, root);
 
         var expectedOutput = "11\n25\n30\n33\n40\n50\n52\n55\n61\n75\n82\n89\n95\n";
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         // do the work
-        root.Print(root);
+        root.PrintInOrder(root);
 
         // reset output stream
         System.setOut(originalOut);
         String actualOutput = outputStream.toString();
         MatcherAssert.assertThat(actualOutput, Matchers.equalTo(expectedOutput));
     }
+
+    @Test
+    public void shouldFindLargestItemInTree() {
+        //          50
+        //     /        \
+        //   25         75
+        //   / \        / \
+        // 11  33      61  89
+        //    /  \    /   / \
+        //   30  40  52  82  95
+        //            \
+        //            55
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(61, root);
+        root.insert(89, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(82, root);
+        root.insert(95, root);
+        root.insert(55, root);
+
+        final Integer largestItem = root.findLargestItem(root);
+        MatcherAssert.assertThat(largestItem, Matchers.equalTo(95));
+    }
+
 }
+
 
 
 
