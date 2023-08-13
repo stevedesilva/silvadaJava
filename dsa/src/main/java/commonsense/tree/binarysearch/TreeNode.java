@@ -111,7 +111,7 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         // nodeToDelete gets successor node value
         // remove successor node
         if (currentNode.left != null) {
-            currentNode.left = lift(nodeToDelete,value,currentNode.left);
+            currentNode.left = lift(nodeToDelete, value, currentNode.left);
             return currentNode;
         }
 
@@ -167,11 +167,11 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
     public T findLargestItem(TreeNode<T> node) {
         if (node == null) {
             return null;
+        } else if (node.right == null) {
+            return node.value;
+        } else {
+            return findLargestItem(node.right);
         }
-        if (node.right != null) {
-            findLargestItem(node.right);
-        }
-        return node.value;
     }
 
 }
