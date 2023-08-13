@@ -276,12 +276,12 @@ class TreeNodeTest {
         root.insert(95, root);
         root.insert(55, root);
 
-        var expectedOutput = "11\n25\n30\n33\n40\n50\n52\n55\n61\n75\n82\n89\n95\n";
+        var expectedOutput = "50\n25\n11\n33\n30\n40\n75\n61\n52\n55\n89\n82\n95\n";
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         // do the work
-        root.printInOrder(root);
+        root.printPreOrder(root);
 
         // reset output stream
         System.setOut(originalOut);
@@ -315,12 +315,12 @@ class TreeNodeTest {
         root.insert(95, root);
         root.insert(55, root);
 
-        var expectedOutput = "11\n25\n30\n33\n40\n50\n52\n55\n61\n75\n82\n89\n95\n";
+        var expectedOutput = "11\n30\n40\n33\n25\n55\n52\n61\n82\n95\n89\n75\n50\n";
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         // do the work
-        root.printInOrder(root);
+        root.printPostOrder(root);
 
         // reset output stream
         System.setOut(originalOut);

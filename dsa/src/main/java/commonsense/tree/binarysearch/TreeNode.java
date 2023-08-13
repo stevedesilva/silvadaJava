@@ -146,8 +146,8 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         if (node.left != null) {
             printPreOrder(node.left);
         }
-        if (node.left != null) {
-            printPreOrder(node.left);
+        if (node.right != null) {
+            printPreOrder(node.right);
         }
     }
 
@@ -158,17 +158,20 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         if (node.left != null) {
             printPostOrder(node.left);
         }
-        if (node.left != null) {
-            printPostOrder(node.left);
+        if (node.right != null) {
+            printPostOrder(node.right);
         }
         System.out.println(node.value);
     }
 
-    public T findLargestItem(TreeNode<T> root) {
-        return null;
+    public T findLargestItem(TreeNode<T> node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.right != null) {
+            findLargestItem(node.right);
+        }
+        return node.value;
     }
-
-
-
 
 }
