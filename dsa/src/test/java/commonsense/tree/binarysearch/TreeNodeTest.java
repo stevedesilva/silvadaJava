@@ -210,7 +210,7 @@ class TreeNodeTest {
     }
 
     @Test
-    public void shouldPrintTreeNodes() {
+    public void shouldPrintInOrderTreeNodes() {
         //          50
         //     /        \
         //   25         75
@@ -241,7 +241,86 @@ class TreeNodeTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         // do the work
-        root.PrintInOrder(root);
+        root.printInOrder(root);
+
+        // reset output stream
+        System.setOut(originalOut);
+        String actualOutput = outputStream.toString();
+        MatcherAssert.assertThat(actualOutput, Matchers.equalTo(expectedOutput));
+    }
+
+    @Test
+    public void shouldPrintPreOrderTreeNodes() {
+        //          50
+        //     /        \
+        //   25         75
+        //   / \        / \
+        // 11  33      61  89
+        //    /  \    /   / \
+        //   30  40  52  82  95
+        //            \
+        //            55
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(61, root);
+        root.insert(89, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(82, root);
+        root.insert(95, root);
+        root.insert(55, root);
+
+        var expectedOutput = "11\n25\n30\n33\n40\n50\n52\n55\n61\n75\n82\n89\n95\n";
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        // do the work
+        root.printInOrder(root);
+
+        // reset output stream
+        System.setOut(originalOut);
+        String actualOutput = outputStream.toString();
+        MatcherAssert.assertThat(actualOutput, Matchers.equalTo(expectedOutput));
+    }
+    @Test
+    public void shouldPrintPostOrderTreeNodes() {
+        //          50
+        //     /        \
+        //   25         75
+        //   / \        / \
+        // 11  33      61  89
+        //    /  \    /   / \
+        //   30  40  52  82  95
+        //            \
+        //            55
+
+        TreeNode<Integer> root = new TreeNode<>();
+        root.insert(50, root);
+        root.insert(25, root);
+        root.insert(75, root);
+        root.insert(11, root);
+        root.insert(33, root);
+        root.insert(61, root);
+        root.insert(89, root);
+        root.insert(30, root);
+        root.insert(40, root);
+        root.insert(52, root);
+        root.insert(82, root);
+        root.insert(95, root);
+        root.insert(55, root);
+
+        var expectedOutput = "11\n25\n30\n33\n40\n50\n52\n55\n61\n75\n82\n89\n95\n";
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        // do the work
+        root.printInOrder(root);
 
         // reset output stream
         System.setOut(originalOut);

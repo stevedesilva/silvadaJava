@@ -125,25 +125,43 @@ public class TreeNode<T extends Comparable<T>> implements Comparator<T> {
         return o1.compareTo(o2);
     }
 
-    public void PrintInOrder(TreeNode<T> node) {
+    public void printInOrder(TreeNode<T> node) {
         if (node == null) {
             return;
         }
         if (node.left != null) {
-            PrintInOrder(node.left);
+            printInOrder(node.left);
         }
         System.out.println(node.value);
         if (node.right != null) {
-            PrintInOrder(node.right);
+            printInOrder(node.right);
         }
     }
 
     public void printPreOrder(TreeNode<T> node) {
-
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.value);
+        if (node.left != null) {
+            printPreOrder(node.left);
+        }
+        if (node.left != null) {
+            printPreOrder(node.left);
+        }
     }
 
     public void printPostOrder(TreeNode<T> node) {
-
+        if (node == null) {
+            return;
+        }
+        if (node.left != null) {
+            printPostOrder(node.left);
+        }
+        if (node.left != null) {
+            printPostOrder(node.left);
+        }
+        System.out.println(node.value);
     }
 
     public T findLargestItem(TreeNode<T> root) {
