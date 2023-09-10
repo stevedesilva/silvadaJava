@@ -11,5 +11,11 @@ public class MatcherV1 {
         return matcher.find();
     }
 
+    public static void isGroup(String regex, String value) {
+        Pattern regexPattern = Pattern.compile(regex,Pattern.CASE_INSENSITIVE|Pattern.MULTILINE);
+        final Matcher matcher = regexPattern.matcher(value);
+        matcher.group(1);
+    }
+
 
 }
