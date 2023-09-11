@@ -49,18 +49,30 @@ class MaxHeapTest {
     }
 
     @Test
-    @DisplayName("should get root element ")
-    public void rootNodeShouldGetRootElement() {
+    @DisplayName("should pop max heap in descending order ")
+    public void rootNodeShouldPopElementsInSortedOrder() {
         // given
         MaxHeap<Integer> maxHeap = new MaxHeap<>();
+        maxHeap.insert(9);
+        maxHeap.insert(6);
+        maxHeap.insert(5);
         maxHeap.insert(1);
         maxHeap.insert(2);
-        maxHeap.insert(3);
         maxHeap.insert(10);
+        maxHeap.insert(3);
+        maxHeap.insert(7);
+        maxHeap.insert(8);
+        maxHeap.insert(4);
         // when
         Integer result = maxHeap.rootNode();
         // then
         MatcherAssert.assertThat("root element should be 10", result, Matchers.equalTo(10));
+        MatcherAssert.assertThat("root element should be 9", result, Matchers.equalTo(9));
+        MatcherAssert.assertThat("root element should be 8", result, Matchers.equalTo(8));
+        MatcherAssert.assertThat("root element should be 7", result, Matchers.equalTo(7));
+        MatcherAssert.assertThat("root element should be 6", result, Matchers.equalTo(6));
+        MatcherAssert.assertThat("root element should be 5", result, Matchers.equalTo(5));
+        MatcherAssert.assertThat("root element should be 4", result, Matchers.equalTo(4));
         MatcherAssert.assertThat("root element should be 3", result, Matchers.equalTo(3));
         MatcherAssert.assertThat("root element should be 2", result, Matchers.equalTo(2));
         MatcherAssert.assertThat("root element should be 1", result, Matchers.equalTo(1));
