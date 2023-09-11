@@ -38,7 +38,6 @@ public class MaxHeap<E> {
     public void insert(E value) {
         data.add(value);
 
-
     }
 
     public E remove() {
