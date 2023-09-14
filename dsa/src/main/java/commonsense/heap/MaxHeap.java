@@ -24,15 +24,34 @@ public class MaxHeap<E> {
         return data.get(data.size() - 1);
     }
 
-    private int getParentNode(int nodeIndex) {
-        return 0;
+    private static int getParentNode(int nodeIndex) {
+        //0,1,2,3,4,5,6,7,8,9,10
+        //           0
+        //      /          \
+        //     1            2
+        //    /  \        /  \
+        //   3    4      5    6
+        //  / \  / \    / \   / \
+        // 7  8  9  10 11 12 12 14
+
+        // 0 -> 1 2
+        // 1 -> 3 4
+        // 2 -> 5 6
+        return (nodeIndex - 1) / 2;
     }
 
-    private int getLeftChildNode(int nodeIndex) {
-        return 0;
+    private static int  getLeftChildNode(int nodeIndex) {
+        return (nodeIndex * 2) + 1;
     }
-    private int getRightChildNode(int nodeIndex) {
-        return 0;
+    private static int getRightChildNode(int nodeIndex) {
+        return (nodeIndex * 2) + 2;
+    }
+
+    public static void main(String[] args) {
+        var x = 5;
+        System.out.println(getParentNode(11));
+        System.out.println(getLeftChildNode(x));
+        System.out.println(getRightChildNode(x));
     }
 
     public void insert(E value) {
