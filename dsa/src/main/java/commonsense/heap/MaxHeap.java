@@ -24,7 +24,7 @@ public class MaxHeap<E> {
         return data.get(data.size() - 1);
     }
 
-    private static int getParentNode(int nodeIndex) {
+    protected static int getParentNode(int nodeIndex) {
         //0,1,2,3,4,5,6,7,8,9,10
         //           0
         //      /          \
@@ -40,10 +40,10 @@ public class MaxHeap<E> {
         return (nodeIndex - 1) / 2;
     }
 
-    private static int  getLeftChildNode(int nodeIndex) {
+    protected static int  getLeftChildNode(int nodeIndex) {
         return (nodeIndex * 2) + 1;
     }
-    private static int getRightChildNode(int nodeIndex) {
+    protected static int getRightChildNode(int nodeIndex) {
         return (nodeIndex * 2) + 2;
     }
 
@@ -56,7 +56,6 @@ public class MaxHeap<E> {
 
     public void insert(E value) {
         data.add(value);
-
     }
 
     public E remove() {
