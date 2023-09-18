@@ -1,9 +1,10 @@
 package commonsense.heap;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class MaxHeap<E> {
+public class MaxHeap<E extends Comparable<E>> {
      private final ArrayList<E> data;
 
     public MaxHeap() {
@@ -55,6 +56,23 @@ public class MaxHeap<E> {
     }
 
     public void insert(E value) {
+        if (value == null) {
+            throw new NoSuchElementException("no element found");
+        }
+        if (data.size() == 0) {
+            data.add(value);
+
+        } else {
+            int currentIdx = data.size() - 1;
+            data.add(value);
+            while (currentIdx != 0)  {
+
+                if (data.get(value).compareTo(data.get(getParentNode(currentIdx)))) {
+
+                }
+                data.add(value);
+            }
+        }
         data.add(value);
     }
 
@@ -63,32 +81,8 @@ public class MaxHeap<E> {
             throw new NoSuchElementException("no element found");
         }
         E result = data.get(0);
-//        data.set(0, data.get(data.size() - 1));
-//        data.remove(data.size() - 1);
-//        int index = 0;
-//        int leftIndex = 2 * index + 1;
-//        int rightIndex = 2 * index + 2;
-//        while (compare(data.get(index), data.get(leftIndex)) > 0 || compare(data.get(index), data.get(rightIndex)) > 0) {
-//            if (compare(data.get(leftIndex), data.get(rightIndex)) < 0) {
-//                swap(index, leftIndex);
-//                index = leftIndex;
-//            } else {
-//                swap(index, rightIndex);
-//                index = rightIndex;
-//            }
-//            leftIndex = 2 * index + 1;
-//            rightIndex = 2 * index + 2;
-//        }
+
         return result;
     }
 
-
-    //        data.add(value);
-//        int index = data.size() - 1;
-//        int parentIndex = (index - 1) / 2;
-//        while (compare(data.get(index), data.get(parentIndex)) < 0) {
-//            swap(index, parentIndex);
-//            index = parentIndex;
-//            parentIndex = (index - 1) / 2;
-//        }
 }

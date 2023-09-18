@@ -33,6 +33,11 @@ class MaxHeapTest {
     @Test
     @DisplayName("should get root element ")
     public void rootNodeShouldInsertRootElement() {
+        //    10
+        //   / \
+        //  3   2
+        // /
+        // 1
         // given
         MaxHeap<Integer> maxHeap = new MaxHeap<>();
         maxHeap.insert(1);
@@ -109,8 +114,43 @@ class MaxHeapTest {
         MatcherAssert.assertThat( MaxHeap.getParentNode(8), Matchers.equalTo(3));
         MatcherAssert.assertThat( MaxHeap.getParentNode(11), Matchers.equalTo(5));
         MatcherAssert.assertThat( MaxHeap.getParentNode(14), Matchers.equalTo(6));
+    }
 
-
+    @Test
+    public void getChildNode(){
+        //0,1,2,3,4,5,6,7,8,9,10
+        //           0
+        //      /          \
+        //     1            2
+        //    /  \        /  \
+        //   3    4      5    6
+        //  / \  / \    / \   / \
+        // 7  8  9  10 11 12 13 14
+        MaxHeap<Integer> maxHeap = new MaxHeap<>();
+        maxHeap.insert(9);
+        maxHeap.insert(6);
+        maxHeap.insert(5);
+        maxHeap.insert(1);
+        maxHeap.insert(2);
+        maxHeap.insert(10);
+        maxHeap.insert(3);
+        maxHeap.insert(7);
+        maxHeap.insert(8);
+        maxHeap.insert(4);
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(0), Matchers.equalTo(1));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(0), Matchers.equalTo(2));
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(1), Matchers.equalTo(3));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(1), Matchers.equalTo(4));
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(2), Matchers.equalTo(5));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(2), Matchers.equalTo(6));
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(3), Matchers.equalTo(7));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(3), Matchers.equalTo(8));
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(4), Matchers.equalTo(9));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(4), Matchers.equalTo(10));
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(5), Matchers.equalTo(11));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(5), Matchers.equalTo(12));
+        MatcherAssert.assertThat( MaxHeap.getLeftChildNode(6), Matchers.equalTo(13));
+        MatcherAssert.assertThat( MaxHeap.getRightChildNode(6), Matchers.equalTo(14));
     }
 
 }
