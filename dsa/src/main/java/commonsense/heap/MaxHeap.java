@@ -60,20 +60,27 @@ public class MaxHeap<E extends Comparable<E>> {
             throw new NoSuchElementException("no element found");
         }
         if (data.size() == 0) {
+            // add if empty array
             data.add(value);
-
         } else {
-            int currentIdx = data.size() - 1;
+            // add to last element, then trickle up
             data.add(value);
-            while (currentIdx != 0)  {
+            int currentIdx = data.size() - 1;
+            // while not root node
+            while (currentIdx > 0)  {
+                final int parentNodeIdx = getParentNode(currentIdx);
+                final E parentNodeValue = data.get(parentNodeIdx);
+                final E currentNodeValue = data.get(currentIdx);
 
-                if (data.get(value).compareTo(data.get(getParentNode(currentIdx)))) {
-
+                if (currentNodeValue.compareTo(parentNodeValue) > 0) {
+                    // swap
+                    data.add(currentIdx, parentNodeValue);
+                    data.add(parentNodeIdx, currentNodeValue);
+                    // update counter
+                    currentIdx = parentNodeIdx;
                 }
-                data.add(value);
             }
         }
-        data.add(value);
     }
 
     public E remove() {
