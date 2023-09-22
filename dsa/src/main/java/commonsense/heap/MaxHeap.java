@@ -74,8 +74,9 @@ public class MaxHeap<E extends Comparable<E>> {
 
                 if (currentNodeValue.compareTo(parentNodeValue) > 0) {
                     // swap
-                    data.add(currentIdx, parentNodeValue);
-                    data.add(parentNodeIdx, currentNodeValue);
+
+                    data.set(currentIdx, parentNodeValue);
+                    data.set(parentNodeIdx, currentNodeValue);
                     // update counter
                     currentIdx = parentNodeIdx;
                 }
