@@ -22,6 +22,7 @@ public class MaxHeap<E extends Comparable<E>> {
         if (data.size() == 0) {
             throw new NoSuchElementException("no element found");
         }
+
         return data.get(data.size() - 1);
     }
 
@@ -79,6 +80,8 @@ public class MaxHeap<E extends Comparable<E>> {
                     data.set(parentNodeIdx, currentNodeValue);
                     // update counter
                     currentIdx = parentNodeIdx;
+                } else {
+                    return;
                 }
             }
         }

@@ -51,6 +51,26 @@ class MaxHeapTest {
     }
 
     @Test
+    @DisplayName("should get root element ")
+    public void rootNodeShouldInsertRootElementInsertLargestFirst() {
+        //    10
+        //   / \
+        //  3   2
+        // /
+        // 1
+        // given
+        MaxHeap<Integer> maxHeap = new MaxHeap<>();
+        maxHeap.insert(10);
+        maxHeap.insert(3);
+        maxHeap.insert(2);
+        maxHeap.insert(1);
+        // when
+        Integer result = maxHeap.rootNode();
+        // then
+        MatcherAssert.assertThat("root element should be 10", result, Matchers.equalTo(10));
+    }
+
+    @Test
     @DisplayName("should pop max heap in descending order ")
     public void rootNodeShouldPopElementsInSortedOrder() {
         // given
@@ -65,19 +85,17 @@ class MaxHeapTest {
         maxHeap.insert(7);
         maxHeap.insert(8);
         maxHeap.insert(4);
-        // when
-        Integer result = maxHeap.rootNode();
-        // then
-        MatcherAssert.assertThat("root element should be 10", result, Matchers.equalTo(10));
-        MatcherAssert.assertThat("root element should be 9", result, Matchers.equalTo(9));
-        MatcherAssert.assertThat("root element should be 8", result, Matchers.equalTo(8));
-        MatcherAssert.assertThat("root element should be 7", result, Matchers.equalTo(7));
-        MatcherAssert.assertThat("root element should be 6", result, Matchers.equalTo(6));
-        MatcherAssert.assertThat("root element should be 5", result, Matchers.equalTo(5));
-        MatcherAssert.assertThat("root element should be 4", result, Matchers.equalTo(4));
-        MatcherAssert.assertThat("root element should be 3", result, Matchers.equalTo(3));
-        MatcherAssert.assertThat("root element should be 2", result, Matchers.equalTo(2));
-        MatcherAssert.assertThat("root element should be 1", result, Matchers.equalTo(1));
+
+        MatcherAssert.assertThat("root element should be 10", maxHeap.lastNode(), Matchers.equalTo(10));
+        MatcherAssert.assertThat("root element should be 9", maxHeap.lastNode(), Matchers.equalTo(9));
+        MatcherAssert.assertThat("root element should be 8", maxHeap.lastNode(), Matchers.equalTo(8));
+        MatcherAssert.assertThat("root element should be 7", maxHeap.lastNode(), Matchers.equalTo(7));
+        MatcherAssert.assertThat("root element should be 6", maxHeap.lastNode(), Matchers.equalTo(6));
+        MatcherAssert.assertThat("root element should be 5", maxHeap.lastNode(), Matchers.equalTo(5));
+        MatcherAssert.assertThat("root element should be 4", maxHeap.lastNode(), Matchers.equalTo(4));
+        MatcherAssert.assertThat("root element should be 3", maxHeap.lastNode(), Matchers.equalTo(3));
+        MatcherAssert.assertThat("root element should be 2", maxHeap.lastNode(), Matchers.equalTo(2));
+        MatcherAssert.assertThat("root element should be 1", maxHeap.lastNode(), Matchers.equalTo(1));
     }
 
     @Test
