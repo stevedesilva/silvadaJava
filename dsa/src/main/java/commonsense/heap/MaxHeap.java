@@ -86,12 +86,66 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     public E delete() {
+        //           0
+        //      /          \
+        //     1            2
+        //    /  \        /  \
+        //   3    4      5    6
+        //  / \  / \    / \   / \
+        // 7  8  9  10 11 12 12 14
         if (data.size() == 0) {
             throw new NoSuchElementException("no element found");
         }
-        E result = data.get(0);
+        E removedItem = data.get(0);
+        int currentIndex = 0;
+        int indexToRemove = currentIndex;
+        // parent has a child
+        while (hasChildren(currentIndex)) {
+            int indexOfLargestChild = findIndexOfLargestChild(currentIndex);
+            indexToRemove = indexOfLargestChild;
+            if (hasChildren(indexOfLargestChild)){
+                // update new parent
+                data.set(currentIndex,data.get(indexOfLargestChild));
+                // update largest child
+                currentIndex = indexOfLargestChild;
+            } else {
+                data.set(currentIndex,data.get(indexOfLargestChild));
+                break;
+            }
+        }
+        // index to remove
+        data.remove(indexToRemove);
 
-        return result;
+
+        return removedItem;
+    }
+
+    private int findIndexOfLargestChild(int currentIndex) {
+        final int leftChildNodeIdx = getLeftChildNode(currentIndex);
+        final int rightChildNodeIdx = getRightChildNode(currentIndex);
+
+        boolean leftChildNodeExist = leftChildNodeIdx <= data.size()-1;
+        boolean rightChildNodeExist = rightChildNodeIdx <= data.size()-1;
+        if (leftChildNodeExist & !rightChildNodeExist) {
+            return leftChildNodeIdx;
+        }else if (rightChildNodeExist & !leftChildNodeExist) {
+            return rightChildNodeIdx;
+        } else {
+            final E leftValue = data.get(leftChildNodeIdx);
+            final E rightValue = data.get(rightChildNodeIdx);
+            if (leftValue.compareTo(rightValue) > 0) {
+                return leftChildNodeIdx;
+            } else {
+                return rightChildNodeIdx;
+            }
+        }
+
+    }
+
+    private boolean hasChildren(int currentIndex) {
+        boolean leftChildNodeExist = getLeftChildNode(currentIndex) <= data.size()-1;
+        boolean rightChildNodeExist = getRightChildNode(currentIndex) <= data.size()-1;
+        return leftChildNodeExist || rightChildNodeExist;
     }
 
 }
