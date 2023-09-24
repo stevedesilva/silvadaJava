@@ -85,16 +85,35 @@ class MaxHeapTest {
         maxHeap.insert(7);
         maxHeap.insert(8);
         maxHeap.insert(4);
-
+        // given
         MatcherAssert.assertThat("root element should be 10", maxHeap.lastNode(), Matchers.equalTo(10));
+
+        // when
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 9", maxHeap.lastNode(), Matchers.equalTo(9));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 8", maxHeap.lastNode(), Matchers.equalTo(8));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 7", maxHeap.lastNode(), Matchers.equalTo(7));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 6", maxHeap.lastNode(), Matchers.equalTo(6));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 5", maxHeap.lastNode(), Matchers.equalTo(5));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 4", maxHeap.lastNode(), Matchers.equalTo(4));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 3", maxHeap.lastNode(), Matchers.equalTo(3));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 2", maxHeap.lastNode(), Matchers.equalTo(2));
+
+        maxHeap.delete();
         MatcherAssert.assertThat("root element should be 1", maxHeap.lastNode(), Matchers.equalTo(1));
     }
 

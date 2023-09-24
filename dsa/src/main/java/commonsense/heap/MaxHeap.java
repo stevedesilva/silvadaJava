@@ -1,7 +1,6 @@
 package commonsense.heap;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 public class MaxHeap<E extends Comparable<E>> {
@@ -22,7 +21,6 @@ public class MaxHeap<E extends Comparable<E>> {
         if (data.size() == 0) {
             throw new NoSuchElementException("no element found");
         }
-
         return data.get(data.size() - 1);
     }
 
@@ -87,7 +85,7 @@ public class MaxHeap<E extends Comparable<E>> {
         }
     }
 
-    public E remove() {
+    public E delete() {
         if (data.size() == 0) {
             throw new NoSuchElementException("no element found");
         }
