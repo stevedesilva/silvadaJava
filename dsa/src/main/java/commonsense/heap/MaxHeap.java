@@ -58,6 +58,7 @@ public class MaxHeap<E extends Comparable<E>> {
         if (value == null) {
             throw new NoSuchElementException("no element found");
         }
+        lastNode();
         if (data.size() == 0) {
             // add if empty array
             data.add(value);
@@ -93,6 +94,12 @@ public class MaxHeap<E extends Comparable<E>> {
         //   3    4      5    6
         //  / \  / \    / \   / \
         // 7  8  9  10 11 12 12 14
+
+
+        // move last node into root node position
+
+        // trickle to root node down into its proper place
+
         if (data.size() == 0) {
             throw new NoSuchElementException("no element found");
         }
