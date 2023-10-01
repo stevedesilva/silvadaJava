@@ -69,9 +69,8 @@ public class MaxHeap<E extends Comparable<E>> {
 
     public void insert(E value) {
         if (value == null) {
-            throw new NoSuchElementException("no element found");
+            throw new NoSuchElementException("no element provided");
         }
-        lastNode();
         if (data.size() == 0) {
             // add if empty array
             data.add(value);
@@ -84,16 +83,14 @@ public class MaxHeap<E extends Comparable<E>> {
                 final int parentNodeIdx = getParentNode(currentIdx);
                 final E parentNodeValue = data.get(parentNodeIdx);
                 final E currentNodeValue = data.get(currentIdx);
-
                 if (currentNodeValue.compareTo(parentNodeValue) > 0) {
                     // swap
-
                     data.set(currentIdx, parentNodeValue);
                     data.set(parentNodeIdx, currentNodeValue);
                     // update counter
                     currentIdx = parentNodeIdx;
                 } else {
-                    return;
+                    break;
                 }
             }
         }
@@ -107,81 +104,35 @@ public class MaxHeap<E extends Comparable<E>> {
         //   3    4      5    6
         //  / \  / \    / \   / \
         // 7  8  9  10 11 12 12 14
-
+        if (data.size() == 0) {
+            throw new NoSuchElementException("no element found");
+        }
 
         // move last node into root node position
         E rootNode = rootNode();
         // remove last node and store value in root
         E lastItem = data.remove(lastNodeIndex());
-        data.set(rootNodeIndex(),lastItem);
-        // trickle to root node down into its proper place
-
-//        if (data.size() == 0) {
-//            throw new NoSuchElementException("no element found");
-//        }
-//        E removedItem = data.get(0);
-//        int currentIndex = 0;
-//        int indexToRemove = currentIndex;
-//        // parent has a child
-//        while (hasChildren(currentIndex)) {
-//            int indexOfLargestChild = findIndexOfLargestChild(currentIndex);
-//            indexToRemove = indexOfLargestChild;
-//            if (hasChildren(indexOfLargestChild)){
-//                // update new parent
-//                data.set(currentIndex,data.get(indexOfLargestChild));
-//                // update largest child
-//                currentIndex = indexOfLargestChild;
-//            } else {
-//                data.set(currentIndex,data.get(indexOfLargestChild));
-//                break;
-//            }
-//        }
-//        // index to remove
-//        data.remove(indexToRemove);
-
+        if (data.size() > 0) {
+            data.set(rootNodeIndex(),lastItem);
+            int currentIndex = 0;
+            // trickle to root node down into its proper place
+            while (hasChildren(currentIndex)) {
+                int indexOfLargestChild = findIndexOfLargestChild(currentIndex);
+                final E childValue = data.get(indexOfLargestChild);
+                final E currentValue = data.get(currentIndex);
+                if(childValue.compareTo(currentValue) > 0) {
+                    data.set(currentIndex, childValue);
+                    data.set(indexOfLargestChild, currentValue);
+                    currentIndex = indexOfLargestChild;
+                } else {
+                    break;
+                }
+            }
+        }
 
         return rootNode;
     }
-//    public E delete() {
-//        //           0
-//        //      /          \
-//        //     1            2
-//        //    /  \        /  \
-//        //   3    4      5    6
-//        //  / \  / \    / \   / \
-//        // 7  8  9  10 11 12 12 14
-//
-//
-//        // move last node into root node position
-//
-//        // trickle to root node down into its proper place
-//
-//        if (data.size() == 0) {
-//            throw new NoSuchElementException("no element found");
-//        }
-//        E removedItem = data.get(0);
-//        int currentIndex = 0;
-//        int indexToRemove = currentIndex;
-//        // parent has a child
-//        while (hasChildren(currentIndex)) {
-//            int indexOfLargestChild = findIndexOfLargestChild(currentIndex);
-//            indexToRemove = indexOfLargestChild;
-//            if (hasChildren(indexOfLargestChild)){
-//                // update new parent
-//                data.set(currentIndex,data.get(indexOfLargestChild));
-//                // update largest child
-//                currentIndex = indexOfLargestChild;
-//            } else {
-//                data.set(currentIndex,data.get(indexOfLargestChild));
-//                break;
-//            }
-//        }
-//        // index to remove
-//        data.remove(indexToRemove);
-//
-//
-//        return removedItem;
-//    }
+
 
     private int findIndexOfLargestChild(int currentIndex) {
         final int leftChildNodeIdx = getLeftChildNode(currentIndex);
@@ -210,5 +161,6 @@ public class MaxHeap<E extends Comparable<E>> {
         boolean rightChildNodeExist = getRightChildNode(currentIndex) <= data.size()-1;
         return leftChildNodeExist || rightChildNodeExist;
     }
+
 
 }

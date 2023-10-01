@@ -204,4 +204,5 @@ class MaxHeapTest {
         MatcherAssert.assertThat( MaxHeap.getRightChildNode(6), Matchers.equalTo(14));
     }
 
+
 }
