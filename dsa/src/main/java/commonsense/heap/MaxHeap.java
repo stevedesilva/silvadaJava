@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class MaxHeap<E extends Comparable<E>> {
-     private final ArrayList<E> data;
+    private final ArrayList<E> data;
 
     public MaxHeap() {
         this.data = new ArrayList<>();
@@ -30,6 +30,7 @@ public class MaxHeap<E extends Comparable<E>> {
         }
         return 0;
     }
+
     private int lastNodeIndex() throws NoSuchElementException {
         if (data.size() == 0) {
             throw new NoSuchElementException("no element found");
@@ -53,9 +54,10 @@ public class MaxHeap<E extends Comparable<E>> {
         return (nodeIndex - 1) / 2;
     }
 
-    protected static int  getLeftChildNode(int nodeIndex) {
+    protected static int getLeftChildNode(int nodeIndex) {
         return (nodeIndex * 2) + 1;
     }
+
     protected static int getRightChildNode(int nodeIndex) {
         return (nodeIndex * 2) + 2;
     }
@@ -71,28 +73,21 @@ public class MaxHeap<E extends Comparable<E>> {
         if (value == null) {
             throw new NoSuchElementException("no element provided");
         }
-        if (data.size() == 0) {
-            // add if empty array
-            data.add(value);
-        } else {
-            // add to last element, then trickle up
-            data.add(value);
-            int currentIdx = data.size() - 1;
-            // while not root node
-            while (currentIdx > 0)  {
-                final int parentNodeIdx = getParentNode(currentIdx);
-                final E parentNodeValue = data.get(parentNodeIdx);
-                final E currentNodeValue = data.get(currentIdx);
-                if (currentNodeValue.compareTo(parentNodeValue) > 0) {
-                    // swap
-                    data.set(currentIdx, parentNodeValue);
-                    data.set(parentNodeIdx, currentNodeValue);
-                    // update counter
-                    currentIdx = parentNodeIdx;
-                } else {
-                    break;
-                }
-            }
+        // add to last element, then trickle up
+        data.add(value);
+        int newNodeIndex = data.size() - 1;
+        // while not root node
+        while (newNodeIndex > 0
+                && data.get(newNodeIndex).compareTo(data.get(getParentNode(newNodeIndex))) > 0) {
+
+            int parentNodeIdx = getParentNode(newNodeIndex);
+            // swap
+            final E parentElement = data.get(parentNodeIdx);
+            final E currentElement = data.get(newNodeIndex);
+            data.set(newNodeIndex, parentElement);
+            data.set(parentNodeIdx, currentElement);
+            // update counter
+            newNodeIndex = parentNodeIdx;
         }
     }
 
@@ -113,17 +108,17 @@ public class MaxHeap<E extends Comparable<E>> {
         // remove last node and store value in root
         E lastItem = data.remove(lastNodeIndex());
         if (data.size() > 0) {
-            data.set(rootNodeIndex(),lastItem);
-            int currentIndex = 0;
+            data.set(rootNodeIndex(), lastItem);
+            int newNodeIndex = 0;
             // trickle to root node down into its proper place
-            while (hasChildren(currentIndex)) {
-                int indexOfLargestChild = findIndexOfLargestChild(currentIndex);
+            while (hasChildren(newNodeIndex)) {
+                int indexOfLargestChild = findIndexOfLargestChild(newNodeIndex);
                 final E childValue = data.get(indexOfLargestChild);
-                final E currentValue = data.get(currentIndex);
-                if(childValue.compareTo(currentValue) > 0) {
-                    data.set(currentIndex, childValue);
+                final E currentValue = data.get(newNodeIndex);
+                if (childValue.compareTo(currentValue) > 0) {
+                    data.set(newNodeIndex, childValue);
                     data.set(indexOfLargestChild, currentValue);
-                    currentIndex = indexOfLargestChild;
+                    newNodeIndex = indexOfLargestChild;
                 } else {
                     break;
                 }
@@ -138,11 +133,11 @@ public class MaxHeap<E extends Comparable<E>> {
         final int leftChildNodeIdx = getLeftChildNode(currentIndex);
         final int rightChildNodeIdx = getRightChildNode(currentIndex);
 
-        boolean leftChildNodeExist = leftChildNodeIdx <= data.size()-1;
-        boolean rightChildNodeExist = rightChildNodeIdx <= data.size()-1;
+        boolean leftChildNodeExist = leftChildNodeIdx <= data.size() - 1;
+        boolean rightChildNodeExist = rightChildNodeIdx <= data.size() - 1;
         if (leftChildNodeExist & !rightChildNodeExist) {
             return leftChildNodeIdx;
-        }else if (rightChildNodeExist & !leftChildNodeExist) {
+        } else if (rightChildNodeExist & !leftChildNodeExist) {
             return rightChildNodeIdx;
         } else {
             final E leftValue = data.get(leftChildNodeIdx);
@@ -157,8 +152,8 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     private boolean hasChildren(int currentIndex) {
-        boolean leftChildNodeExist = getLeftChildNode(currentIndex) <= data.size()-1;
-        boolean rightChildNodeExist = getRightChildNode(currentIndex) <= data.size()-1;
+        boolean leftChildNodeExist = getLeftChildNode(currentIndex) <= data.size() - 1;
+        boolean rightChildNodeExist = getRightChildNode(currentIndex) <= data.size() - 1;
         return leftChildNodeExist || rightChildNodeExist;
     }
 
