@@ -156,6 +156,4 @@ public class MaxHeap<E extends Comparable<E>> {
         boolean rightChildNodeExist = getRightChildNode(currentIndex) <= data.size() - 1;
         return leftChildNodeExist || rightChildNodeExist;
     }
-
-
 }
