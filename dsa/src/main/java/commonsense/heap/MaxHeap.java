@@ -62,13 +62,6 @@ public class MaxHeap<E extends Comparable<E>> {
         return (nodeIndex * 2) + 2;
     }
 
-    public static void main(String[] args) {
-        var x = 5;
-        System.out.println(getParentNode(11));
-        System.out.println(getLeftChildNode(x));
-        System.out.println(getRightChildNode(x));
-    }
-
     public void insert(E value) {
         if (value == null) {
             throw new NoSuchElementException("no element provided");
