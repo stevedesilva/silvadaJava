@@ -1,6 +1,7 @@
-package commonsense.heap;
+package commonsense.tree.heap;
 
 
+import commonsense.tree.heap.MaxHeap;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;

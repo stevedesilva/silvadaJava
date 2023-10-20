@@ -1,4 +1,4 @@
-package commonsense.heap;
+package commonsense.tree.heap;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
