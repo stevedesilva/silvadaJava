@@ -121,7 +121,6 @@ public class MaxHeap<E extends Comparable<E>> {
         return rootNode;
     }
 
-
     private int findIndexOfLargestChild(int currentIndex) {
         final int leftChildNodeIdx = getLeftChildNode(currentIndex);
         final int rightChildNodeIdx = getRightChildNode(currentIndex);
