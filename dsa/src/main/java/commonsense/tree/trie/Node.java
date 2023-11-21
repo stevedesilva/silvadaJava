@@ -9,6 +9,10 @@ import java.util.List;
 public class Node {
     private HashMap<Character,Node> children;
 
+    public Node() {
+        this.children = new HashMap<>();
+    }
+
     public Node(HashMap<Character, Node> children) {
         this.children = children;
     }
