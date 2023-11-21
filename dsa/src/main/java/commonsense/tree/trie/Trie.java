@@ -5,6 +5,10 @@ import java.util.List;
 public class Trie {
     private Node root;
 
+    public Node getRoot() {
+        return root;
+    }
+
     public Trie() {
         this.root = new Node();
     }
@@ -12,11 +16,21 @@ public class Trie {
         this.root = root;
     }
 
+
     public void insert(String word) throws IllegalArgumentException {
         if (word == null || word.length() < 1) {
             throw new IllegalArgumentException();
         }
-        throw new UnsupportedOperationException();
+        Node currentNode = root;
+        for (Character c: word.toCharArray()) {
+            if(currentNode.getChildren().containsKey(c)) {
+                currentNode = currentNode.getChildren().get(c);
+            } else {
+                final Node value = new Node();
+                currentNode.getChildren().put(c, value);
+            }
+        }
+        currentNode.getChildren().put('*', null);
     }
 
     public Node search(String word) throws IllegalArgumentException {
