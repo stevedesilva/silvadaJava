@@ -21,17 +21,11 @@ class TrieTest {
         Trie t = new Trie();
         t.insert("test");
 
-        var firstChar = t.getRoot().getChildren().get('t');
-        MatcherAssert.assertThat(firstChar, Matchers.equalTo('t'));
-        var secondChar = firstChar.getChildren().get('e');
-        MatcherAssert.assertThat(secondChar, Matchers.equalTo('t'));
-        var thirdChar = secondChar.getChildren().get('s');
-        MatcherAssert.assertThat(thirdChar, Matchers.equalTo('t'));
-        var forthChar = thirdChar.getChildren().get('t');
-        MatcherAssert.assertThat(forthChar, Matchers.equalTo('t'));
-        var fifthChar = forthChar.getChildren().get('*');
-        MatcherAssert.assertThat(fifthChar, Matchers.equalTo('t'));
-
+        MatcherAssert.assertThat(t.getRoot().getChildren().containsKey('t'),  Matchers.equalTo(true));
+        MatcherAssert.assertThat(t.getRoot().getChildren().get('t').getChildren().containsKey('e'),  Matchers.equalTo(true));
+        MatcherAssert.assertThat(t.getRoot().getChildren().get('t').getChildren().get('e').getChildren().containsKey('s'),  Matchers.equalTo(true));
+        MatcherAssert.assertThat(t.getRoot().getChildren().get('t').getChildren().get('e').getChildren().get('s').getChildren().containsKey('t'),  Matchers.equalTo(true));
+        MatcherAssert.assertThat(t.getRoot().getChildren().get('t').getChildren().get('e').getChildren().get('s').getChildren().get('t').getChildren().containsKey('*'),  Matchers.equalTo(true));
     }
 
     @Test

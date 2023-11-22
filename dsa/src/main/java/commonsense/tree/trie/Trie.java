@@ -26,8 +26,9 @@ public class Trie {
             if(currentNode.getChildren().containsKey(c)) {
                 currentNode = currentNode.getChildren().get(c);
             } else {
-                final Node value = new Node();
-                currentNode.getChildren().put(c, value);
+                final Node newNode = new Node();
+                currentNode.getChildren().put(c, newNode);
+                currentNode = newNode;
             }
         }
         currentNode.getChildren().put('*', null);
