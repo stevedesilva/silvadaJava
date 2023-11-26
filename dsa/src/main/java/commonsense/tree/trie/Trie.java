@@ -38,7 +38,16 @@ public class Trie {
         if (word == null || word.length() < 1) {
             throw new IllegalArgumentException();
         }
-        return null;
+        Node current = root;
+        for(Character character :  word.toCharArray()) {
+            if(current.getChildren().containsKey(character)) {
+                current= current.getChildren().get(character);
+            } else {
+                throw new  IllegalArgumentException("not found");
+            }
+
+        }
+        return current;
     }
 
     public List<String> printAll() throws IllegalArgumentException {
