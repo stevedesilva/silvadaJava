@@ -4,6 +4,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrieTest {
@@ -60,6 +62,22 @@ class TrieTest {
     }
 
     @Test
-    void printAll() {
+    void printAllWordNotFound() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Trie t = new Trie();
+            t.printAll();
+        });
     }
+
+    @Test
+    void printAll() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word","worker","starter","cube","candle","cat","canter");
+        words.forEach(t::insert);
+
+        final List<String> results = t.printAll();
+        MatcherAssert.assertThat(results, Matchers.containsInAnyOrder(words.toArray()));
+    }
+
+
 }

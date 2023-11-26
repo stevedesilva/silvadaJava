@@ -1,6 +1,6 @@
 package commonsense.tree.trie;
 
-import java.util.List;
+import java.util.*;
 
 public class Trie {
     private Node root;
@@ -51,7 +51,24 @@ public class Trie {
     }
 
     public List<String> printAll() throws IllegalArgumentException {
-        throw new UnsupportedOperationException();
+        if (root == null || root.getChildren().size() < 1) {
+            throw new IllegalArgumentException();
+        }
+        final ArrayList<String> words = new ArrayList<>();
+        printAll(root,"", words);
+        return words;
+    }
+
+    private void printAll(Node node, String word, ArrayList<String> words) {
+        final HashMap<Character, Node> children = node.getChildren();
+        for (Character c : children.keySet()) {
+            if (c.equals('*')) {
+                words.add(word);
+                return;
+            } else {
+                printAll(children.get(c),word + c, words);
+            }
+        }
     }
 
 }
