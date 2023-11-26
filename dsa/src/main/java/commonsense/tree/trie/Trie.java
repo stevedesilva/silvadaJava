@@ -35,7 +35,10 @@ public class Trie {
     }
 
     public Node search(String word) throws IllegalArgumentException {
-        throw new UnsupportedOperationException();
+        if (word == null || word.length() < 1) {
+            throw new IllegalArgumentException();
+        }
+        return null;
     }
 
     public List<String> printAll() throws IllegalArgumentException {
