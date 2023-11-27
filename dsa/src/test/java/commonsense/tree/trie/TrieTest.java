@@ -4,6 +4,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -77,6 +79,16 @@ class TrieTest {
 
         final List<String> results = t.printAll();
         MatcherAssert.assertThat(results, Matchers.containsInAnyOrder(words.toArray()));
+    }
+
+    @Test
+    public void shouldAutoCompletePrefix() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word","worker","starter","cube","candle","cat","canter");
+        words.forEach(t::insert);
+        final String results = t.autoComplete("wor");
+        MatcherAssert.assertThat(results, Matchers.equalTo("word"));
+
     }
 
 

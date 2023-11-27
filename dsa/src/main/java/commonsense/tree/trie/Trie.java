@@ -71,5 +71,13 @@ public class Trie {
         }
     }
 
+    public String autoComplete(String word) throws IllegalArgumentException {
+        if (word == null || word.length() < 1) {
+            throw new IllegalArgumentException();
+        }
+        return "";
+    }
+
+
 }
 
