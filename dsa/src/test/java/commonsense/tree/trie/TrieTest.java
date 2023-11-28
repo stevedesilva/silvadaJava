@@ -86,9 +86,8 @@ class TrieTest {
         Trie t = new Trie();
         final List<String> words = List.of("word","worker","starter","cube","candle","cat","canter");
         words.forEach(t::insert);
-        final String results = t.autoComplete("wor");
-        MatcherAssert.assertThat(results, Matchers.equalTo("word"));
-
+        final List<String> results = t.autoComplete("wor");
+        MatcherAssert.assertThat(results, Matchers.containsInAnyOrder( List.of("word","worker").toArray()));
     }
 
 

@@ -71,11 +71,15 @@ public class Trie {
         }
     }
 
-    public String autoComplete(String word) throws IllegalArgumentException {
+    public List<String> autoComplete(String word) throws IllegalArgumentException {
         if (word == null || word.length() < 1) {
             throw new IllegalArgumentException();
         }
-        return "";
+        // if search throws exception, then word not found
+        final Node searchRoot = search(word);
+        final ArrayList<String> words = new ArrayList<>();
+        printAll(searchRoot,word, words);
+        return words;
     }
 
 
