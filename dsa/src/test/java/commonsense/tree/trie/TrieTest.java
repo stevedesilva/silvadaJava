@@ -90,5 +90,15 @@ class TrieTest {
         MatcherAssert.assertThat(results, Matchers.containsInAnyOrder( List.of("word","worker").toArray()));
     }
 
+    @Test
+    public void shouldAutoCompletePrefixNotFound() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        // assert exception thrown when word is not found
+        assertThrows(IllegalArgumentException.class, () -> {
+            t.autoComplete("wors");
+        });
+    }
 
 }
