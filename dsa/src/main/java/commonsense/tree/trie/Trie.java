@@ -79,8 +79,31 @@ public class Trie {
     }
 
 
-    public String autoCorrect(String wors) {
-        return null;
+    public String autoCorrect(String prefix) throws IllegalArgumentException {
+        if (prefix == null || prefix.length() < 1) {
+            throw new IllegalArgumentException();
+        }
+        final ArrayList<String> words = new ArrayList<>();
+        autoCompletePrefix(root,prefix, words);
+        if (words.size() < 1) {
+            throw new IllegalArgumentException("no word found");
+        } else {
+            return words.get(0);
+        }
+    }
+
+    private void autoCompletePrefix(Node node, String prefix, ArrayList<String> words) {
+        words.add(prefix);
+
+//        final HashMap<Character, Node> children = node.getChildren();
+//        for (Character c : children.keySet()) {
+//            if (c.equals('*')) {
+//                words.add(word);
+//                return;
+//            } else {
+//                printAll(children.get(c),word + c, words);
+//            }
+//        }
     }
 }
 
