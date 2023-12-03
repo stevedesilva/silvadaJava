@@ -3,7 +3,7 @@ package commonsense.tree.trie;
 import java.util.*;
 
 public class Trie {
-    private Node root;
+    private final Node root;
 
     public Node getRoot() {
         return root;
@@ -12,10 +12,6 @@ public class Trie {
     public Trie() {
         this.root = new Node();
     }
-    public Trie(Node root) {
-        this.root = root;
-    }
-
 
     public void insert(String word) throws IllegalArgumentException {
         if (word == null || word.length() < 1) {
@@ -83,5 +79,8 @@ public class Trie {
     }
 
 
+    public String autoCorrect(String wors) {
+        return null;
+    }
 }
 

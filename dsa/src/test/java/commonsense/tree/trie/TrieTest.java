@@ -4,11 +4,9 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TrieTest {
 
@@ -96,9 +94,58 @@ class TrieTest {
         final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
         words.forEach(t::insert);
         // assert exception thrown when word is not found
-        assertThrows(IllegalArgumentException.class, () -> {
-            t.autoComplete("wors");
-        });
+        assertThrows(IllegalArgumentException.class, () -> t.autoComplete("wors"));
+    }
+
+    @Test
+    public void shouldAutoCompletePrefixEmpty() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        // assert exception thrown when word is not found
+        assertThrows(IllegalArgumentException.class, () -> t.autoComplete(""));
+    }
+
+    @Test
+    public void shouldAutoCorrectWordNotFound() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        final String result = t.autoCorrect("wors");
+        MatcherAssert.assertThat(result, Matchers.equalTo("word"));
+    }
+
+    @Test
+    public void shouldAutoCorrectWordFound() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        final String result = t.autoCorrect("word");
+        MatcherAssert.assertThat(result, Matchers.equalTo("word"));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenAutoCorrectWordEmpty() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        assertThrows(IllegalArgumentException.class, () -> t.autoCorrect(""));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenAutoCorrectWordNull() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        assertThrows(IllegalArgumentException.class, () -> t.autoCorrect(null));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenAutoCorrectWordWithPrefixIsNotFound() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        assertThrows(IllegalArgumentException.class, () -> t.autoCorrect("ant"));
     }
 
 }
