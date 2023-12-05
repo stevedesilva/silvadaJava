@@ -105,5 +105,12 @@ public class Trie {
 //            }
 //        }
     }
+
+    public List<Character> printAllKeys() throws IllegalArgumentException {
+        if (root.getChildren().size() < 1) {
+            throw new IllegalArgumentException("minimum input required");
+        }
+        throw new UnsupportedOperationException("not implemented");
+    }
 }
 

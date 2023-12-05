@@ -148,4 +148,21 @@ class TrieTest {
         assertThrows(IllegalArgumentException.class, () -> t.autoCorrect("ant"));
     }
 
+
+    @Test
+    public void shouldThrowExceptionWhenPrintKeysIsEmpty() {
+        Trie t = new Trie();
+        assertThrows(IllegalArgumentException.class, t::printAllKeys);
+    }
+
+    @Test
+    public void shouldPrintKeysIsTrie() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker");
+        words.forEach(t::insert);
+        final List<Character> results = t.printAllKeys();
+        MatcherAssert.assertThat(results, Matchers.containsInAnyOrder(List.of('w','o','r','d','k','e').toArray()));
+    }
+
+
 }
