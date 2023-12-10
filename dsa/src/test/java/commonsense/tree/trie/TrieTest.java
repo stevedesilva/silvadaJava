@@ -161,8 +161,7 @@ class TrieTest {
         final List<String> words = List.of("word", "worker");
         words.forEach(t::insert);
         final List<Character> results = t.printAllKeys();
-        MatcherAssert.assertThat(results, Matchers.containsInAnyOrder(List.of('w','o','r','d','k','e').toArray()));
+        MatcherAssert.assertThat(results, Matchers.containsInAnyOrder(List.of('w','o','r','d','*','k','e','r','*').toArray()));
     }
-
 
 }

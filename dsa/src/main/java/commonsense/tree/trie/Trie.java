@@ -110,7 +110,22 @@ public class Trie {
         if (root.getChildren().size() < 1) {
             throw new IllegalArgumentException("minimum input required");
         }
-        throw new UnsupportedOperationException("not implemented");
+        List<Character> keys = new ArrayList<>();
+        printAllKeys(root,keys);
+        return keys;
+    }
+
+    private void printAllKeys(Node root, List<Character> keys) {
+        final HashMap<Character, Node> children = root.getChildren();
+        for (Character key : children.keySet()) {
+            keys.add(key);
+            if (key.equals('*')) {
+                return;
+            } else {
+                final Node node = children.get(key);
+                printAllKeys(node,keys);
+            }
+        }
     }
 }
 
