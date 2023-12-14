@@ -84,7 +84,7 @@ public class Trie {
             throw new IllegalArgumentException();
         }
         final ArrayList<String> words = new ArrayList<>();
-        autoCompletePrefix(root,prefix, words);
+        autoCompletePrefix(root,prefix, "", words);
         if (words.size() < 1) {
             throw new IllegalArgumentException("no word found");
         } else {
@@ -92,10 +92,22 @@ public class Trie {
         }
     }
 
-    private void autoCompletePrefix(Node node, String prefix, ArrayList<String> words) {
-        words.add(prefix);
+    private void autoCompletePrefix(Node node, String prefix, String word, ArrayList<String> words) {
+        for (Character prefixChar : prefix.toCharArray()) {
+            if (node.getChildren().containsKey(prefixChar)) {
+                autoCompletePrefix(root,prefix, word + prefixChar, words);
+            } else {
+                words.add(word);
+                return;
+            }
+        }
+
+//        words.add(prefix);
 
 //        final HashMap<Character, Node> children = node.getChildren();
+//        if (children.keySet().contains()) {
+//
+//        }
 //        for (Character c : children.keySet()) {
 //            if (c.equals('*')) {
 //                words.add(word);
