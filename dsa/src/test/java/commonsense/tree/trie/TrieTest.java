@@ -120,8 +120,8 @@ class TrieTest {
         Trie t = new Trie();
         final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
         words.forEach(t::insert);
-        final String result = t.autoCorrect("word");
-        MatcherAssert.assertThat(result, Matchers.equalTo("word"));
+        MatcherAssert.assertThat(t.autoCorrect("word"), Matchers.equalTo("word"));
+        MatcherAssert.assertThat(t.autoCorrect("cube"), Matchers.equalTo("cube"));
     }
 
     @Test

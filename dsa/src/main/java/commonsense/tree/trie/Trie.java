@@ -1,6 +1,7 @@
 package commonsense.tree.trie;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Trie {
     private final Node root;
@@ -83,24 +84,29 @@ public class Trie {
         if (prefix == null || prefix.length() < 1) {
             throw new IllegalArgumentException();
         }
-        final ArrayList<String> words = new ArrayList<>();
-        autoCompletePrefix(root,prefix, "", words);
-        if (words.size() < 1) {
+        final ArrayList<Character> word = new ArrayList<>();
+        autoCompletePrefix(root,prefix,  word);
+        if (word.size() < 1) {
             throw new IllegalArgumentException("no word found");
         } else {
-            return words.get(0);
+            return word.stream().map(String::valueOf).collect(Collectors.joining());
         }
     }
 
-    private void autoCompletePrefix(Node node, String prefix, String word, ArrayList<String> words) {
+    private void autoCompletePrefix(Node node, String prefix, ArrayList<Character> word) {
+
         for (Character prefixChar : prefix.toCharArray()) {
-            if (node.getChildren().containsKey(prefixChar)) {
-                autoCompletePrefix(root,prefix, word + prefixChar, words);
+            final HashMap<Character, Node> children = node.getChildren();
+            if (children.containsKey(prefixChar)) {
+                final Node childNode = children.get(prefixChar);
+                word.add(prefixChar);
+                final String updatePrefix = prefix.substring(1);
+                autoCompletePrefix(childNode, updatePrefix, word);
             } else {
-                words.add(word);
                 return;
             }
         }
+
 
 //        words.add(prefix);
 
