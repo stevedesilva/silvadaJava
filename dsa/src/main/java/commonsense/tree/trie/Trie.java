@@ -85,15 +85,26 @@ public class Trie {
             throw new IllegalArgumentException();
         }
         final ArrayList<Character> word = new ArrayList<>();
-        autoCompletePrefix(root,prefix,  word);
+        final boolean found = autoCompletePrefix(root, prefix, word);
         if (word.size() < 1) {
             throw new IllegalArgumentException("no word found");
         } else {
-            return word.stream().map(String::valueOf).collect(Collectors.joining());
+            final String foundWordPrefix = word.stream().map(String::valueOf).collect(Collectors.joining());
+            if (found) {
+                return foundWordPrefix;
+            } else {
+                // get
+                final List<String> words = autoComplete(foundWordPrefix);
+                if (words == null || word.size() < 1) {
+                    return foundWordPrefix;
+                } else {
+                    return words.get(0);
+                }
+            }
         }
     }
 
-    private void autoCompletePrefix(Node node, String prefix, ArrayList<Character> word) {
+    private boolean autoCompletePrefix(Node node, String prefix, ArrayList<Character> word) {
 
         for (Character prefixChar : prefix.toCharArray()) {
             final HashMap<Character, Node> children = node.getChildren();
@@ -103,25 +114,10 @@ public class Trie {
                 final String updatePrefix = prefix.substring(1);
                 autoCompletePrefix(childNode, updatePrefix, word);
             } else {
-                return;
+                return false;
             }
         }
-
-
-//        words.add(prefix);
-
-//        final HashMap<Character, Node> children = node.getChildren();
-//        if (children.keySet().contains()) {
-//
-//        }
-//        for (Character c : children.keySet()) {
-//            if (c.equals('*')) {
-//                words.add(word);
-//                return;
-//            } else {
-//                printAll(children.get(c),word + c, words);
-//            }
-//        }
+        return true;
     }
 
     public List<Character> printAllKeys() throws IllegalArgumentException {
