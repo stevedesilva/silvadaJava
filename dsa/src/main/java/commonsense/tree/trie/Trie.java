@@ -84,6 +84,32 @@ public class Trie {
         if (prefix == null || prefix.length() < 1) {
             throw new IllegalArgumentException();
         }
+        final ArrayList<String> words = new ArrayList<>();
+        String wordToFind = "";
+        Node current = root;
+        for (Character prefixChar : prefix.toCharArray()) {
+            final HashMap<Character, Node> children = current.getChildren();
+            if (children.containsKey(prefixChar)) {
+                wordToFind += prefixChar;
+                current = children.get(prefixChar);
+            } else {
+
+                printAll(current, wordToFind, words);
+                if (words.isEmpty()) {
+                    throw new IllegalArgumentException();
+                } else {
+                    return words.get(0);
+                }
+            }
+        }
+        return wordToFind;
+
+    }
+
+    public String autoCorrectAlt(String prefix) throws IllegalArgumentException {
+        if (prefix == null || prefix.length() < 1) {
+            throw new IllegalArgumentException();
+        }
         final ArrayList<Character> word = new ArrayList<>();
         final boolean found = autoCompletePrefix(root, prefix, word);
         if (word.size() < 1) {
@@ -119,6 +145,8 @@ public class Trie {
         }
         return true;
     }
+
+
 
     public List<Character> printAllKeys() throws IllegalArgumentException {
         if (root.getChildren().size() < 1) {
