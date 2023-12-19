@@ -85,15 +85,20 @@ public class Trie {
             throw new IllegalArgumentException();
         }
         final ArrayList<String> words = new ArrayList<>();
+
+        final char[] prefixAsArrayOfChar = prefix.toCharArray();
+        if (!root.getChildren().containsKey(prefixAsArrayOfChar[0])) {
+            throw new IllegalArgumentException("Prefix not in trie");
+        }
+
         String wordToFind = "";
         Node current = root;
-        for (Character prefixChar : prefix.toCharArray()) {
+        for (Character prefixChar : prefixAsArrayOfChar) {
             final HashMap<Character, Node> children = current.getChildren();
             if (children.containsKey(prefixChar)) {
                 wordToFind += prefixChar;
                 current = children.get(prefixChar);
             } else {
-
                 printAll(current, wordToFind, words);
                 if (words.isEmpty()) {
                     throw new IllegalArgumentException();
