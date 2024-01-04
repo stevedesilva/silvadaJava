@@ -108,7 +108,6 @@ public class Trie {
             }
         }
         return wordToFind;
-
     }
 
     public String autoCorrectAlt(String prefix) throws IllegalArgumentException {
@@ -150,8 +149,6 @@ public class Trie {
         }
         return true;
     }
-
-
 
     public List<Character> printAllKeys() throws IllegalArgumentException {
         if (root.getChildren().size() < 1) {

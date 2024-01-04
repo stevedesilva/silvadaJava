@@ -114,6 +114,14 @@ class TrieTest {
         final String result = t.autoCorrect("wors");
         MatcherAssert.assertThat(result, Matchers.equalTo("word"));
     }
+    @Test
+    public void shouldAutoCorrectWordNotFound2() {
+        Trie t = new Trie();
+        final List<String> words = List.of("word", "worker", "starter", "cube", "candle", "cat", "canter");
+        words.forEach(t::insert);
+        final String result = t.autoCorrect("cae");
+        MatcherAssert.assertThat(result, Matchers.equalTo("cat"));
+    }
 
     @Test
     public void shouldAutoCorrectWordFound() {
