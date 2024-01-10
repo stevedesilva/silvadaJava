@@ -16,6 +16,17 @@ public class Vertex<T> {
         edges.add(adjacentVertex);
     }
 
+    public Vertex<T> dfsSearch(T value) {
+        // create a map to store visited vertex
+        Map<Vertex<T>, Boolean> visited = new HashMap<>();
+        dfsSearch(value,this, visited);
+        return null;
+    }
+
+    private Vertex<T> dfsSearch(T value, Vertex<T> vertex, Map<Vertex<T>,Boolean> visited ) {
+        return null;
+    }
+
     // dfs_traversal
     public void dfsTraverse() {
         // create a map to store visited vertex
