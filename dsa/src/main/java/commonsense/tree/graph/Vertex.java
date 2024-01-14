@@ -16,14 +16,29 @@ public class Vertex<T> {
         edges.add(adjacentVertex);
     }
 
-    public Vertex<T> dfsSearch(T value) {
-        // create a map to store visited vertex
-        Map<Vertex<T>, Boolean> visited = new HashMap<>();
-        dfsSearch(value,this, visited);
-        return null;
+    public Vertex<T> dfs(T value) {
+        return dfs(value, this, new HashMap<Vertex<T>, Boolean>());
     }
 
-    private Vertex<T> dfsSearch(T value, Vertex<T> vertex, Map<Vertex<T>,Boolean> visited ) {
+    private Vertex<T> dfs(T value, Vertex<T> vertex, Map<Vertex<T>,Boolean> visited ) {
+        // return if
+        if (vertex.value.equals(value)) {
+            return vertex;
+        }
+        visited.put(vertex,true);
+
+        for (Vertex<T> adjacentVertx : vertex.edges) {
+            if(!visited.containsKey(adjacentVertx)) {
+                if (adjacentVertx.value.equals(value)) {
+                    return vertex;
+                }
+                Vertex<T> result = dfs(value, adjacentVertx, visited);
+                if (result != null) {
+                    return vertex;
+                }
+            }
+        }
+
         return null;
     }
 
