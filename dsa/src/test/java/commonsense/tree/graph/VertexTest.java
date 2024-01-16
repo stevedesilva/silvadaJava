@@ -43,6 +43,7 @@ class VertexTest {
         v1.dfsTraverse();
     }
 
+
     @Test
     void dfs() {
         // create vertices
@@ -75,21 +76,21 @@ class VertexTest {
         v5.addAdjacentVertex(v4);
 
         MatcherAssert.assertThat(v1.dfs(1), Matchers.equalTo(v1));
-//        MatcherAssert.assertThat(v2.dfs(1), Matchers.equalTo(v1));
-//        MatcherAssert.assertThat(v3.dfs(1), Matchers.equalTo(v1));
-//        MatcherAssert.assertThat(v4.dfs(1), Matchers.equalTo(v1));
-//        MatcherAssert.assertThat(v5.dfs(1), Matchers.equalTo(v1));
-//
+        MatcherAssert.assertThat(v2.dfs(1), Matchers.equalTo(v1));
+        MatcherAssert.assertThat(v3.dfs(1), Matchers.equalTo(v1));
+        MatcherAssert.assertThat(v4.dfs(1), Matchers.equalTo(v1));
+        MatcherAssert.assertThat(v5.dfs(1), Matchers.equalTo(v1));
+
         MatcherAssert.assertThat(v1.dfs(2), Matchers.equalTo(v2));
-//        MatcherAssert.assertThat(v2.dfs(2), Matchers.equalTo(v2));
-//        MatcherAssert.assertThat(v3.dfs(2), Matchers.equalTo(v2));
-//        MatcherAssert.assertThat(v4.dfs(2), Matchers.equalTo(v2));
-//        MatcherAssert.assertThat(v5.dfs(2), Matchers.equalTo(v2));
-//
-////
-//        MatcherAssert.assertThat(v1.dfs(3), Matchers.equalTo(v3));
-//        MatcherAssert.assertThat(v1.dfs(4), Matchers.equalTo(v4));
-//        MatcherAssert.assertThat(v1.dfs(5), Matchers.equalTo(v5));
+        MatcherAssert.assertThat(v2.dfs(2), Matchers.equalTo(v2));
+        MatcherAssert.assertThat(v3.dfs(2), Matchers.equalTo(v2));
+        MatcherAssert.assertThat(v4.dfs(2), Matchers.equalTo(v2));
+        MatcherAssert.assertThat(v5.dfs(2), Matchers.equalTo(v2));
+
+
+        MatcherAssert.assertThat(v1.dfs(3), Matchers.equalTo(v3));
+        MatcherAssert.assertThat(v1.dfs(4), Matchers.equalTo(v4));
+        MatcherAssert.assertThat(v1.dfs(5), Matchers.equalTo(v5));
     }
 
 }

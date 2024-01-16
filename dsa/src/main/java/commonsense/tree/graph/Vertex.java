@@ -30,11 +30,11 @@ public class Vertex<T> {
         for (Vertex<T> adjacentVertx : vertex.edges) {
             if(!visited.containsKey(adjacentVertx)) {
                 if (adjacentVertx.value.equals(value)) {
-                    return vertex;
+                    return adjacentVertx;
                 }
                 Vertex<T> result = dfs(value, adjacentVertx, visited);
                 if (result != null) {
-                    return vertex;
+                    return result;
                 }
             }
         }
