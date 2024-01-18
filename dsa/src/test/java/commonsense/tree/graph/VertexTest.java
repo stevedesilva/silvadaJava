@@ -43,7 +43,6 @@ class VertexTest {
         v1.dfsTraverse();
     }
 
-
     @Test
     void dfs() {
         // create vertices

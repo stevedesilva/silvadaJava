@@ -12,8 +12,12 @@ public class Vertex<T> {
         this.edges = new ArrayList<>();
     }
 
-    public void addAdjacentVertex(Vertex<T> adjacentVertex) {
-        edges.add(adjacentVertex);
+    public void addAdjacentVertex(Vertex<T> vertex) {
+       if(edges.contains(vertex)) {
+           return;
+       }
+       edges.add(vertex);
+       vertex.addAdjacentVertex(this);
     }
 
     public Vertex<T> dfs(T value) {
