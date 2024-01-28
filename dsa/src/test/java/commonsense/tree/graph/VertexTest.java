@@ -4,6 +4,10 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.StreamTokenizer;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class VertexTest {
@@ -39,8 +43,19 @@ class VertexTest {
         v3.addAdjacentVertex(v4);
         v4.addAdjacentVertex(v5);
 
-        // traverse the graph
+        // set system out to new stream
+        PrintStream origOutStream = System.out;
+        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // DO work - traverse the graph
         v1.dfsTraverse();
+        String expected = "1\n2\n4\n3\n5\n";
+        assertEquals(expected,outputStream.toString());
+
+
+        // reset system out
+        System.setOut(origOutStream);
     }
 
     @Test
