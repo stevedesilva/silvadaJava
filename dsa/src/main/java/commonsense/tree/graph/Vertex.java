@@ -7,6 +7,8 @@ public class Vertex<T> {
     T value;
     List<Vertex<T>> edges;
 
+    public Vertex(){}
+
     public Vertex(T value) {
         this.value = value;
         this.edges = new ArrayList<>();
@@ -83,5 +85,13 @@ public class Vertex<T> {
     @Override
     public int hashCode() {
         return Objects.hash(id, value);
+    }
+
+    public void breathFirstSearchTraverse() {
+
+    }
+
+    public Vertex<Integer> breathFirstSearch(T i) {
+            return null;
     }
 }
