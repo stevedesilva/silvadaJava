@@ -88,7 +88,28 @@ public class Vertex<T> {
     }
 
     public void breathFirstSearchTraverse() {
+        // create a map to store visited vertex
+        Map<Vertex<T>, Boolean> visited = new HashMap<>();
+        // java queue
+        Queue<Vertex<T>> queue = new LinkedList<>();
 
+        // call dfsTraverse recursively
+        bfsTraverse(this, visited, queue);
+    }
+
+    private void bfsTraverse(Vertex<T> vertex, Map<Vertex<T>, Boolean> visited, Queue<Vertex<T>> queue ) {
+        visited.put(vertex, true);
+        queue.add(vertex);
+        while (!queue.isEmpty()) {
+            final Vertex<T> current = queue.remove();
+            System.out.println(current.value);
+            for (Vertex<T> v : current.edges) {
+                if (!visited.containsKey(v)) {
+                    visited.put(v, true);
+                    queue.add(v);
+                }
+            }
+        }
     }
 
     public Vertex<Integer> breathFirstSearch(T i) {
