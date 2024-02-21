@@ -158,6 +158,7 @@ class VertexTest {
 //        MatcherAssert.assertThat(v1.breathFirstSearch(5), Matchers.equalTo(v5));
     }
 
+
     @Test
     public void breathFirstSearchTraversal() {
             // create vertices
@@ -166,13 +167,27 @@ class VertexTest {
             Vertex<Integer> v3 = new Vertex<>(3);
             Vertex<Integer> v4 = new Vertex<>(4);
             Vertex<Integer> v5 = new Vertex<>(5);
+            Vertex<Integer> v6 = new Vertex<>(6);
+            Vertex<Integer> v7 = new Vertex<>(7);
 
+
+            /*
+                   v1
+                  /  \
+                 v2  v3
+                  \  / \
+                   v4   v6
+                   / \
+                  v5 v7
+             */
             // add adjacent vertices
             v1.addAdjacentVertex(v2);
             v1.addAdjacentVertex(v3);
             v2.addAdjacentVertex(v4);
             v3.addAdjacentVertex(v4);
+            v3.addAdjacentVertex(v6);
             v4.addAdjacentVertex(v5);
+            v4.addAdjacentVertex(v7);
 
             // set system out to new stream
             PrintStream origOutStream = System.out;
@@ -181,7 +196,7 @@ class VertexTest {
 
             // DO work - traverse the graph
             v1.breathFirstSearchTraverse();
-            String expected = "1\n2\n3\n4\n5\n";
+            String expected = "1\n2\n3\n4\n6\n5\n7\n";
             assertEquals(expected, outputStream.toString());
 
 
