@@ -204,4 +204,5 @@ class VertexTest {
         System.setOut(origOutStream);
     }
 
+
 }
