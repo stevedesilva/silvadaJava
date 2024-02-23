@@ -112,9 +112,11 @@ public class Vertex<T> {
         }
     }
 
-    public Vertex<T> breathFirstSearch(Vertex<T> vertex, Map<Vertex<T>, Boolean> visited, Queue<Vertex<T>> queue, T value) {
-        visited.put(vertex, true);
-        queue.add(vertex);
+    public Vertex<T> breathFirstSearch(T value) {
+        Map<Vertex<T>, Boolean> visited = new HashMap<>();
+        Queue<Vertex<T>> queue = new LinkedList<>();
+        visited.put(this, true);
+        queue.add(this);
         while (!queue.isEmpty()) {
             final Vertex<T> current = queue.remove();
             if(current.value.equals(value)){
@@ -127,5 +129,6 @@ public class Vertex<T> {
                 }
             }
         }
+        return null;
     }
 }
