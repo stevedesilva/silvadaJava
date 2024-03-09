@@ -156,7 +156,6 @@ class TrieTest {
         assertThrows(IllegalArgumentException.class, () -> t.autoCorrect("ant"));
     }
 
-
     @Test
     public void shouldThrowExceptionWhenPrintKeysIsEmpty() {
         Trie t = new Trie();

@@ -1,4 +1,4 @@
-package commonsense.tree.graph;
+package commonsense.tree.graph.standard;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.StreamTokenizer;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -203,6 +201,5 @@ class VertexTest {
         // reset system out
         System.setOut(origOutStream);
     }
-
 
 }

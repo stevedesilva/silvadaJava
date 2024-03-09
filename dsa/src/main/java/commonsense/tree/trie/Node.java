@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Node {
-    private HashMap<Character,Node> children;
+    final private HashMap<Character,Node> children;
 
     public HashMap<Character, Node> getChildren() {
         return children;
@@ -20,6 +20,5 @@ public class Node {
     public Node(HashMap<Character, Node> children) {
         this.children = children;
     }
-
 
 }

@@ -1,4 +1,4 @@
-package commonsense.tree.graph;
+package commonsense.tree.graph.standard;
 
 import java.util.*;
 
