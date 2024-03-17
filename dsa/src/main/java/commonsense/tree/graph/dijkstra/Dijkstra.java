@@ -6,44 +6,56 @@ import java.util.List;
 import java.util.Map;
 
 public class Dijkstra {
-    public List<String> shortestPath(City startCity, City endCity){
+    public List<String> shortestPath(City startingCity, City finalDestination){
         Map<String,Integer> cheapestPriceTable = new HashMap<>();
         Map<String,String> cheapestPreviousStopoverCityTable = new HashMap<>();
 
-        List<City> unvisitedCities = new ArrayList<>();
         Map<City,Boolean> visitedCities = new HashMap<>();
+        List<City> unvisitedCities = new ArrayList<>();
 
+        cheapestPriceTable.put(startingCity.getName(),0);
+        City current = startingCity;
 
-        cheapestPriceTable.put(startCity.getName(),0);
-        City current = startCity;
         while (current != null) {
-
             visitedCities.put(current,true);
             unvisitedCities.remove(current);
 
-            for ( Map.Entry<City,Integer> route : current.getRoutes().entrySet()) {
+            for (Map.Entry<City,Integer> route : current.getRoutes().entrySet()) {
                 final City adjacentCity = route.getKey();
-                final Integer price = route.getValue();
+                final Integer adjacentCityPrice = route.getValue();
                 if (!visitedCities.containsKey(adjacentCity)) {
                     unvisitedCities.add(adjacentCity);
                 }
 
-                int priceThroughCurrentCity = cheapestPriceTable.get(current.getName()) + price;
+                int priceThroughCurrentCity = cheapestPriceTable.get(current.getName()) + adjacentCityPrice; // TODO if current city is not found?
 
-                if (!cheapestPriceTable.containsKey(current.getName()) || priceThroughCurrentCity < cheapestPriceTable.get(adjacentCity.getName())) {
+                if (!cheapestPriceTable.containsKey(adjacentCity.getName()) || priceThroughCurrentCity < cheapestPriceTable.get(adjacentCity.getName())) {
                     cheapestPriceTable.put(adjacentCity.getName(),priceThroughCurrentCity);
                     cheapestPreviousStopoverCityTable.put(adjacentCity.getName(), current.getName());
                 }
             }
-            City minCity = unvisitedCities.get(0);
-            for (City unvisitedCity : unvisitedCities) {
-                if(cheapestPriceTable.get(unvisitedCity.getName()) < cheapestPriceTable.get(minCity.getName())) {
-                    minCity = unvisitedCity;
+
+            // TODO swap with priority queue
+            City minCity = null;
+            if (!unvisitedCities.isEmpty()) {
+                minCity = unvisitedCities.getFirst();
+                for (City unvisitedCity : unvisitedCities) {
+                    if(cheapestPriceTable.get(unvisitedCity.getName()) < cheapestPriceTable.get(minCity.getName())) {
+                        minCity = unvisitedCity;
+                    }
                 }
             }
             current = minCity;
-
         }
-        return null;
+
+        List<String> shortestPath = new ArrayList<>();
+        String currentCityName = finalDestination.getName();
+
+        while (!currentCityName.equalsIgnoreCase(startingCity.getName())) {
+            shortestPath.add(currentCityName);
+            currentCityName = cheapestPreviousStopoverCityTable.get(currentCityName);
+        }
+
+        return shortestPath.reversed();
     }
 }
