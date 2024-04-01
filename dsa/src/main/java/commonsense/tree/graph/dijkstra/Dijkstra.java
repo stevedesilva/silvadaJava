@@ -55,6 +55,7 @@ public class Dijkstra {
             shortestPath.add(currentCityName);
             currentCityName = cheapestPreviousStopoverCityTable.get(currentCityName);
         }
+        shortestPath.add(startingCity.getName());
 
         return shortestPath.reversed();
     }

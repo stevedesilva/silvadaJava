@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class City {
-    private String name;
+    final private String name;
     private Map<City,Integer> routes = new HashMap<>();
 
-    public City() {
+    public City(String name) {
+        this.name = name;
+        this.routes = new HashMap<>();
     }
 
     public void addRoutes(City city, Integer price) {
