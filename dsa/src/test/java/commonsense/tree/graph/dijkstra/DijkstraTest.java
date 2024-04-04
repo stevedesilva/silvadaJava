@@ -53,7 +53,7 @@ class DijkstraTest {
     void testShortestPath(City source, City destination, List<String> expectedPath) {
         Dijkstra dijkstra = new Dijkstra();
         final List<String> result = dijkstra.shortestPath(source, destination);
-        assertEquals(expectedPath, result);
+        MatcherAssert.assertThat(result, Matchers.equalTo(expectedPath));
     }
 
     private static Stream<Object[]> provideCitiesAndExpectedPaths() {
@@ -76,7 +76,8 @@ class DijkstraTest {
                 new Object[]{atlanta, elPaso, List.of("Atlanta", "Denver", "Chicago", "El Paso")},
                 new Object[]{atlanta, chicago, List.of("Atlanta", "Denver", "Chicago")},
                 new Object[]{atlanta, boston, List.of("Atlanta", "Boston")},
-                new Object[]{denver, elPaso, List.of("Denver", "Chicago", "El Paso")}
+                new Object[]{denver, elPaso, List.of("Denver", "Chicago", "El Paso")},
+                new Object[]{elPaso, denver, List.of("El Paso", "Boston", "Denver")}
         );
     }
 
