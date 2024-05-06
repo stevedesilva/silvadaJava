@@ -3,7 +3,7 @@ package commonsense.tree.graph.dijkstra;
 import java.util.HashMap;
 import java.util.Map;
 
-public class City {
+public class City implements Comparable<City> {
     final private String name;
     private Map<City,Integer> routes = new HashMap<>();
 
@@ -25,4 +25,8 @@ public class City {
     }
 
 
+    @Override
+    public int compareTo(City city) {
+        return city.compareTo(city);
+    }
 }
