@@ -3,9 +3,9 @@ package commonsense.tree.graph.dijkstra;
 import java.util.HashMap;
 import java.util.Map;
 
-public class City implements Comparable<City> {
+public class City {
     final private String name;
-    private Map<City,Integer> routes = new HashMap<>();
+    private Map<City,Integer> routes;
 
     public City(String name) {
         this.name = name;
@@ -24,9 +24,4 @@ public class City implements Comparable<City> {
         return routes;
     }
 
-
-    @Override
-    public int compareTo(City city) {
-        return city.compareTo(city);
-    }
 }
