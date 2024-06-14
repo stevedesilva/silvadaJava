@@ -23,5 +23,4 @@ public class City {
     public Map<City, Integer> getRoutes() {
         return routes;
     }
-
 }

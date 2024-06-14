@@ -17,7 +17,7 @@ public class Dijkstra {
 
         while (current != null) {
             visitedCities.put(current,true);
-            unvisitedCities.remove(current);
+           // unvisitedCities.remove(current); // sorted slice
 
             for (Map.Entry<City,Integer> route : current.getRoutes().entrySet()) {
                 final City adjacentCity = route.getKey();
