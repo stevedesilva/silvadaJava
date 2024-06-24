@@ -20,7 +20,6 @@ class DijkstraTest {
 
     @Test
     void testShortestPath() {
-
         City atlanta = new City("Atlanta");
         City boston = new City("Boston");
         City chicago = new City("Chicago");
