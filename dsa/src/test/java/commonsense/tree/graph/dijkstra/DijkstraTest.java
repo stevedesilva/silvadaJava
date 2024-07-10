@@ -1,16 +1,15 @@
 package commonsense.tree.graph.dijkstra;
 
+import commonsense.tree.graph.shortestpath.dijkstra.City;
+import commonsense.tree.graph.shortestpath.dijkstra.Dijkstra;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DijkstraTest {
 

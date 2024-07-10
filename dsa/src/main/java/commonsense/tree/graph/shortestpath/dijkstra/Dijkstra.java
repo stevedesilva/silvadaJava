@@ -1,4 +1,4 @@
-package commonsense.tree.graph.dijkstra;
+package commonsense.tree.graph.shortestpath.dijkstra;
 
 import java.util.*;
 
