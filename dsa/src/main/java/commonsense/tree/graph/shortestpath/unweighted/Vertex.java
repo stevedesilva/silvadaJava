@@ -157,10 +157,11 @@ public class Vertex<T> {
 
         List<T> shortestPath = new ArrayList<>();
         Vertex<T> current = end;
-        while (current != end) {
+        while (current != start) {
             shortestPath.add(current.value);
             current = previousVertex.get(current);
         }
+        shortestPath.add(start.value);
         return shortestPath.reversed();
     }
 }
