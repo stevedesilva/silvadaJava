@@ -7,7 +7,8 @@ public class Vertex<T> {
     T value;
     List<Vertex<T>> edges;
 
-    public Vertex(){}
+    public Vertex() {
+    }
 
     public Vertex(T value) {
         this.value = value;
@@ -15,26 +16,26 @@ public class Vertex<T> {
     }
 
     public void addAdjacentVertex(Vertex<T> vertex) {
-       if(edges.contains(vertex)) {
-           return;
-       }
-       edges.add(vertex);
-       vertex.addAdjacentVertex(this);
+        if (edges.contains(vertex)) {
+            return;
+        }
+        edges.add(vertex);
+        vertex.addAdjacentVertex(this);
     }
 
     public Vertex<T> dfs(T value) {
         return dfs(value, this, new HashMap<Vertex<T>, Boolean>());
     }
 
-    private Vertex<T> dfs(T value, Vertex<T> vertex, Map<Vertex<T>,Boolean> visited ) {
+    private Vertex<T> dfs(T value, Vertex<T> vertex, Map<Vertex<T>, Boolean> visited) {
         // return if
         if (vertex.value.equals(value)) {
             return vertex;
         }
-        visited.put(vertex,true);
+        visited.put(vertex, true);
 
         for (Vertex<T> adjacentVertx : vertex.edges) {
-            if(!visited.containsKey(adjacentVertx)) {
+            if (!visited.containsKey(adjacentVertx)) {
                 if (adjacentVertx.value.equals(value)) {
                     return adjacentVertx;
                 }
@@ -119,7 +120,7 @@ public class Vertex<T> {
         queue.add(this);
         while (!queue.isEmpty()) {
             final Vertex<T> current = queue.remove();
-            if(current.value.equals(value)){
+            if (current.value.equals(value)) {
                 return current;
             }
             for (Vertex<T> v : current.edges) {
@@ -133,6 +134,33 @@ public class Vertex<T> {
     }
 
     public List<T> shortestPath(Vertex<T> start, Vertex<T> end) {
-        return List.of();
+        // visited nodes
+        Set<Vertex<T>> visitedVertices = new HashSet<>();
+        visitedVertices.add(start);
+        // queue
+        Queue<Vertex<T>> queue = new LinkedList<>();
+        queue.add(start);
+
+        Map<Vertex<T>, Vertex<T>> previousVertex = new HashMap<>();
+        // while queue is not empty
+        while (!queue.isEmpty()) {
+            Vertex<T> currentVertex = queue.remove();
+            for (Vertex<T> adjacentVertx : currentVertex.edges) {
+                if (!visitedVertices.contains(adjacentVertx)) {
+                    visitedVertices.add(adjacentVertx);
+                    queue.add(adjacentVertx);
+
+                    previousVertex.put(adjacentVertx, currentVertex);
+                }
+            }
+        }
+
+        List<T> shortestPath = new ArrayList<>();
+        Vertex<T> current = end;
+        while (current != end) {
+            shortestPath.add(current.value);
+            current = previousVertex.get(current);
+        }
+        return shortestPath.reversed();
     }
 }
