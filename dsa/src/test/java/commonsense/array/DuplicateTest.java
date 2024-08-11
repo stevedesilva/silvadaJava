@@ -9,8 +9,6 @@ import java.util.Arrays;
 
 
 class DuplicateTest {
-
-
     @ParameterizedTest
     @CsvSource(value={"2,2,3,4:true","1,2,3,4:false","5,5,3,4:true","1:false"},delimiter = ':')
     public void testHasDuplicates(String input, boolean output) {

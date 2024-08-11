@@ -3,7 +3,6 @@ package commonsense.recursion;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -23,4 +22,10 @@ class StringReversalTest {
         MatcherAssert.assertThat(illegalArgumentException.getMessage(), Matchers.equalTo(MINIMUM_INPUT_OF_ONE_NOT_MET));
     }
 
+    @Test
+    public void shouldReverseArray() {
+        String[] word = {"a", "b", "c"};
+        String[] expected = {"a", "b", "c"};
+        MatcherAssert.assertThat(StringReversal.reverseArrayInline(word), Matchers.equalTo(expected));
+    }
 }

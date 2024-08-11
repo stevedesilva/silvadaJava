@@ -19,4 +19,10 @@ public class StringReversal {
         return reverseRec(Arrays.copyOfRange(word, 1, word.length)) + word[0];
     }
 
+    public static String[] reverseArrayInline(String[] words) {
+
+        return words;
+    }
+
+
 }
