@@ -25,7 +25,14 @@ class StringReversalTest {
     @Test
     public void shouldReverseArray() {
         String[] word = {"a", "b", "c"};
-        String[] expected = {"a", "b", "c"};
+        String[] expected = {"c", "b", "a"};
+        MatcherAssert.assertThat(StringReversal.reverseArrayInline(word), Matchers.equalTo(expected));
+    }
+
+    @Test
+    public void shouldReverseArray2() {
+        String[] word = {"a", "b", "c","d"};
+        String[] expected = {"d","c", "b", "a"};
         MatcherAssert.assertThat(StringReversal.reverseArrayInline(word), Matchers.equalTo(expected));
     }
 }

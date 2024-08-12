@@ -19,10 +19,35 @@ public class StringReversal {
         return reverseRec(Arrays.copyOfRange(word, 1, word.length)) + word[0];
     }
 
-    public static String[] reverseArrayInline(String[] words) {
 
+    public static String[] reverseArrayInline(String[] words) {
+        int i = 0;
+        int j = words.length - 1;
+
+        while (i < j ){
+            String temp = words[i];
+            words[i] = words[j];
+            words[j] = temp;
+            i++;
+            j--;
+        }
         return words;
     }
+
+
+
+
+//    public static String[] reverseArrayInline(String[] words) {
+//        if (words.length < 2) {
+//            return words;
+//        }
+//        for (int i = 0; i < words.length / 2; i++) {
+//            String temp = words[i];
+//            words[i] = words[words.length - 1 - i];
+//            words[words.length - 1 - i] = temp;
+//        }
+//        return words;
+//    }
 
 
 }
