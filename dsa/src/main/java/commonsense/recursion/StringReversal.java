@@ -20,7 +20,7 @@ public class StringReversal {
     }
 
 
-    public static String[] reverseArrayInline(String[] words) {
+    public static String[] reverseArrayInline2(String[] words) {
         int i = 0;
         int j = words.length - 1;
 
@@ -34,20 +34,18 @@ public class StringReversal {
         return words;
     }
 
+    public static String[] reverseArrayInline(String[] words) {
+        if (words.length < 2) {
+            return words;
+        }
+        for (int i = 0; i < words.length / 2; i++) {
+            String temp = words[i];
+            words[i] = words[words.length - 1 - i];
+            words[words.length - 1 - i] = temp;
+        }
+        return words;
+    }
 
-
-
-//    public static String[] reverseArrayInline(String[] words) {
-//        if (words.length < 2) {
-//            return words;
-//        }
-//        for (int i = 0; i < words.length / 2; i++) {
-//            String temp = words[i];
-//            words[i] = words[words.length - 1 - i];
-//            words[words.length - 1 - i] = temp;
-//        }
-//        return words;
-//    }
 
 
 }

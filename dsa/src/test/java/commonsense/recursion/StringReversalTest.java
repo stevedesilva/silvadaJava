@@ -9,7 +9,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static commonsense.recursion.StringReversal.MINIMUM_INPUT_OF_ONE_NOT_MET;
 
-class StringReversalTest {
+class
+StringReversalTest {
     @ParameterizedTest
     @CsvSource(delimiter = ',', value = {"a,a","abcdef,fedcba","1234567,7654321"})
     public void shouldReverseString(String word, String expected) {
