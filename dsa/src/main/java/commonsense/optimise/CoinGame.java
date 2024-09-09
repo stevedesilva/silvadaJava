@@ -6,7 +6,7 @@ public class CoinGame {
     public static final String THEM = "them";
 
 
-    private String play(int coins, String current) {
+    public String play(int coins, String current) {
         if (coins <= 0) {
             return current;
         }

@@ -13,13 +13,16 @@ class CoinGameTest {
     }
 
     @Test
-    void testPlay() {
+    public void testPlayOneCoin() {
         // Test when "me" should win
-        assertEquals(CoinGame.ME, coinGame.play(1, CoinGame.ME));
-        assertEquals(CoinGame.ME, coinGame.play(2, CoinGame.ME));
-        assertEquals(CoinGame.ME, coinGame.play(3, CoinGame.ME));
+        assertEquals(CoinGame.THEM, coinGame.play(1, CoinGame.ME));
+        assertEquals(CoinGame.ME, coinGame.play(1, CoinGame.THEM));
+    }
 
-        // Test when "them" should win
-        assertEquals(CoinGame.THEM, coinGame.play(4, CoinGame.ME));
+    @Test
+    public void testPlayTwoCoin() {
+        // Test when "me" should win
+        assertEquals(CoinGame.ME, coinGame.play(2, CoinGame.ME));
+        assertEquals(CoinGame.THEM, coinGame.play(2, CoinGame.THEM));
     }
 }
