@@ -28,25 +28,25 @@ class CoinGameTest {
     @Test
     public void testPlayOneCoin() {
         // Test when "me" should win
-        assertEquals(CoinGame.THEM, coinGame.play(1, CoinGame.ME));
+        assertEquals(CoinGame.THEM, coinGame.play(1, CoinGame.YOU));
     }
 
     @Test
     public void testPlayTwoCoin() {
         // Test when "me" should win
-        assertEquals(CoinGame.ME, coinGame.play(2, CoinGame.ME));
+        assertEquals(CoinGame.YOU, coinGame.play(2, CoinGame.YOU));
     }
 
     @Test
     public void testPlayThree() {
         // Test when "me" should win
-        assertEquals(CoinGame.ME, coinGame.play(3, CoinGame.ME));
+        assertEquals(CoinGame.YOU, coinGame.play(3, CoinGame.YOU));
     }
 
     @Test
     public void testPlayFour() {
         // Test when "me" should win
-        assertEquals(CoinGame.THEM, coinGame.play(4, CoinGame.ME));
+        assertEquals(CoinGame.THEM, coinGame.play(4, CoinGame.YOU));
     }
 
 }

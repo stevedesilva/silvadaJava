@@ -2,26 +2,27 @@ package commonsense.optimise;
 
 public class CoinGame {
 
-    public static final String ME = "me";
+    public static final String YOU = "you";
     public static final String THEM = "them";
 
 
-    public String play(int coins, String current) {
+    public String play(int coins, String currentPlayer) {
         if (coins <= 0) {
-            return current;
+            return currentPlayer;
         }
-        if (current.equalsIgnoreCase(ME)) {
-            current = THEM;
+        String nextPlayer;
+        if (currentPlayer.equalsIgnoreCase(YOU)) {
+            nextPlayer = THEM;
         } else {
-            current = ME;
+            nextPlayer = YOU;
         }
 
-        if (play(coins - 1, current).equalsIgnoreCase(ME) || play(coins - 2, current).equalsIgnoreCase(ME) ) {
-            return ME;
+        if (play(coins - 1, nextPlayer).equalsIgnoreCase(currentPlayer) ||
+                play(coins - 2, nextPlayer).equalsIgnoreCase(currentPlayer) ) {
+            return currentPlayer;
         } else {
-            return THEM;
+            return nextPlayer;
         }
     }
-
 
 }
