@@ -49,4 +49,18 @@ class CoinGameTest {
         assertEquals(CoinGame.THEM, coinGame.play(4, CoinGame.YOU));
     }
 
+    @Test
+    public void testPlayFive() {
+        // Test when "me" should win
+        assertEquals(CoinGame.YOU, coinGame.play(5, CoinGame.YOU));
+    }
+
+    @Test
+    public void testPlaySix() {
+        // Test when "me" should win
+        assertEquals(CoinGame.YOU, coinGame.play(6, CoinGame.YOU));
+    }
+
+
+
 }
