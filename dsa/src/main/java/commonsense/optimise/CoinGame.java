@@ -41,11 +41,13 @@ public class CoinGame {
      */
     public String play(int coins, String currentPlayer) {
         // mod 3
-        final int i = coins % 3;
+        final int i = (coins - 1) % 3;
         if (i == 0) {
-            return currentPlayer;
+            //   THEM
+            return  currentPlayer.equalsIgnoreCase(YOU) ? THEM : YOU;
         } else {
-            return currentPlayer.equalsIgnoreCase(YOU) ? THEM : YOU;
+            //    YOU
+            return currentPlayer.equalsIgnoreCase(YOU) ? YOU : THEM;
         }
     }
 
