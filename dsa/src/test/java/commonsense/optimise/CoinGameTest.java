@@ -29,38 +29,41 @@ class CoinGameTest {
     public void testPlayOneCoin() {
         // Test when "me" should win
         assertEquals(CoinGame.THEM, coinGame.play(1, CoinGame.YOU));
+        assertEquals(CoinGame.YOU, coinGame.play(1, CoinGame.THEM));
     }
 
     @Test
     public void testPlayTwoCoin() {
         // Test when "me" should win
         assertEquals(CoinGame.YOU, coinGame.play(2, CoinGame.YOU));
+        assertEquals(CoinGame.THEM, coinGame.play(2, CoinGame.THEM));
     }
 
     @Test
     public void testPlayThree() {
         // Test when "me" should win
         assertEquals(CoinGame.YOU, coinGame.play(3, CoinGame.YOU));
+        assertEquals(CoinGame.THEM, coinGame.play(3, CoinGame.THEM));
     }
 
     @Test
     public void testPlayFour() {
         // Test when "me" should win
         assertEquals(CoinGame.THEM, coinGame.play(4, CoinGame.YOU));
+        assertEquals(CoinGame.YOU, coinGame.play(4, CoinGame.THEM));
     }
 
     @Test
     public void testPlayFive() {
         // Test when "me" should win
         assertEquals(CoinGame.YOU, coinGame.play(5, CoinGame.YOU));
+        assertEquals(CoinGame.THEM, coinGame.play(5, CoinGame.THEM));
     }
 
     @Test
     public void testPlaySix() {
         // Test when "me" should win
         assertEquals(CoinGame.YOU, coinGame.play(6, CoinGame.YOU));
+        assertEquals(CoinGame.THEM, coinGame.play(6, CoinGame.THEM));
     }
-
-
-
 }
