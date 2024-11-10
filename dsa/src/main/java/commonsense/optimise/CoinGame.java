@@ -1,5 +1,8 @@
 package commonsense.optimise;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CoinGame {
 
     public static final String YOU = "you";
@@ -49,6 +52,12 @@ public class CoinGame {
             //    YOU
             return currentPlayer.equalsIgnoreCase(YOU) ? YOU : THEM;
         }
+    }
+
+    public boolean validate(String player) {
+        final Pattern compile = Pattern.compile("^(you|them)$");
+        final Matcher matcher = compile.matcher(player);
+        return matcher.find();
     }
 
 }

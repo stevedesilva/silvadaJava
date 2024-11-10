@@ -66,4 +66,12 @@ class CoinGameTest {
         assertEquals(CoinGame.YOU, coinGame.play(6, CoinGame.YOU));
         assertEquals(CoinGame.THEM, coinGame.play(6, CoinGame.THEM));
     }
+
+    @Test
+    public void testIsValidPlayer() {
+        assertTrue(coinGame.validate("you"));
+        assertTrue(coinGame.validate("them"));
+        assertFalse(coinGame.validate("oooyouuuu"));
+        assertFalse(coinGame.validate("other"));
+    }
 }
