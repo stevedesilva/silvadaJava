@@ -43,6 +43,9 @@ public class CoinGame {
         Number of coins = 10 Winner = THEM
      */
     public String play(int coins, String currentPlayer) {
+        if (!validate(currentPlayer)) {
+            throw new IllegalArgumentException("unrecognized value" + currentPlayer);
+        }
         // mod 3
         final int i = (coins - 1) % 3;
         if (i == 0) {

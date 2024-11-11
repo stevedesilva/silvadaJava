@@ -1,6 +1,8 @@
 package commonsense.optimise;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -73,5 +75,14 @@ class CoinGameTest {
         assertTrue(coinGame.validate("them"));
         assertFalse(coinGame.validate("oooyouuuu"));
         assertFalse(coinGame.validate("other"));
+        assertFalse(coinGame.validate("YoU"));
+        assertFalse(coinGame.validate("Them"));
+    }
+
+    @Test
+    public void shouldThrowExceptionForInvalidPlayer(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            coinGame.play(6, "wrong");
+        });
     }
 }
