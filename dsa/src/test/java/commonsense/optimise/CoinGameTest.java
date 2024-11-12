@@ -2,9 +2,13 @@ package commonsense.optimise;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class CoinGameTest {
     private CoinGame coinGame;
@@ -84,5 +88,11 @@ class CoinGameTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             coinGame.play(6, "wrong");
         });
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"you,true","them,true","oooyouuuu,false","other,false","You,false","Them,false"}, delimiter = ',')
+    public void testIsValidPlayer(String word, boolean expected) {
+        MatcherAssert.assertThat(coinGame.validate(word), Matchers.equalTo(expected));
     }
 }
