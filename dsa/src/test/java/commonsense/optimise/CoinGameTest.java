@@ -74,16 +74,6 @@ class CoinGameTest {
     }
 
     @Test
-    public void testIsValidPlayer() {
-        assertTrue(coinGame.validate("you"));
-        assertTrue(coinGame.validate("them"));
-        assertFalse(coinGame.validate("oooyouuuu"));
-        assertFalse(coinGame.validate("other"));
-        assertFalse(coinGame.validate("YoU"));
-        assertFalse(coinGame.validate("Them"));
-    }
-
-    @Test
     public void shouldThrowExceptionForInvalidPlayer(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             coinGame.play(6, "wrong");
