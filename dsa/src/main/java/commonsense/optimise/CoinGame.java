@@ -8,7 +8,6 @@ public class CoinGame {
     public static final String YOU = "you";
     public static final String THEM = "them";
 
-
     public String playOriginal(int coins, String currentPlayer) {
         if (coins <= 0) {
             return currentPlayer;
@@ -27,7 +26,6 @@ public class CoinGame {
             return nextPlayer;
         }
     }
-
 
     /*
         Player turn ME
