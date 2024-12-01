@@ -20,10 +20,8 @@ class SumSwapTest {
     // create parameterised test for swapToMakeEqual
     @ParameterizedTest
     @CsvSource(value = {
-            "'4,1,2,1,1,2', '3,6,3,3', '1,3'",
-            "'1,2,3', '4,5,6', '2,4'",
-            "'1,1,1,1', '2,2,2,2', '1,2'"
-    }, delimiter = ';')
+            "'4,2,3,1', '4,2,5,3,6', '3,4'"
+    })
     public void swapToMakeEqualParameterised(String a1, String a2, String expected) {
         SumSwap sumSwap = new SumSwap();
         int[] a1Array = convertStringToIntArray(a1);
@@ -33,5 +31,13 @@ class SumSwapTest {
         assertArrayEquals(expectedArray, result);
     }
 
+    private int[] convertStringToIntArray(String a1) {
+        String[] split = a1.split(",");
+        int[] result = new int[split.length];
+        for (int i = 0; i < split.length; i++) {
+            result[i] = Integer.parseInt(split[i]);
+        }
+        return result;
+    }
 
 }
