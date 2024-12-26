@@ -8,13 +8,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SumSwapTest {
 
+
     @Test
-    public void swapToMakeEqual() {
+    public void swapToMakeEqual1() {
         SumSwap sumSwap = new SumSwap();
-        int[] a1 = {4, 1, 2, 1, 1, 2};
-        int[] a2 = {3, 6, 3, 3};
+        int[] a1 = {5, 3, 2, 9, 1};
+        int[] a2 = {1, 12, 5};
         final int[] result = sumSwap.swapToMakeEqual(a1, a2);
-        assertArrayEquals(new int[]{1, 3}, result);
+        assertArrayEquals(new int[]{2, 0}, result);
+    }
+
+
+    @Test
+    public void swapToMakeEqual2() {
+        SumSwap sumSwap = new SumSwap();
+        int[] a1 = {5, 3, 3, 7};
+        int[] a2 = {4, 1, 1, 6};
+        final int[] result = sumSwap.swapToMakeEqual(a1, a2);
+        assertArrayEquals(new int[]{3, 0}, result);
+    }
+
+    @Test
+    public void swapToMakeEqual3() {
+        SumSwap sumSwap = new SumSwap();
+        int[] a1 = {1, 2, 3, 4, 5};
+        int[] a2 = {6, 7, 8};
+        final int[] result = sumSwap.swapToMakeEqual(a1, a2);
+        assertArrayEquals(new int[]{2, 0}, result);
+    }
+
+    @Test
+    public void swapToMakeEqual4() {
+        SumSwap sumSwap = new SumSwap();
+        int[] a1 = {10, 15, 20};
+        int[] a2 = {5, 30};
+        final int[] result = sumSwap.swapToMakeEqual(a1, a2);
+        assertArrayEquals(new int[]{0, 0}, result);
     }
 
     // create parameterised test for swapToMakeEqual
