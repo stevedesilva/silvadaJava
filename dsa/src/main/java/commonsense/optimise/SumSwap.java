@@ -1,16 +1,47 @@
 package commonsense.optimise;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SumSwap {
 
     public int[] swapToMakeEqual(int[] a1, int[] a2) {
         validate(a1, a2);
-        // 1 - larger array needs to trade a larger number with a smaller number from the smaller array
-        // 2 - with a single swap, each array sum changes by the same amount  (e.g. given 7,4 increases by 3, decreases by 3)
-        // 3 - swaps cause the 2 array sums to fall out exactly in the middle of where the two arrays sums began (e.g. 18, 12 -> 15)
-        // Therefore if we know the sums of the 2 arrays, we should be able to look at any number in one of the arrays and calculate what number it should be swapped with in the other array
-        return null;
+        // key
+        Map<Integer, Integer> a1Map = new HashMap<>();
+        // get a sum of a1 while storing it's values in hashmap
+        int a1Total = 0;
+        for (int index = 0; index < a1.length; index++) {
+            final int number = a1[index];
+            a1Total += number;
+            a1Map.put(number, index);
+        }
+
+        final int a2Total = Arrays.stream(a2).sum();
+
+        // calculate the difference between the two arrays
+        final int difference = (a1Total - a2Total) / 2;
+
+        for (int i=0; i < a2.length; i++) {
+            // check map for the numbers counterpart in the 1st array,
+            // which is calculated as the current number
+            // plus the amount it has to shift by:
+            final int num = a2[i];
+            final int numToFind = num + difference;
+            try {
+                if (a1Map.containsKey(numToFind)) {
+                    return new int[]{a1[numToFind],i};
+                }
+            } catch (Exception e) {
+                // continue
+            }
+
+        }
+        // throw item not found exception
+        throw new IllegalArgumentException("no items found");
+
     }
 
     private void validate(int[] a1, int[] a2) {
