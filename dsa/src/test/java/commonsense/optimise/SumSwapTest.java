@@ -17,6 +17,15 @@ class SumSwapTest {
         assertArrayEquals(new int[]{2, 0}, result);
     }
 
+    @Test
+    public void swapToMakeEqual1Inverse() {
+        SumSwap sumSwap = new SumSwap();
+        int[] a1 = {1, 12, 5}; // 18
+        int[] a2 = {5, 3, 2, 9, 1}; // 20
+        final int[] result = sumSwap.swapToMakeEqual(a1, a2); // 2, 0
+        assertArrayEquals(new int[]{0, 2}, result);
+    }
+
 
     @Test
     public void swapToMakeEqual2() {
@@ -67,5 +76,6 @@ class SumSwapTest {
         }
         return result;
     }
+
 
 }
