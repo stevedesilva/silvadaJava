@@ -32,7 +32,8 @@ public class SumSwap {
             final int numToFind = num + difference;
             try {
                 if (a1Map.containsKey(numToFind)) {
-                    return new int[]{a1[numToFind],i};
+//                    return new int[]{a1[numToFind],i};
+                    return new int[]{a1Map.get(numToFind),i};
                 }
             } catch (Exception e) {
                 // continue

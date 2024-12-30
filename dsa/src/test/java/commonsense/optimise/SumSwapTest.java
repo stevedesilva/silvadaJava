@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SumSwapTest {
 
-
     @Test
     public void swapToMakeEqual1() {
         SumSwap sumSwap = new SumSwap();
