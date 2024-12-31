@@ -35,6 +35,14 @@ class SumSwapTest {
         final int[] result = sumSwap.swapToMakeEqual(a1, a2); // 3, 0
         assertArrayEquals(new int[]{3, 0}, result);
     }
+    @Test
+    public void swapToMakeEqual2Inverse() {
+        SumSwap sumSwap = new SumSwap();
+        int[] a1 = {4, 1, 1, 6}; // 12
+        int[] a2 = {5, 3, 3, 7}; // 18
+        final int[] result = sumSwap.swapToMakeEqual(a1, a2); // 3, 0
+        assertArrayEquals(new int[]{0, 3}, result);
+    }
 
     @Test
     public void swapToMakeEqual3() {
@@ -57,7 +65,8 @@ class SumSwapTest {
     // create parameterised test for swapToMakeEqual
     @ParameterizedTest
     @CsvSource(value = {
-            "'4,2,3,1', '4,2,5,3,6', '3,4'"
+            "'4,2,3,1', '4,2,5,3,6', '3,4'",
+            "'4,2,5,3,6', '4,2,3,1', '4,3'",
     })
     public void swapToMakeEqualParameterised(String a1, String a2, String expected) {
         SumSwap sumSwap = new SumSwap();
