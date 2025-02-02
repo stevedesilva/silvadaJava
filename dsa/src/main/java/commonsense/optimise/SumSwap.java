@@ -42,7 +42,6 @@ public class SumSwap {
         }
         // throw item not found exception
         throw new IllegalArgumentException("no items found");
-
     }
 
     private void validate(int[] a1, int[] a2) {
