@@ -10,6 +10,7 @@ class MaxSumTest {
             "'3,-1,1',3",
             "'1,1,-2,5',5",
             "'-1,1,1,1',3",
+            "'-10,1,7,-9,1',8",
     })
     public void maxSumParameterised(String a1, int expected) {
         MaxSum maxSum = new MaxSum();
