@@ -23,5 +23,14 @@ class AnagramTest {
         final List<String> result = Anagram.findAllPossibleAnagrams(word);
         MatcherAssert.assertThat(result,Matchers.equalTo(expectedAnagrams));
     }
+    @ParameterizedTest
+    @CsvSource(value = {
+            "abc:abc,bac,bca,acb,cab,cba",
+    }, delimiter = ':')
+    public void shouldFindAllPossibleVariationsX(String word, String expected){
+        final List<String> expectedAnagrams = Arrays.stream(expected.split(",")).map(String::trim).collect(Collectors.toList());
+        final List<String> result = Anagram.findAllPossibleAnagrams(word);
+        MatcherAssert.assertThat(result,Matchers.equalTo(expectedAnagrams));
+    }
 
 }
