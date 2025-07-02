@@ -8,6 +8,7 @@ tasks.xml
 usage.statistics.xml
 dictionaries/
 shelf/
+misc.xml
 
 # Maven specific files
 target/
