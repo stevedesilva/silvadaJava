@@ -10,10 +10,11 @@ class StockTest {
     @ParameterizedTest
     @CsvSource(value = {
             "'5,2,8,4,3,7',true",
+            "'8,9,7,10',true",
     })
     public void predictorTest() {
         Stock stock = new Stock();
-        int[] stockPrices = {100, 200, 150, 300, 250};
+        double[] stockPrices = {100, 200, 150, 300, 250};
         boolean result = stock.isIncreasingTriplet(stockPrices);
         assertFalse(result); // Placeholder assertion; actual logic needs to be implemented
     }
