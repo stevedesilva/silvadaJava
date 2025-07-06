@@ -13,6 +13,22 @@ public class Anagram {
         Map<Character,Integer> firstStringMap = new HashMap<>();
         Map<Character,Integer> secondStringMap = new HashMap<>();
 
-        return false;
+        for (char c : firstString.toCharArray()) {
+            if (firstStringMap.containsKey(c)) {
+                firstStringMap.put(c, firstStringMap.get(c) + 1);
+            } else {
+                firstStringMap.put(c,1);
+            }
+        }
+        for (char c : secondString.toCharArray()) {
+            if (secondStringMap.containsKey(c)) {
+                secondStringMap.put(c, secondStringMap.get(c) + 1);
+            } else {
+                secondStringMap.put(c,1);
+            }
+        }
+
+        // compare the two maps
+        return firstStringMap.equals(secondStringMap);
     }
 }
