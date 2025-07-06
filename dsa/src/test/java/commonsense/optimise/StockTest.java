@@ -83,4 +83,12 @@ class StockTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> stock.isIncreasingTriplet(stockPrices));
         assertEquals("Array must not be null or have less than 3 elements", exception.getMessage());
     }
+
+    @Test
+    void testHasIncreasingTriplet() {
+        double[] stockPrices = {100, 200, 150, 300, 250};
+        double[] expected = {100, 150, 300};
+        double[] result = stock.HasIncreasingTriplet(stockPrices);
+        assertArrayEquals(expected, result);
+    }
 }
