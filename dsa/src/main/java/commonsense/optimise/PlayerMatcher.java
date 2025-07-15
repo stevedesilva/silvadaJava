@@ -47,5 +47,10 @@ public class PlayerMatcher {
         public int hashCode() {
             return Objects.hash(firstName, lastName, teamName);
         }
+
+        @Override
+        public String toString() {
+            return firstName + " " + lastName;
+        }
     }
 }
