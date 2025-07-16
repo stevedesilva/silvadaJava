@@ -1,12 +1,16 @@
 package commonsense.optimise;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class PlayerMatcher {
-    public List<String> findPlayer(List<Player> playerA, List<Player> playerB) {
-        return new ArrayList<>();
+    public static List<String> findPlayer(List<Player> playerA, List<Player> playerB) {
+        Set<Player> setA = new HashSet<>(playerA);
+        Set<Player> setB = new HashSet<>(playerB);
+        return setA.stream()
+                .filter(setB::contains)
+                .map(Player::toString)
+                .collect(Collectors.toList());
     }
 
     // class with firstName, lastName, teamName
