@@ -36,10 +36,11 @@ class PlayerMatcherTest {
         expectedPlayers.add("Clive DeSilva");
         expectedPlayers.add("Ben DeSilva");
 
-        final List<String> player = PlayerMatcher.findPlayer(basketballPlayers, footballPlayers);
+        final List<String> players = PlayerMatcher.findPlayer(basketballPlayers, footballPlayers);
 
         // assert
-        MatcherAssert.assertThat(expectedPlayers, Matchers.containsInAnyOrder(player));
+        MatcherAssert.assertThat(players, Matchers.containsInAnyOrder(expectedPlayers.toArray()));
+
 
     }
 }

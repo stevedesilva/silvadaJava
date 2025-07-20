@@ -43,13 +43,12 @@ public class PlayerMatcher {
             if (obj == null || getClass() != obj.getClass()) return false;
             Player player = (Player) obj;
             return Objects.equals(firstName, player.firstName) &&
-                    Objects.equals(lastName, player.lastName) &&
-                    Objects.equals(teamName, player.teamName);
+                    Objects.equals(lastName, player.lastName);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(firstName, lastName, teamName);
+            return Objects.hash(firstName, lastName);
         }
 
         @Override
