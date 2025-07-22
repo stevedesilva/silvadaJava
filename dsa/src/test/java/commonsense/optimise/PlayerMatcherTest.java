@@ -40,7 +40,5 @@ class PlayerMatcherTest {
 
         // assert
         MatcherAssert.assertThat(players, Matchers.containsInAnyOrder(expectedPlayers.toArray()));
-
-
     }
 }
