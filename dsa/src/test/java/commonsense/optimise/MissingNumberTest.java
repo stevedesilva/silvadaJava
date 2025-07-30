@@ -37,6 +37,14 @@ class MissingNumberTest {
         assertEquals("number array cannot be empty", exception.getMessage());
     }
 
+    @Test
+    void shouldThrowExceptionForInvalidMissingNumber() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            MissingNumber.find(new int[]{0, 1, 2, 3, 4});
+        });
+        assertEquals("invalid missing number", exception.getMessage());
+    }
+
     private int[] parseInput(String input) {
         return input.isEmpty() ? new int[]{} :
                 java.util.Arrays.stream(input.split(","))
