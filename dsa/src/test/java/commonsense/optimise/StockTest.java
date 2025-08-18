@@ -1,10 +1,6 @@
 package commonsense.optimise;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,19 +8,6 @@ class StockTest {
 
     private final Stock stock = new Stock();
 
-    // stock prediction
-    @ParameterizedTest
-    @CsvSource(value = {
-            "5,2,8,4,3,7,true",
-            "8,9,7,10,false"
-    })
-    void predictorTest(String stockPricesStr, boolean expectedResult) {
-        double[] stockPrices = Arrays.stream(stockPricesStr.split(","))
-                .mapToDouble(Double::parseDouble)
-                .toArray();
-        boolean result = stock.isIncreasingTriplet(stockPrices);
-        assertEquals(expectedResult, result);
-    }
 
     @Test
     void testIncreasingTripletExists() {
