@@ -2,7 +2,7 @@ package commonsense.optimise;
 
 public class StockPrediction {
 
-    public Integer findFindGreatestProfit(int[] numbers) {
+    public static double findFindGreatestProfit(double[] numbers) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

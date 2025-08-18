@@ -8,7 +8,6 @@ class StockTest {
 
     private final Stock stock = new Stock();
 
-
     @Test
     void testIncreasingTripletExists() {
         double[] stockPrices = {100, 200, 150, 300, 250};
