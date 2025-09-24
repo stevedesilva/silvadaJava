@@ -30,7 +30,9 @@ public class MaxProduct {
             }
         }
 
-        return Math.max(maxValue1 * maxValue2, leastValue1 * leastValue2);
+        final int max = maxValue1 * maxValue2;
+        final int least = leastValue1 * leastValue2;
+        return Math.max(max, least);
 
     }
 }
