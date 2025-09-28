@@ -56,15 +56,15 @@ class BodyTemperatureTest {
     }
 
     private List<Double> parseInput(String input) {
-//
-//        if (input == null || input.trim().isEmpty()) {
-//            return List.of();
-//        }
-//        String[] parts = input.split(",");
-//        return java.util.Arrays.stream(parts)
-//                .map(String::trim)
-//                .map(Double::parseDouble)
-//                .toList();
+
+        if (input == null || input.trim().isEmpty()) {
+            return List.of();
+        }
+        String[] parts = input.split(",");
+        return java.util.Arrays.stream(parts)
+                .map(String::trim)
+                .map(Double::parseDouble)
+                .toList();
 
     }
 }
