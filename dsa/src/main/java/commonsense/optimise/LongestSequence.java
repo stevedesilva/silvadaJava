@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class LongestSequence {
 
-    public static int[] findLongestConsecutiveSequence(int[] nums) {
+    public static List<Integer> findLongestConsecutiveSequence(int[] nums) {
         // Implementation goes here
         Map numMap = new HashMap<>();
         for (int num : nums) {
@@ -15,16 +15,23 @@ public class LongestSequence {
         }
         // find the longest sequence
         // if num - 1 is not in the map then it is the start of a sequence
-        List result = new ArrayList();
-        for (int num: nums) {
-
-            if (!numMap.containsKey(num + 1)) {
-                // start of sequence
-
+        List<Integer> results = new ArrayList();
+        for (int currentNum: nums) {
+            List<Integer> tempList = new ArrayList();
+            tempList.add(currentNum);
+            int nextNum = currentNum + 1;
+            // if start of sequence
+            if (!numMap.containsKey(currentNum)) {
+                while (numMap.containsKey(nextNum)) {
+                    tempList.add(nextNum);
+                    nextNum++;
+                }
+            }
+            if(tempList.size() > results.size()) {
+                results = tempList;
             }
         }
 
-        //
-        return null;
+        return results;
     }
 }

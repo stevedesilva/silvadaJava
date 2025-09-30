@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +25,9 @@ public class LongestSequenceTest {
     }, delimiter = ':')
     public void TestLongestSequence(String input, String output) {
         final int[] numbers = Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).toArray();
-        final int[] result = LongestSequence.findLongestConsecutiveSequence(numbers);
-        MatcherAssert.assertThat(result, Matchers.equalTo(numbers));
+        List<Integer> result = LongestSequence.findLongestConsecutiveSequence(numbers);
+        List<Integer> expected = Arrays.stream(output.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+
+        MatcherAssert.assertThat(result, Matchers.equalTo(expected));
     }
 }
