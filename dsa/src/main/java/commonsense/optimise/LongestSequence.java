@@ -18,10 +18,12 @@ public class LongestSequence {
         List<Integer> results = new ArrayList();
         for (int currentNum: nums) {
             List<Integer> tempList = new ArrayList();
-            tempList.add(currentNum);
-            int nextNum = currentNum + 1;
+
+
             // if start of sequence
-            if (!numMap.containsKey(currentNum)) {
+            if (!numMap.containsKey(currentNum - 1)) {
+                tempList.add(currentNum);
+                int nextNum = currentNum + 1;
                 while (numMap.containsKey(nextNum)) {
                     tempList.add(nextNum);
                     nextNum++;
